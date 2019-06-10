@@ -7,15 +7,17 @@
 //
 
 import Cocoa
+import OTFKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
+    @IBOutlet weak var mainController: FFFeaturesController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        print (mainController)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
