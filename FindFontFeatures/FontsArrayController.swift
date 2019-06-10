@@ -11,8 +11,10 @@ import AppKit
 import OTF
 
 class FontsArrayController: NSArrayController {
+    
     @IBOutlet var familyNamesArrayController:NSArrayController!
     @IBOutlet var familyStylesController:NSArrayController!
+    
 }
 
 extension FontsArrayController {

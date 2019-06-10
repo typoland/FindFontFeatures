@@ -17,8 +17,10 @@ public class FFFeaturesController: NSObject {
     var selectorInFonts: [FFFSelector : [ NSFont ]] = [:]
     var fonts: [NSFont] = []
     
-    @IBOutlet var fontsArrayController: NSArrayController!
-    @IBOutlet var familyNamesArrayController:NSArrayController!
+    @IBOutlet var fontsArrayController: FontsArrayController!
+    @IBOutlet var featuresTreeController:FeaturesTreeController!
+    //@IBOutlet var familyNamesArrayController:NSArrayController!
+    //@IBOutlet var featuresController:FeaturesTreeController!
 
     func add (fontNames: [String], size:CGFloat) {
         for fontName in fontNames {

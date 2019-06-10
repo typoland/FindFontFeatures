@@ -14,19 +14,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var mainController: FFFeaturesController!
-    @IBOutlet weak var fontsArrayController: FontsArrayController!
+    //@IBOutlet weak var fontsArrayController: FontsArrayController!
     
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         mainController.willChangeValue(for: \FFFeaturesController.allFonts)
-        fontsArrayController.willChangeValue(for: \FontsArrayController.arrangedObjects)
-        fontsArrayController.familyNamesArrayController.willChangeValue(for: \FontsArrayController.arrangedObjects)
-        mainController.add(fontNames: ["Lato", "Lato-Bold","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
-        fontsArrayController.didChangeValue(for: \FontsArrayController.arrangedObjects)
+        
+        
+        
+        
+        mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         mainController.didChangeValue(for: \FFFeaturesController.allFonts)
-        fontsArrayController.familyNamesArrayController.didChangeValue(for: \FontsArrayController.arrangedObjects)
-
-        print (mainController)
+        
+        
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
