@@ -14,9 +14,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var mainController: FFFeaturesController!
+    @IBOutlet weak var fontsArrayController: FontsArrayController!
+    
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        mainController.willChangeValue(for: \FFFeaturesController.allFonts)
+        fontsArrayController.willChangeValue(for: \FontsArrayController.arrangedObjects)
+        fontsArrayController.familyNamesArrayController.willChangeValue(for: \FontsArrayController.arrangedObjects)
+        mainController.add(fontNames: ["Lato", "Lato-Bold","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
+        fontsArrayController.didChangeValue(for: \FontsArrayController.arrangedObjects)
+        mainController.didChangeValue(for: \FFFeaturesController.allFonts)
+        fontsArrayController.familyNamesArrayController.didChangeValue(for: \FontsArrayController.arrangedObjects)
+
         print (mainController)
     }
 
