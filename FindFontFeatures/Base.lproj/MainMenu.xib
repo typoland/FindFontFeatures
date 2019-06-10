@@ -14,7 +14,6 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
-                <outlet property="mainController" destination="8iM-m8-2MH" id="ZTX-RK-i8T"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -790,6 +789,6 @@
             </view>
             <point key="canvasLocation" x="-14" y="531"/>
         </window>
-        <customObject id="8iM-m8-2MH" customClass="FFFeaturesController" customModule="OTFKit"/>
+        <customObject id="1bv-CP-i3c" customClass="FFFeaturesController" customModule="FindFontFeatures" customModuleProvider="target"/>
     </objects>
 </document>
