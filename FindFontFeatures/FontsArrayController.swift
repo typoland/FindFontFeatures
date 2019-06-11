@@ -20,7 +20,7 @@ class FontsArrayController: NSArrayController {
 extension FontsArrayController {
     
     override func awakeFromNib() {
-        sortDescriptors = [NSSortDescriptor(key: "familyName", ascending: true)]
+        sortDescriptors = [NSSortDescriptor(key: "fontName", ascending: true)]
         familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: nil)
     }
     

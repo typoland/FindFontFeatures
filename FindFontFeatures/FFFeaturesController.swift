@@ -15,24 +15,50 @@ public class FFFeaturesController: NSObject {
     
     var types: OrderedSet<FFFType> = []
     var selectorInFonts: [FFFSelector : [ NSFont ]] = [:]
-    var fonts: [NSFont] = []
+    var fonts: [NSFont] = [] {
+        willSet {
+            willChangeValue(for: \FFFeaturesController.allFonts)
+        }
+        didSet {
+            didChangeValue(for: \FFFeaturesController.allFonts)
+        }
+    }
     
     @IBOutlet var fontsArrayController: FontsArrayController!
     @IBOutlet var featuresTreeController:FeaturesTreeController!
     //@IBOutlet var familyNamesArrayController:NSArrayController!
     //@IBOutlet var featuresController:FeaturesTreeController!
+    
+    func clearContent() {
 
+        types = []
+        selectorInFonts = [:]
+        fonts = []
+  
+    }
+    
     func add (fontNames: [String], size:CGFloat) {
+        var fonts = [NSFont]()
         for fontName in fontNames {
             if let font = NSFont(name: fontName, size: size) {
-                addTypeControllers(of: font)
+                fonts.append(font)
             }
         }
+        add(fonts: fonts)
+    }
+    
+    func add (fonts: [NSFont]) {
+        for font in fonts {
+            addTypeControllers(of: font)
+        }
+        willChangeValue(for: \FFFeaturesController.allFonts)
+        self.fonts.append(contentsOf: fonts)
+        didChangeValue(for: \FFFeaturesController.allFonts)
     }
 
     func addTypeControllers (of font: NSFont) {
         
-        fonts.append(font)
+        
 
         for featureTypeDescription in font.featuresDescriptions {
             
