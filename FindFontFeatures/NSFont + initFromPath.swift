@@ -17,7 +17,7 @@ public extension NSFont {
         guard let fontRef = CGFont ( dataProvider ) else {
             throw NSError(domain: "Not a font file", code: 77, userInfo: ["fileName" : path])
         }
-        let name: CFString = path as CFString //= String(path.split(separator: "/").last?.split(separator: ".").first ??  "loaded from disk)") as CFString
+        let name: CFString = String(path.split(separator: "/").last?.split(separator: ".").first ??  "loaded from disk)") as CFString
         print ("\(name)")
         let ctFontdescriptor = CTFontDescriptorCreateWithNameAndSize(name, size)
         return CTFontCreateWithGraphicsFont(fontRef, size, matrix, ctFontdescriptor) as NSFont

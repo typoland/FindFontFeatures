@@ -26,15 +26,12 @@ public class FFFeaturesController: NSObject {
     
     @IBOutlet var fontsArrayController: FontsArrayController!
     @IBOutlet var featuresTreeController:FeaturesTreeController!
-    //@IBOutlet var familyNamesArrayController:NSArrayController!
-    //@IBOutlet var featuresController:FeaturesTreeController!
+
     
     func clearContent() {
-
         types = []
         selectorInFonts = [:]
         fonts = []
-  
     }
     
     func add (fontNames: [String], size:CGFloat) {
@@ -57,9 +54,6 @@ public class FFFeaturesController: NSObject {
     }
 
     func addTypeControllers (of font: NSFont) {
-        
-        
-
         for featureTypeDescription in font.featuresDescriptions {
             
             

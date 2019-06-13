@@ -30,26 +30,33 @@ extension FontsArrayController {
         didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
     }
     
-    
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
-        willChangeValue(for: \FontsArrayController.filterPredicate)
         willChangeValue(for: \FontsArrayController.fontFamilyNames)
+
+        willChangeValue(for: \FontsArrayController.filterPredicate)
+       
         if sender.stringValue.isEmpty {
             filterPredicate = nil
         } else {
             let predicate = NSPredicate(format: "familyName CONTAINS [c] \"\(sender.stringValue)\"")
             filterPredicate = predicate
         }
-        didChangeValue(for: \FontsArrayController.filterPredicate)
-        didChangeValue(for: \FontsArrayController.fontFamilyNames)
         
+        didChangeValue(for: \FontsArrayController.filterPredicate)
+
+        didChangeValue(for: \FontsArrayController.fontFamilyNames)
     }
     
 
     
     @objc var fontFamilyNames: [String] {
-        return Array((arrangedObjects as! [NSFont]).reduce(into: OrderedSet<String>(), {set, font in
-            set.append(font.familyName ?? "No named family")
+        return Array((arrangedObjects as! [NSFont]).reduce(into: OrderedSet<String>(), { set, font in
+            if let fontFamily = font.familyName {
+                set.append(fontFamily)
+            } else {
+                print ("Unknown family name of \(font)")
+                
+            }
         }))
     }
     

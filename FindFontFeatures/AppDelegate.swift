@@ -31,43 +31,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     @objc func openDocument(_ sender:Any) {
-        var fonts = [NSFont]()
+       
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = true
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
         openPanel.begin { (result) -> Void in
-            
             if result == NSApplication.ModalResponse.OK {
-                for url in openPanel.urls {
-                    var isDirectory: ObjCBool = ObjCBool(false)
-                    let fileManager = FileManager.default
-                    if fileManager.fileExists(atPath: url.path, isDirectory: &isDirectory) {
-                        do {
-                            if let files = try? fileManager.contentsOfDirectory(atPath: url.path) {
-                                for file in files {
-                                    let filePath = url.path + "/" + file
-                                    if let font = try? NSFont.read(from: filePath, size: 12) {
-                                        fonts.append(font)
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if let font = try? NSFont.read(from: url.path, size: 12) {
+                var fonts: [NSFont] = []
+                if let fontsPaths = try? FilesTree(
+                    paths: openPanel.urls.map{$0.path}).allFilePaths {
+                    
+                    fontsPaths.forEach { path in
+                        if let font = try? NSFont.read(from: path, size: 12) {
                             fonts.append(font)
                         }
                     }
-                    if !fonts.isEmpty {
-                        self.mainController.clearContent()
-                        self.mainController.add(fonts: fonts)
-                    }
                 }
+                self.mainController.clearContent()
+                self.mainController.add(fonts: fonts)
             }
         }
-        
-                
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
