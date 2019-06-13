@@ -8,7 +8,7 @@
 
 import Foundation
 import AppKit
-import OTF
+import OTFKit
 
 extension FFFeaturesController {
     
@@ -17,15 +17,18 @@ extension FFFeaturesController {
         case "fonts" :
             print ("will changed allFonts \(fonts)")
             
-        fontsArrayController.willChangeValue(for:
-            \FontsArrayController.arrangedObjects)
-        
+            fontsArrayController.willChangeValue(for:
+                \FontsArrayController.arrangedObjects)
+            
             fontsArrayController.willChangeValue(for:
                 \FontsArrayController.selectedFalmiliesFonts)
             
             fontsArrayController.willChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
-
+        case "types" :
+            print ("will changed types \(types)")
+            featuresTreeController.willChangeValue(for:
+                \FeaturesTreeController.arrangedObjects)
         default: break
         }
         super.willChangeValue(forKey: key)
@@ -38,13 +41,16 @@ extension FFFeaturesController {
             
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.arrangedObjects)
- 
+            
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.selectedFalmiliesFonts)
             
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
-            
+        case "types" :
+            featuresTreeController.didChangeValue(for:
+                \FeaturesTreeController.arrangedObjects)
+            print ("did changed types \(String(describing: featuresTreeController.content)) ")
         default: break
         }
         super.didChangeValue(forKey: key)

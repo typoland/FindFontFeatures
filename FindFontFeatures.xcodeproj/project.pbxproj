@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B2375F3C22B27DE50020A1B1 /* OTF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2375F3B22B27DE50020A1B1 /* OTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */; };
+		B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */; };
 		B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */; };
 		B24A7A2C22AE5BD200EBA62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */; };
 		B24A7A2F22AE5BD200EBA62C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2D22AE5BD200EBA62C /* MainMenu.xib */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		B2375F3B22B27DE50020A1B1 /* OTF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTF.framework; path = "../../../../Library/Developer/Xcode/DerivedData/FFF2-cfymqtelytocizbnwqvpglwlgscw/Build/Products/Debug/OTF.framework"; sourceTree = "<group>"; };
 		B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
+		B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCheckButton.swift; sourceTree = "<group>"; };
 		B24A7A2622AE5BD100EBA62C /* FindFontFeatures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFontFeatures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
 				B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */,
+				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
 			);
 			name = FFFeaturesController;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			files = (
 				B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */,
 				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
+				B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */,
 				B28C649922AED26E00916810 /* FFFeaturesController + fonts.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
 				B28C64A522AF077C00916810 /* FFFeaturesController + features.swift in Sources */,

@@ -891,7 +891,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="OMd-cf-T74">
+                                                <tableColumn identifier="Types" width="116" minWidth="40" maxWidth="1000" id="OMd-cf-T74">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -905,6 +905,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="KeG-Fh-Mcu">
+                                                            <string key="identifier">FFFType		</string>
                                                             <rect key="frame" x="1" y="1" width="116" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -925,9 +926,52 @@
                                                                 <outlet property="textField" destination="63q-PO-jko" id="aHQ-t5-zrp"/>
                                                             </connections>
                                                         </tableCellView>
+                                                        <tableCellView identifier="FFFSelector" id="0g7-hE-3dL">
+                                                            <rect key="frame" x="1" y="20" width="116" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7d-hR-haX">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ih6-IJ-sxB">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="0g7-hE-3dL" name="value" keyPath="objectValue.name" id="URP-2I-mLz"/>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="U7d-hR-haX" id="wF6-jZ-40Q"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView id="90v-H9-qSE">
+                                                            <string key="identifier">FFFOption		</string>
+                                                            <rect key="frame" x="1" y="39" width="116" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSV-Gx-8Qw">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="vIu-RS-N0A">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="90v-H9-qSE" name="value" keyPath="objectValue.name" id="mzc-iL-eSU"/>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="mSV-Gx-8Qw" id="LO8-cg-bFA"/>
+                                                            </connections>
+                                                        </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="71" minWidth="40" maxWidth="1000" id="2bQ-IO-QdG">
+                                                <tableColumn identifier="Actions" width="71" minWidth="40" maxWidth="1000" id="2bQ-IO-QdG">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -940,29 +984,33 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="6ZT-hj-lfS">
+                                                        <tableCellView identifier="FFFSearch" id="6ZT-hj-lfS" customClass="CellCheckButton" customModule="FindFontFeatures" customModuleProvider="target">
                                                             <rect key="frame" x="120" y="1" width="71" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-Cw-MN6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="71" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="oNV-hd-z9v">
+                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydg-TD-pEk">
+                                                                    <rect key="frame" x="5" y="0.0" width="61" height="18"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="AfV-P3-dD5">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
+                                                                    </buttonCell>
+                                                                </button>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="textField" destination="xzJ-Cw-MN6" id="3Y4-Uz-AU5"/>
+                                                                <outlet property="checkButton" destination="ydg-TD-pEk" id="yy8-ME-nnI"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <binding destination="9MG-oK-s3p" name="content" keyPath="arrangedObjects" id="zLh-vG-N2M"/>
+                                                <binding destination="9MG-oK-s3p" name="content" keyPath="arrangedObjects" id="v7F-Ki-bbj">
+                                                    <dictionary key="options">
+                                                        <bool key="NSValidatesImmediately" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="9MG-oK-s3p" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="v7F-Ki-bbj" id="aj7-1u-r5R"/>
                                                 <outlet property="dataSource" destination="A59-eS-JBA" id="m5b-rU-f8n"/>
                                                 <outlet property="delegate" destination="A59-eS-JBA" id="EEm-Ob-T7H"/>
                                             </connections>
@@ -1034,7 +1082,11 @@
         </arrayController>
         <treeController objectClassName="FFFType" automaticallyPreparesContent="YES" childrenKeyPath="selectors" countKeyPath="selectors.count" id="9MG-oK-s3p" customClass="FeaturesTreeController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
-                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="types" id="4Yn-Jm-utF"/>
+                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="types" id="QKd-QY-avk">
+                    <dictionary key="options">
+                        <bool key="NSValidatesImmediately" value="YES"/>
+                    </dictionary>
+                </binding>
             </connections>
         </treeController>
     </objects>

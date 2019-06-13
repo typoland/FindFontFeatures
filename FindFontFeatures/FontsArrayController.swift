@@ -32,7 +32,6 @@ extension FontsArrayController {
     
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
         willChangeValue(for: \FontsArrayController.fontFamilyNames)
-
         willChangeValue(for: \FontsArrayController.filterPredicate)
        
         if sender.stringValue.isEmpty {
@@ -43,7 +42,6 @@ extension FontsArrayController {
         }
         
         didChangeValue(for: \FontsArrayController.filterPredicate)
-
         didChangeValue(for: \FontsArrayController.fontFamilyNames)
     }
     

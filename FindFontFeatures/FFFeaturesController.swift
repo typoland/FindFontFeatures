@@ -53,18 +53,22 @@ public class FFFeaturesController: NSObject {
     }
     
     func add (fonts: [NSFont]) {
+        willChangeValue(for: \FFFeaturesController.types)
+        willChangeValue(for: \FFFeaturesController.selectorInFonts)
+        willChangeValue(for: \FFFeaturesController.fonts)
         for font in fonts {
             addTypeControllers(of: font)
         }
-
-        willChangeValue(for: \FFFeaturesController.fonts)
         self._fonts = self._fonts + fonts
         didChangeValue(for: \FFFeaturesController.fonts)
+        didChangeValue(for: \FFFeaturesController.selectorInFonts)
+        didChangeValue(for: \FFFeaturesController.types)
+        
+
     }
 
     func addTypeControllers (of font: NSFont) {
-        //willChangeValue(for: \FFFeaturesController.types)
-        //willChangeValue(for: \FFFeaturesController.selectorInFonts)
+        
         for featureTypeDescription in font.featuresDescriptions {
             let (name, nameID, identifier, exclusive, selectors) = featureTypeDescription
             let featureType = FFFType(
@@ -73,14 +77,14 @@ public class FFFeaturesController: NSObject {
                 identifier: identifier,
                 exclusive: exclusive)
             
-            featureType.selectors = OrderedSet(selectors.map {
+            featureType.selectors = selectors.map {
                 FFFSelector (parent: featureType,
                              name: $0.name,
                              nameID: $0.nameID,
                              identifier: $0.identifier,
                              defaultSelector: $0.defaultSelector)
                 
-            })
+            }
             
             _types.append(featureType)
             
@@ -92,7 +96,6 @@ public class FFFeaturesController: NSObject {
                 }
             }
         }
-        //didChangeValue(for: \FFFeaturesController.types)
-        //didChangeValue(for: \FFFeaturesController.selectorInFonts)
+
     }
 }
