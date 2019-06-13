@@ -12,7 +12,5 @@ import OTFKit
 
 
 extension FFFeaturesController {
-    @objc var allTypes: [FFFType] {
-        return Array(types)
-    }
+    
 }

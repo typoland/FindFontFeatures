@@ -14,8 +14,8 @@ extension FFFeaturesController {
     
     public override func willChangeValue(forKey key: String) {
         switch key {
-        case "allFonts" :
-            print ("will changed allFonts \(allFonts)")
+        case "fonts" :
+            print ("will changed allFonts \(fonts)")
             
         fontsArrayController.willChangeValue(for:
             \FontsArrayController.arrangedObjects)
@@ -33,8 +33,8 @@ extension FFFeaturesController {
     
     public override func didChangeValue(forKey key: String) {
         switch key{
-        case "allFonts" :
-            print ("did changed allFonts \(allFonts)")
+        case "fonts" :
+            print ("did changed allFonts \(fonts)")
             
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.arrangedObjects)
@@ -50,7 +50,5 @@ extension FFFeaturesController {
         super.didChangeValue(forKey: key)
     }
     
-    @objc var allFonts:[NSFont] {
-        return fonts
-    }
+    
 }

@@ -1006,7 +1006,7 @@
         </customObject>
         <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
-                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="allFonts" id="PN9-9G-MMR">
+                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fonts" id="e7a-HI-frr">
                     <dictionary key="options">
                         <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
                         <bool key="NSHandlesContentAsCompoundValue" value="YES"/>
@@ -1034,7 +1034,7 @@
         </arrayController>
         <treeController objectClassName="FFFType" automaticallyPreparesContent="YES" childrenKeyPath="selectors" countKeyPath="selectors.count" id="9MG-oK-s3p" customClass="FeaturesTreeController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
-                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="allTypes" id="aF6-N6-Arx"/>
+                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="types" id="4Yn-Jm-utF"/>
             </connections>
         </treeController>
     </objects>

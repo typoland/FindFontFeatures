@@ -22,7 +22,7 @@ class FeaturesOutlineViewDelegate:NSObject ,  NSOutlineViewDelegate, NSOutlineVi
         } else if item is FFFSelector {
             return 0
         }
-        return mainContoller.types.count
+        return mainContoller._types.count
     }
     
     
@@ -50,7 +50,7 @@ class FeaturesOutlineViewDelegate:NSObject ,  NSOutlineViewDelegate, NSOutlineVi
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         //print("childOfItem", item, index)
         if item == nil {
-            return mainContoller.types[index]
+            return mainContoller._types[index]
         } else {
             //let keys = (item as! LDOpenTypeFeaturesType).featuresString]
             return (item as! FFFType).selectors[index]

@@ -13,25 +13,33 @@ import OTFKit
 
 public class FFFeaturesController: NSObject {
     
-    var types: OrderedSet<FFFType> = []
-    var selectorInFonts: [FFFSelector : [ NSFont ]] = [:]
-    var fonts: [NSFont] = [] {
-        willSet {
-            willChangeValue(for: \FFFeaturesController.allFonts)
-        }
-        didSet {
-            didChangeValue(for: \FFFeaturesController.allFonts)
-        }
+    var _types: OrderedSet<FFFType> = []
+    @objc var types:[FFFType] {
+        return Array(_types)
     }
+
+    var _selectorInFonts: [FFFSelector : [ NSFont ]] = [:]
+    @objc var selectorInFonts:[FFFSelector : [ NSFont ]] {
+        return _selectorInFonts
+    }
+
+    var _fonts: [NSFont] = [] {
+        willSet { willChangeValue(for: \FFFeaturesController.fonts) }
+        didSet { didChangeValue(for: \FFFeaturesController.fonts) }
+    }
+    @objc var fonts:[NSFont] {
+        return _fonts
+    }
+
     
     @IBOutlet var fontsArrayController: FontsArrayController!
     @IBOutlet var featuresTreeController:FeaturesTreeController!
 
     
     func clearContent() {
-        types = []
-        selectorInFonts = [:]
-        fonts = []
+        _types = []
+        _selectorInFonts = [:]
+        _fonts = []
     }
     
     func add (fontNames: [String], size:CGFloat) {
@@ -48,17 +56,17 @@ public class FFFeaturesController: NSObject {
         for font in fonts {
             addTypeControllers(of: font)
         }
-        willChangeValue(for: \FFFeaturesController.allFonts)
-        self.fonts.append(contentsOf: fonts)
-        didChangeValue(for: \FFFeaturesController.allFonts)
+
+        willChangeValue(for: \FFFeaturesController.fonts)
+        self._fonts = self._fonts + fonts
+        didChangeValue(for: \FFFeaturesController.fonts)
     }
 
     func addTypeControllers (of font: NSFont) {
+        //willChangeValue(for: \FFFeaturesController.types)
+        //willChangeValue(for: \FFFeaturesController.selectorInFonts)
         for featureTypeDescription in font.featuresDescriptions {
-            
-            
             let (name, nameID, identifier, exclusive, selectors) = featureTypeDescription
-            
             let featureType = FFFType(
                 name: name,
                 nameID: nameID,
@@ -74,15 +82,17 @@ public class FFFeaturesController: NSObject {
                 
             })
             
-            types.append(featureType)
+            _types.append(featureType)
             
             for selector in featureType.selectors {
-                if selectorInFonts[selector] == nil {
-                    selectorInFonts[selector] = [font]
+                if _selectorInFonts[selector] == nil {
+                    _selectorInFonts[selector] = [font]
                 } else {
-                    selectorInFonts[selector]?.append(font)
+                    _selectorInFonts[selector]?.append(font)
                 }
             }
         }
+        //didChangeValue(for: \FFFeaturesController.types)
+        //didChangeValue(for: \FFFeaturesController.selectorInFonts)
     }
 }

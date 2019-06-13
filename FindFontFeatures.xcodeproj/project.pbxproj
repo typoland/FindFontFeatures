@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2375F3C22B27DE50020A1B1 /* OTF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2375F3B22B27DE50020A1B1 /* OTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */; };
 		B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */; };
 		B24A7A2C22AE5BD200EBA62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */; };
 		B24A7A2F22AE5BD200EBA62C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2D22AE5BD200EBA62C /* MainMenu.xib */; };
@@ -41,6 +43,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B26C201122AECDA0003480EB /* OTFKit.framework in Embed Frameworks */,
+				B2375F3C22B27DE50020A1B1 /* OTF.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2375F3B22B27DE50020A1B1 /* OTF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTF.framework; path = "../../../../Library/Developer/Xcode/DerivedData/FFF2-cfymqtelytocizbnwqvpglwlgscw/Build/Products/Debug/OTF.framework"; sourceTree = "<group>"; };
+		B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
 		B24A7A2622AE5BD100EBA62C /* FindFontFeatures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFontFeatures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 		B24A7A1D22AE5BD100EBA62C = {
 			isa = PBXGroup;
 			children = (
+				B2375F3B22B27DE50020A1B1 /* OTF.framework */,
 				B28C64AA22AF9F5700916810 /* Go deep in folders.playground */,
 				B26C200F22AECDA0003480EB /* OTFKit.framework */,
 				B24A7A2822AE5BD100EBA62C /* FindFontFeatures */,
@@ -111,8 +117,9 @@
 		B24A7A2822AE5BD100EBA62C /* FindFontFeatures */ = {
 			isa = PBXGroup;
 			children = (
-				B2A35B6A22B23903000BA191 /* FilesTree.swift */,
 				B2A35B6B22B23903000BA191 /* Tree Protocol.swift */,
+				B2A35B6A22B23903000BA191 /* FilesTree.swift */,
+				B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */,
 				B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */,
 				B26C201622AED064003480EB /* FFFeaturesController */,
 				B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */,
@@ -250,6 +257,7 @@
 				B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */,
 				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
 				B28C649922AED26E00916810 /* FFFeaturesController + fonts.swift in Sources */,
+				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
 				B28C64A522AF077C00916810 /* FFFeaturesController + features.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
 				B26C201522AED04E003480EB /* FFFeaturesController.swift in Sources */,
