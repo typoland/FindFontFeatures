@@ -11,6 +11,6 @@ import OTFKit
 
 
 
-extension FFFeaturesController {
+extension MainController {
     
 }

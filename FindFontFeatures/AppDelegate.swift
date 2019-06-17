@@ -13,7 +13,7 @@ import OTFKit
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    @IBOutlet weak var mainController: FFFeaturesController!
+    @IBOutlet weak var mainController: MainController!
     //@IBOutlet weak var fontsArrayController: FontsArrayController!
     
 

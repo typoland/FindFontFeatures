@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 import OTFKit
 
-extension FFFeaturesController {
+extension MainController {
     
     public override func willChangeValue(forKey key: String) {
         switch key {
@@ -27,8 +27,8 @@ extension FFFeaturesController {
                 \FontsArrayController.fontFamilyNames)
         case "types" :
             print ("will changed types \(types)")
-            featuresTreeController.willChangeValue(for:
-                \FeaturesTreeController.arrangedObjects)
+            featuresOutlineViewDelegate.willChangeValue(for:
+                \FeaturesOutlineViewDelegate.typeControllers)
         default: break
         }
         super.willChangeValue(forKey: key)
@@ -48,9 +48,9 @@ extension FFFeaturesController {
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
         case "types" :
-            featuresTreeController.didChangeValue(for:
-                \FeaturesTreeController.arrangedObjects)
-            print ("did changed types \(String(describing: featuresTreeController.content)) ")
+            featuresOutlineViewDelegate.didChangeValue(for:
+                \FeaturesOutlineViewDelegate.typeControllers)
+            print ("did changed types \(String(describing: featuresOutlineViewDelegate.typeControllers)) ")
         default: break
         }
         super.didChangeValue(forKey: key)

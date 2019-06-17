@@ -15,15 +15,16 @@
 		B24A7A2F22AE5BD200EBA62C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2D22AE5BD200EBA62C /* MainMenu.xib */; };
 		B24A7A3B22AE5BD200EBA62C /* FindFontFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A3A22AE5BD200EBA62C /* FindFontFeaturesTests.swift */; };
 		B26C201122AECDA0003480EB /* OTFKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26C200F22AECDA0003480EB /* OTFKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B26C201522AED04E003480EB /* FFFeaturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C201422AED04E003480EB /* FFFeaturesController.swift */; };
-		B28C649922AED26E00916810 /* FFFeaturesController + fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649822AED26E00916810 /* FFFeaturesController + fonts.swift */; };
+		B26C201522AED04E003480EB /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C201422AED04E003480EB /* MainController.swift */; };
+		B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649822AED26E00916810 /* MainController + fonts.swift */; };
 		B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649C22AEDA9300916810 /* FontsArrayController.swift */; };
 		B28C649F22AEE87D00916810 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649E22AEE87D00916810 /* NSFont.swift */; };
 		B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */; };
-		B28C64A522AF077C00916810 /* FFFeaturesController + features.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64A422AF077C00916810 /* FFFeaturesController + features.swift */; };
 		B28C64AC22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */; };
 		B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6A22B23903000BA191 /* FilesTree.swift */; };
 		B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6B22B23903000BA191 /* Tree Protocol.swift */; };
+		B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005D22B77AA500BBAE79 /* SelectorController.swift */; };
+		B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005F22B77B8400BBAE79 /* TypeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,16 +66,17 @@
 		B24A7A3A22AE5BD200EBA62C /* FindFontFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFontFeaturesTests.swift; sourceTree = "<group>"; };
 		B24A7A3C22AE5BD200EBA62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26C200F22AECDA0003480EB /* OTFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OTFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B26C201422AED04E003480EB /* FFFeaturesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFFeaturesController.swift; sourceTree = "<group>"; };
-		B28C649822AED26E00916810 /* FFFeaturesController + fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FFFeaturesController + fonts.swift"; sourceTree = "<group>"; };
+		B26C201422AED04E003480EB /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		B28C649822AED26E00916810 /* MainController + fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainController + fonts.swift"; sourceTree = "<group>"; };
 		B28C649C22AEDA9300916810 /* FontsArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsArrayController.swift; sourceTree = "<group>"; };
 		B28C649E22AEE87D00916810 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesTreeController.swift; sourceTree = "<group>"; };
-		B28C64A422AF077C00916810 /* FFFeaturesController + features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FFFeaturesController + features.swift"; sourceTree = "<group>"; };
 		B28C64AA22AF9F5700916810 /* Go deep in folders.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Go deep in folders.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesOutlineViewDelegate.swift; sourceTree = "<group>"; };
 		B2A35B6A22B23903000BA191 /* FilesTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTree.swift; sourceTree = "<group>"; };
 		B2A35B6B22B23903000BA191 /* Tree Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree Protocol.swift"; sourceTree = "<group>"; };
+		B2E5005D22B77AA500BBAE79 /* SelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorController.swift; sourceTree = "<group>"; };
+		B2E5005F22B77B8400BBAE79 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +147,10 @@
 		B26C201622AED064003480EB /* FFFeaturesController */ = {
 			isa = PBXGroup;
 			children = (
-				B26C201422AED04E003480EB /* FFFeaturesController.swift */,
-				B28C649822AED26E00916810 /* FFFeaturesController + fonts.swift */,
-				B28C64A422AF077C00916810 /* FFFeaturesController + features.swift */,
+				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
+				B2E5005F22B77B8400BBAE79 /* TypeController.swift */,
+				B26C201422AED04E003480EB /* MainController.swift */,
+				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
 				B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */,
@@ -258,15 +261,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */,
+				B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */,
 				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
 				B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */,
-				B28C649922AED26E00916810 /* FFFeaturesController + fonts.swift in Sources */,
+				B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
-				B28C64A522AF077C00916810 /* FFFeaturesController + features.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
-				B26C201522AED04E003480EB /* FFFeaturesController.swift in Sources */,
+				B26C201522AED04E003480EB /* MainController.swift in Sources */,
 				B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */,
 				B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */,
+				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
 				B28C64AC22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift in Sources */,
 			);
