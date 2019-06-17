@@ -14,22 +14,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var mainController: MainController!
-    //@IBOutlet weak var fontsArrayController: FontsArrayController!
     
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
     }
     
     @IBAction func getInstalledFonts(_ sender: Any) {
         mainController.clearContent()
-        let fontNames = NSFontManager.shared.availableFonts
-        mainController.add(fontNames: fontNames, size: 12)
+        mainController.add(fontNames: NSFontManager.shared.availableFonts, size: 12)
     }
-    
-    
-    
+
     @objc func openDocument(_ sender:Any) {
        
         let openPanel = NSOpenPanel()

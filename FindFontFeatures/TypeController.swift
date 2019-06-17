@@ -17,22 +17,9 @@ class TypeController: NSObject {
     
     init (type:FFFType) {
         self.type = type
-    }
-    
-    init (for name:String, nameID: Int, identifier: Int, exclusive: Int, selectors: [(name: String, nameID: Int, identifier: Int, defaultSelector: Int)] = []) {
-        
-        self.type = FFFType(name: name,
-                            nameID: nameID,
-                            identifier: identifier,
-                            exclusive: exclusive,
-                            selectors: selectors.map {
-                                FFFSelector(name: $0.name,
-                                            nameID: $0.nameID,
-                                            identifier: $0.identifier,
-                                            defaultSelector: $0.defaultSelector)
-                            }
-        )
         super.init()
-        self.selectorControllers = type.selectors.map {SelectorController(selector: $0, parent: self)}
+        for selector in type.selectors {
+            selectorControllers.append(SelectorController(selector: FFFType.Selector.init(name: selector.name, nameID: selector.nameID, identifier: selector.identifier, defaultSelector: selector.defaultSelector), parent: self))
+        }
     }
 }

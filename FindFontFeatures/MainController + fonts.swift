@@ -15,7 +15,7 @@ extension MainController {
     public override func willChangeValue(forKey key: String) {
         switch key {
         case "fonts" :
-            print ("will changed allFonts \(fonts)")
+            //print ("will changed allFonts \(fonts)")
             
             fontsArrayController.willChangeValue(for:
                 \FontsArrayController.arrangedObjects)
@@ -27,8 +27,8 @@ extension MainController {
                 \FontsArrayController.fontFamilyNames)
         case "types" :
             print ("will changed types \(types)")
-            featuresOutlineViewDelegate.willChangeValue(for:
-                \FeaturesOutlineViewDelegate.typeControllers)
+            //featuresOutlineViewDelegate.willChangeValue(for:\FeaturesOutlineViewDelegate.typeControllers)
+            
         default: break
         }
         super.willChangeValue(forKey: key)
@@ -37,7 +37,7 @@ extension MainController {
     public override func didChangeValue(forKey key: String) {
         switch key{
         case "fonts" :
-            print ("did changed allFonts \(fonts)")
+            //print ("did changed allFonts \(fonts)")
             
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.arrangedObjects)
@@ -48,9 +48,10 @@ extension MainController {
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
         case "types" :
-            featuresOutlineViewDelegate.didChangeValue(for:
-                \FeaturesOutlineViewDelegate.typeControllers)
-            print ("did changed types \(String(describing: featuresOutlineViewDelegate.typeControllers)) ")
+            featuresOutlineViewDelegate.didChangeValue(for:\FeaturesOutlineViewDelegate.typeControllers)
+            //print ("did changed types \(String(describing: featuresOutlineViewDelegate.typeControllers)) ")
+            featuresOutlineViewDelegate.typeControllers = types
+            typesOutlineView.reloadData()
         default: break
         }
         super.didChangeValue(forKey: key)

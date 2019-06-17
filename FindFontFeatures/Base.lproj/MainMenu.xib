@@ -1032,13 +1032,10 @@
             <connections>
                 <outlet property="featuresOutlineViewDelegate" destination="A59-eS-JBA" id="vyo-Lb-ZpA"/>
                 <outlet property="fontsArrayController" destination="9gA-o2-4jU" id="ZlF-rA-LgJ"/>
+                <outlet property="typesOutlineView" destination="87W-8T-SJw" id="LLK-mb-V9D"/>
             </connections>
         </customObject>
-        <customObject id="A59-eS-JBA" customClass="FeaturesOutlineViewDelegate" customModule="FindFontFeatures" customModuleProvider="target">
-            <connections>
-                <outlet property="mainController" destination="1bv-CP-i3c" id="cRK-R5-xwI"/>
-            </connections>
-        </customObject>
+        <customObject id="A59-eS-JBA" customClass="FeaturesOutlineViewDelegate" customModule="FindFontFeatures" customModuleProvider="target"/>
         <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
                 <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fonts" id="e7a-HI-frr">

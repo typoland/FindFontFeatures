@@ -12,22 +12,22 @@ import AppKit
 
 class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineViewDataSource {
 
-    @IBOutlet weak var mainController:MainController?
+    //@IBOutlet weak var mainController:MainController?
     
-    @objc var typeControllers: [TypeController]  {
-        print ("gettting,\(mainController?.types)")
-       return mainController?.types ?? []
-    }
+    
+    @objc var typeControllers: [TypeController] = []
     
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         print ("children of", item)
-        if item is TypeController {
-            return (item as! TypeController).selectorControllers.count
-        } else if item is SelectorController {
+        switch item {
+        case is TypeController:
+            return(item as! TypeController).selectorControllers.count
+        case is SelectorController:
             return 0
+        default:
+            return typeControllers.count ?? 0
         }
-        return mainController?.types.count ?? 0
     }
 
     
@@ -55,7 +55,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         //print("childOfItem", item, index)
         if item == nil {
-            return mainController?.types[index] ?? []
+            return typeControllers[index] ?? []
         } else {
             //let keys = (item as! LDOpenTypeFeaturesType).featuresString]
             return (item as! TypeController).selectorControllers[index]
@@ -64,7 +64,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         if let columnIdentifier = tableColumn?.identifier{
-            //print(columnIdentifier)
+            print("Column", columnIdentifier, item)
             switch columnIdentifier.rawValue {
             case "Types" :
                 
@@ -84,6 +84,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
                     
                 } else if item is TypeController {
                     let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Type"), owner: self) as! NSTableCellView
+                    print ("CELL", cell)
                     return cell
                 }
             case "Actions" :

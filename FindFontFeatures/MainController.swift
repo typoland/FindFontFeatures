@@ -8,13 +8,14 @@
 
 import Foundation
 import AppKit
-//import OTFKit
+import OTFKit
 
 public class MainController: NSObject {
     
-    var _types: [TypeController] = []
+    @IBOutlet weak var typesOutlineView: NSOutlineView!
+    var _typeControllers: [TypeController] = []
     @objc var types:[TypeController] {
-        return Array(_types)
+        return Array(_typeControllers)
     }
     
     @objc var selectors:[SelectorController] {
@@ -25,6 +26,7 @@ public class MainController: NSObject {
         willSet { willChangeValue(for: \MainController.fonts) }
         didSet { didChangeValue(for: \MainController.fonts) }
     }
+    
     @objc var fonts:[NSFont] {
         return _fonts
     }
@@ -35,7 +37,7 @@ public class MainController: NSObject {
 
     
     func clearContent() {
-        _types = []
+        _typeControllers = []
         _fonts = []
     }
     
@@ -61,15 +63,12 @@ public class MainController: NSObject {
     }
 
     func addTypeControllers (of font: NSFont) {
-
-        for featureTypeDescription in font.featuresDescriptions {
-            let (name, nameID, identifier, exclusive, selectors) = featureTypeDescription
-            let typeController = TypeController(for: name, nameID: nameID, identifier: identifier, exclusive: exclusive, selectors: selectors )
-            
-            _types.append(typeController)
-            
-            for selector in typeController.selectorControllers {
-                selector.fonts.append(font)
+        let types: [FFFType] = font.featuresDescriptions()
+        for type in types {
+            let typeController = TypeController(type: type)
+            _typeControllers.append(typeController)
+            for selectorController in typeController.selectorControllers {
+                selectorController.fonts.append(font)
             }
         }
     }
