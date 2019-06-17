@@ -65,11 +65,26 @@ public class MainController: NSObject {
     func addTypeControllers (of font: NSFont) {
         let types: [FFFType] = font.featuresDescriptions()
         for type in types {
-            let typeController = TypeController(type: type)
-            _typeControllers.append(typeController)
+            let typeController = controllerFor(type: type, from: font)
+            //_typeControllers.append(typeController)
             for selectorController in typeController.selectorControllers {
                 selectorController.fonts.append(font)
             }
         }
     }
+    
+    func controllerFor(type: FFFType, from font: NSFont) -> TypeController {
+        if let typeController = typeControllers.filter ({ $0.type.name == type.name }).first {
+            for selector in type.selectors {
+                typeController.controllerFor(selector: selector).fonts.append(font)
+            }
+            return typeController
+        } else {
+            let typeCcontroller = TypeController(type: type)
+            _typeControllers.append(typeCcontroller)
+            return typeCcontroller
+        }
+    }
+    
+    
 }

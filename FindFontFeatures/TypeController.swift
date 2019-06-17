@@ -25,4 +25,14 @@ class TypeController: NSObject {
             selectorControllers.append(SelectorController(selector: FFFType.Selector.init(name: selector.name, nameID: selector.nameID, identifier: selector.identifier, defaultSelector: selector.defaultSelector), parent: self))
         }
     }
+    
+    func controllerFor(selector: FFFSelector) -> SelectorController {
+        if let controller = selectorControllers.filter({$0.selector.name == selector.name}).first {
+            return controller
+        } else {
+            let controller = SelectorController(selector: selector, parent: self)
+            selectorControllers.append(controller)
+            return controller
+        }
+    }
 }
