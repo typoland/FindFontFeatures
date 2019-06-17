@@ -16,9 +16,8 @@ class CellCheckButton: NSTableCellView {
     
     override func viewWillDraw() {
         if objectValue is FFFType{
-            checkButton.allowsMixedState = false
+            checkButton.allowsMixedState = true
         }
-        Swift.print ("viewWill Draw", objectValue)
     }
     
 }

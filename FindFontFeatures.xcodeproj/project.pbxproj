@@ -25,6 +25,7 @@
 		B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6B22B23903000BA191 /* Tree Protocol.swift */; };
 		B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005D22B77AA500BBAE79 /* SelectorController.swift */; };
 		B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005F22B77B8400BBAE79 /* TypeController.swift */; };
+		B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		B2A35B6B22B23903000BA191 /* Tree Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree Protocol.swift"; sourceTree = "<group>"; };
 		B2E5005D22B77AA500BBAE79 /* SelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorController.swift; sourceTree = "<group>"; };
 		B2E5005F22B77B8400BBAE79 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
+		B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeatureController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		B26C201622AED064003480EB /* FFFeaturesController */ = {
 			isa = PBXGroup;
 			children = (
+				B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */,
 				B2E5005F22B77B8400BBAE79 /* TypeController.swift */,
 				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
 				B26C201422AED04E003480EB /* MainController.swift */,
@@ -269,6 +272,7 @@
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
 				B26C201522AED04E003480EB /* MainController.swift in Sources */,
 				B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */,
+				B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */,
 				B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,

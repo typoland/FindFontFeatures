@@ -17,18 +17,39 @@ class FontsArrayController: NSArrayController {
     
 }
 
+var familiesSelectionChanged = "familiesSelectionChanged"
+var fontSelectionChanged = "fontSelectionChanged"
+
+var selectedFonts:[NSFont] = []
+
+extension Notification.Name {
+    static var fontSelection = Notification.Name.init(fontSelectionChanged)
+}
+
 extension FontsArrayController {
     
     override func awakeFromNib() {
         sortDescriptors = [NSSortDescriptor(key: "fontName", ascending: true)]
-        familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: nil)
+        familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &familiesSelectionChanged)
+        familyStylesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &fontSelectionChanged)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
-        print ("observe")
-        didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+        switch context {
+        case &familiesSelectionChanged:
+            willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+            print ("observe families")
+            didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+        case &fontSelectionChanged:
+            print ("observe fonts")
+            let selectedFonts = familyStylesController.selectedObjects as! [NSFont]
+            NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFonts)
+            
+        default: break
+        }
+        
     }
+    
     
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
         willChangeValue(for: \FontsArrayController.fontFamilyNames)

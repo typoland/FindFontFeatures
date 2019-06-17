@@ -917,6 +917,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="XLT-S6-9qk" name="enabled" keyPath="objectValue.enabled" id="Jf7-gU-6Er"/>
                                                                         <binding destination="XLT-S6-9qk" name="value" keyPath="objectValue.name" id="YMO-7F-0kb"/>
                                                                     </connections>
                                                                 </textField>
@@ -937,7 +938,9 @@
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                     </buttonCell>
                                                                     <connections>
+                                                                        <binding destination="5m5-vB-AWk" name="enabled" keyPath="objectValue.enabled" id="Gya-c9-cdI"/>
                                                                         <binding destination="5m5-vB-AWk" name="title" keyPath="objectValue.name" id="P6I-rN-kwg"/>
+                                                                        <binding destination="5m5-vB-AWk" name="toolTip" keyPath="objectValue.toolTip" previousBinding="P6I-rN-kwg" id="gAV-wy-kNr"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -954,7 +957,9 @@
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                     </buttonCell>
                                                                     <connections>
+                                                                        <binding destination="1sI-fP-PbA" name="enabled" keyPath="objectValue.enabled" id="bqJ-8z-ELt"/>
                                                                         <binding destination="1sI-fP-PbA" name="title" keyPath="objectValue.name" id="ff2-wt-C40"/>
+                                                                        <binding destination="1sI-fP-PbA" name="toolTip" keyPath="objectValue.toolTip" previousBinding="ff2-wt-C40" id="MHb-Cc-4zX"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -979,11 +984,11 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
-                                                                    <rect key="frame" x="5" y="0.0" width="61" height="18"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="ZaD-Pu-CBh">
+                                                                    <rect key="frame" x="51" y="-1" width="56" height="22"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="right" controlSize="mini" inset="2" id="ZaD-Pu-CBh">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" metaFont="miniSystem"/>
                                                                     </buttonCell>
                                                                 </button>
                                                             </subviews>

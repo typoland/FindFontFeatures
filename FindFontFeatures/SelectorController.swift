@@ -10,12 +10,19 @@ import Foundation
 import AppKit
 import OTFKit
 
-class SelectorController: NSObject {
+class SelectorController: BaseFeatureController {
     
     let selector: FFFSelector
     var parent: TypeController
     var fonts: [NSFont] = []
-    var selected: Bool = false
+    
+    @objc var enabled: Bool {
+        let a = Set(fonts)
+        if a.intersection(selectedFonts).isEmpty {
+            return false
+        }
+        return true
+    }
     
     @objc var name: String {
         return selector.name
@@ -24,5 +31,13 @@ class SelectorController: NSObject {
     init (selector:FFFSelector, parent:TypeController) {
         self.selector = selector
         self.parent = parent
+    }
+}
+
+extension SelectorController {
+    @objc var toolTip : String {
+        var text = fonts.reduce(into: "Found in Fonts:\n", {$0+="\t\($1.fontName)\n"})
+        _ = text.removeLast()
+        return text
     }
 }

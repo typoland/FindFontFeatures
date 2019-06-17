@@ -19,7 +19,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        print ("children of", item)
+        //print ("children of", item)
         switch item {
         case is TypeController:
             return(item as! TypeController).selectorControllers.count
@@ -32,7 +32,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        print ("is item expandible", item)
+        //print ("is item expandible", item)
         if  item is TypeController {
             return true
         } else {
@@ -41,7 +41,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     }
     
     func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
-        print("Teraz odda dupę, tylko po co?", item, tableColumn?.identifier)
+        //print("Teraz odda dupę, tylko po co?", item, tableColumn?.identifier)
         return item
     }
     
@@ -64,7 +64,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         if let columnIdentifier = tableColumn?.identifier{
-            print("Column", columnIdentifier, item)
+            //print("Column", columnIdentifier, item)
             switch columnIdentifier.rawValue {
             case "Types" :
                 
