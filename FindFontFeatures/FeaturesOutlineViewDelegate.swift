@@ -72,10 +72,12 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
                     
                     let cell: NSTableCellView// LDTableCellButton
                     if (item as! SelectorController).parent.type.exclusive != 0 {
-                        cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NonExclusive"), owner: self) as! NSTableCellView//LDTableCellButton
+                        cell = outlineView.makeView(withIdentifier:
+                            NSUserInterfaceItemIdentifier(rawValue: "NonExclusive"), owner: self) as! NSTableCellView//LDTableCellButton
                         
                     } else {
-                        cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Exclusive"), owner: self) as! NSTableCellView//LDTableCellButton
+                        cell = outlineView.makeView(withIdentifier:
+                            NSUserInterfaceItemIdentifier(rawValue: "Exclusive"), owner: self) as! NSTableCellView//LDTableCellButton
                     }
                     //cell.checkButton.enabled = checkFeatureInSelectedFonts(item as! OTFeature)
                     
@@ -83,16 +85,19 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
                     return cell
                     
                 } else if item is TypeController {
-                    let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Type"), owner: self) as! NSTableCellView
+                    let cell = outlineView.makeView(withIdentifier:
+                        NSUserInterfaceItemIdentifier(rawValue: "Type"), owner: self) as! NSTableCellView
                     print ("CELL", cell)
                     return cell
                 }
             case "Actions" :
-                let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Identifier"), owner: self) as! NSTableCellView
+                let cell = outlineView.makeView(withIdentifier:
+                    NSUserInterfaceItemIdentifier(rawValue: "Identifier"), owner: self) as! NSTableCellView
                 return cell
                 
             default:
-                let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Search"), owner: self) as! CellCheckButton//LDTableCellButton
+                let cell = outlineView.makeView(withIdentifier:
+                    NSUserInterfaceItemIdentifier(rawValue: "Search"), owner: self) as! CellCheckButton//LDTableCellButton
                 if item is SelectorController {
                     //cell.checkButton.integerValue = (item as! FFFSelector).search
                     cell.checkButton.isEnabled = true

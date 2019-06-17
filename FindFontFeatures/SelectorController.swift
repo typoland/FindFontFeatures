@@ -17,6 +17,10 @@ class SelectorController: NSObject {
     var fonts: [NSFont] = []
     var selected: Bool = false
     
+    @objc var name: String {
+        return selector.name
+    }
+    
     init (selector:FFFSelector, parent:TypeController) {
         self.selector = selector
         self.parent = parent

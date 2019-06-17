@@ -147,8 +147,8 @@
 		B26C201622AED064003480EB /* FFFeaturesController */ = {
 			isa = PBXGroup;
 			children = (
-				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
 				B2E5005F22B77B8400BBAE79 /* TypeController.swift */,
+				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
 				B26C201422AED04E003480EB /* MainController.swift */,
 				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,

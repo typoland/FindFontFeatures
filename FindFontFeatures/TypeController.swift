@@ -14,6 +14,9 @@ class TypeController: NSObject {
     let type: FFFType
     
     @objc var selectorControllers: [SelectorController] = []
+    @objc var name: String {
+        return type.name
+    }
     
     init (type:FFFType) {
         self.type = type

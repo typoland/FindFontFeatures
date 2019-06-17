@@ -14,12 +14,12 @@ public class MainController: NSObject {
     
     @IBOutlet weak var typesOutlineView: NSOutlineView!
     var _typeControllers: [TypeController] = []
-    @objc var types:[TypeController] {
-        return Array(_typeControllers)
+    @objc var typeControllers:[TypeController] {
+        return Array(NSOrderedSet(array: _typeControllers)) as! [TypeController]
     }
     
     @objc var selectors:[SelectorController] {
-        return types.flatMap {$0.selectorControllers}
+        return typeControllers.flatMap {$0.selectorControllers}
     }
 
     var _fonts: [NSFont] = [] {
@@ -52,14 +52,14 @@ public class MainController: NSObject {
     }
     
     func add (fonts: [NSFont]) {
-        willChangeValue(for: \MainController.types)
+        willChangeValue(for: \MainController.typeControllers)
         willChangeValue(for: \MainController.fonts)
         for font in fonts {
             addTypeControllers(of: font)
         }
         self._fonts = self._fonts + fonts
         didChangeValue(for: \MainController.fonts)
-        didChangeValue(for: \MainController.types)
+        didChangeValue(for: \MainController.typeControllers)
     }
 
     func addTypeControllers (of font: NSFont) {
