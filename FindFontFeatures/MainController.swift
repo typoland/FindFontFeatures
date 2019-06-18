@@ -16,8 +16,16 @@ public class MainController: NSObject {
     
     @IBOutlet weak var typesOutlineView: NSOutlineView!
     var _typeControllers: [TypeController] = []
+    
     @objc var typeControllers:[TypeController] {
-        return Array(NSOrderedSet(array: _typeControllers)) as! [TypeController]
+        let filtered: [TypeController]
+        if onlySelectedFontTypes  {
+            filtered = _typeControllers.filter {
+                !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
+        } else {
+            filtered = _typeControllers
+        }
+        return Array(NSOrderedSet(array: filtered)) as! [TypeController]
     }
     
     @objc var selectors:[SelectorController] {
@@ -32,11 +40,19 @@ public class MainController: NSObject {
     @objc var fonts:[NSFont] {
         return _fonts
     }
-
+    
+    @objc var onlySelectedFontTypes: Bool = false {
+        didSet {
+            changeFeaturesTable()
+        }
+    }
     
     @IBOutlet var fontsArrayController: FontsArrayController!
     @IBOutlet var featuresOutlineViewDelegate:FeaturesOutlineViewDelegate!
-
+    
+    public override func awakeFromNib() {
+        featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
+    }
     
     func clearContent() {
         _typeControllers = []
@@ -68,7 +84,6 @@ public class MainController: NSObject {
         let types: [FFFType] = font.featuresDescriptions()
         for type in types {
             let typeController = controllerFor(type: type, from: font)
-            //_typeControllers.append(typeController)
             for selectorController in typeController.selectorControllers {
                 selectorController.fonts.append(font)
             }
@@ -88,5 +103,16 @@ public class MainController: NSObject {
         }
     }
     
+    @IBAction func setSelectedFontTypes (_ sender: NSButton) {
+        onlySelectedFontTypes = sender.state == .on
+    }
     
+    func changeFeaturesTable () {
+        print("changing Feature Table")
+        willChangeValue(for: \MainController.typeControllers)
+        didChangeValue(for: \MainController.typeControllers)
+        
+        
+    }
+
 }

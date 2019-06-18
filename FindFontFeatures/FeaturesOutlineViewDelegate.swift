@@ -12,10 +12,14 @@ import AppKit
 
 class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineViewDataSource {
 
-    //@IBOutlet weak var mainController:MainController?
+    @IBOutlet weak var outlineView:NSOutlineView!
     
     
-    @objc var typeControllers: [TypeController] = []
+    @objc var typeControllers: [TypeController] = [] {
+        didSet {
+            outlineView.reloadData()
+        }
+    }
     
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
@@ -26,7 +30,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
         case is SelectorController:
             return 0
         default:
-            return typeControllers.count ?? 0
+            return typeControllers.count
         }
     }
 
@@ -55,12 +59,20 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         //print("childOfItem", item, index)
         if item == nil {
-            return typeControllers[index] ?? []
+            return typeControllers[index]
         } else {
             //let keys = (item as! LDOpenTypeFeaturesType).featuresString]
             return (item as! TypeController).selectorControllers[index]
         }
     }
+    /*
+    func outlineView(_ outlineView: NSOutlineView, shouldShowOutlineCellForItem item: Any) -> Bool {
+        if item is TypeController {
+            return (item as! TypeController).enabled
+        }
+        return true
+    }
+    */
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         if let columnIdentifier = tableColumn?.identifier{
@@ -87,7 +99,6 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
                 } else if item is TypeController {
                     let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: "Type"), owner: self) as! NSTableCellView
-                    print ("CELL", cell)
                     return cell
                 }
             case "Actions" :

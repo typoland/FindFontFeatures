@@ -1025,6 +1025,17 @@
                             <real value="250"/>
                         </holdingPriorities>
                     </splitView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5A-jY-lMs">
+                        <rect key="frame" x="621" y="0.0" width="159" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="All Features" alternateTitle="Selected Fonts Features" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rpk-Xe-NDi">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setSelectedFontTypes:" target="1bv-CP-i3c" id="ulU-nl-G2D"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-14" y="531"/>
@@ -1036,7 +1047,11 @@
                 <outlet property="typesOutlineView" destination="4uP-Mc-8ca" id="0XI-ps-FXo"/>
             </connections>
         </customObject>
-        <customObject id="A59-eS-JBA" customClass="FeaturesOutlineViewDelegate" customModule="FindFontFeatures" customModuleProvider="target"/>
+        <customObject id="A59-eS-JBA" customClass="FeaturesOutlineViewDelegate" customModule="FindFontFeatures" customModuleProvider="target">
+            <connections>
+                <outlet property="outlineView" destination="4uP-Mc-8ca" id="su0-MJ-3CJ"/>
+            </connections>
+        </customObject>
         <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
                 <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fonts" id="e7a-HI-frr">

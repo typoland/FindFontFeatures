@@ -24,11 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
+        mainController.changeFeaturesTable()
     }
     
     @objc func selectedFontsChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
-         selectedFonts =  notification.object as! [NSFont]
+        selectedFonts =  notification.object as! [NSFont]
+        mainController.changeFeaturesTable()
         mainController.didChangeValue(for: \MainController.typeControllers)
         
     }

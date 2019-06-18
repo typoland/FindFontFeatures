@@ -29,7 +29,6 @@ class TypeController: BaseFeatureController {
     @objc var enabled: Bool {
         var result:Bool = false
         for selectorController in selectorControllers {
-            print ("->", selectorController.enabled)
             result = result || selectorController.enabled
         }
         return result

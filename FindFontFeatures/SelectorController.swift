@@ -17,8 +17,7 @@ class SelectorController: BaseFeatureController {
     var fonts: [NSFont] = []
     
     @objc var enabled: Bool {
-        let a = Set(fonts)
-        if a.intersection(selectedFonts).isEmpty {
+        if Set(fonts).intersection(selectedFonts).isEmpty {
             return false
         }
         return true

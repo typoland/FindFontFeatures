@@ -25,8 +25,8 @@ extension MainController {
             
             fontsArrayController.willChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
-        case "typeControllers" :
-            print ("will changed types \(typeControllers)")
+        //case "typeControllers" :
+            //print ("will changed types \(typeControllers)")
             //featuresOutlineViewDelegate.willChangeValue(for:\FeaturesOutlineViewDelegate.typeControllers)
             
         default: break
@@ -47,11 +47,14 @@ extension MainController {
             
             fontsArrayController.didChangeValue(for:
                 \FontsArrayController.fontFamilyNames)
+
         case "typeControllers" :
-            featuresOutlineViewDelegate.didChangeValue(for:\FeaturesOutlineViewDelegate.typeControllers)
-            print ("did changed typeControllers \(String(describing: featuresOutlineViewDelegate.typeControllers)) ")
+            
             featuresOutlineViewDelegate.typeControllers = typeControllers
-            typesOutlineView.reloadData()
+            //typesOutlineView.reloadData()
+            
+            featuresOutlineViewDelegate.didChangeValue(for:
+                \FeaturesOutlineViewDelegate.typeControllers)
         default: break
         }
         super.didChangeValue(forKey: key)
