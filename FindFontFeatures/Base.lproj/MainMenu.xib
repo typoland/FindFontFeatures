@@ -989,7 +989,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Search" id="Bf1-tB-lfo" customClass="CellCheckButton" customModule="FindFontFeatures" customModuleProvider="target">
-                                                            <rect key="frame" x="206.5" y="1" width="63" height="17"/>
+                                                            <rect key="frame" x="207" y="1" width="63" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
@@ -1002,6 +1002,7 @@
                                                                 </button>
                                                             </subviews>
                                                             <connections>
+                                                                <binding destination="1bv-CP-i3c" name="hidden" keyPath="showFontEnabled" id="yDK-hA-JSi"/>
                                                                 <outlet property="checkButton" destination="Bvg-aN-hmo" id="JTn-1V-fBo"/>
                                                             </connections>
                                                         </tableCellView>
@@ -1041,9 +1042,12 @@
                                             <menuItem title="Show only fonts with selected feature" id="SqW-He-nAq"/>
                                         </items>
                                     </menu>
+                                    <connections>
+                                        <binding destination="1bv-CP-i3c" name="contentValues" keyPath="viewModePopupStrings" id="h0a-i2-GNp"/>
+                                    </connections>
                                 </popUpButtonCell>
                                 <connections>
-                                    <binding destination="1bv-CP-i3c" name="contentValues" keyPath="self" id="soH-IR-xby"/>
+                                    <action selector="setCurrentViewMode:" target="1bv-CP-i3c" id="Nfa-WI-2wW"/>
                                 </connections>
                             </popUpButton>
                         </subviews>

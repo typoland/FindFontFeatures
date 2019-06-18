@@ -19,20 +19,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var mainController: MainController!
     
-    
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
-        mainController.changeFeaturesTable()
     }
     
     @objc func selectedFontsChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
         selectedFonts =  notification.object as! [NSFont]
-        mainController.changeFeaturesTable()
         mainController.didChangeValue(for: \MainController.typeControllers)
-        
     }
     
     @IBAction func getInstalledFonts(_ sender: Any) {
@@ -41,7 +36,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func openDocument(_ sender:Any) {
-       
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = true

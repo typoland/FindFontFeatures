@@ -16,7 +16,7 @@ public class MainController: NSObject {
     
     enum ViewMode: String, CaseIterable {
         case allFonts = "All Fonts & Features"
-        case selectedFeature = "Fonts with Selected Feature"
+        case selectedFeature = "Fonts with Selected Features"
         case selectedFont = "Selected Font Features"
     }
     
@@ -25,16 +25,27 @@ public class MainController: NSObject {
     @IBOutlet var fontsArrayController: FontsArrayController!
     @IBOutlet var featuresOutlineViewDelegate:FeaturesOutlineViewDelegate!
     
-    var _typeControllers: [TypeController] = []
-    var viewMode: ViewMode = .allFonts
-    
-    @objc var typeControllers:[TypeController] {
+	var _typeControllers: [TypeController] = []
+	var viewMode: ViewMode = .allFonts {
+		didSet {
+			didChangeValue(for: \MainController.fonts)
+			didChangeValue(for: \MainController.typeControllers)
+			didChangeValue(for: \MainController.showFontEnabled)
+		}
+	}
+
+	@objc var showFontEnabled: Bool {
+		print ("taking showFontEnabled")
+		return viewMode == .selectedFont
+	}
+
+    @objc var typeControllers: [TypeController] {
         let filtered: [TypeController]
         switch viewMode {
-        case .selectedFeature:
+        case .selectedFont:
             filtered = _typeControllers.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
-        case .selectedFont:
+        case .selectedFeature:
             filtered = _typeControllers
         case .allFonts:
             filtered = _typeControllers
@@ -55,7 +66,12 @@ public class MainController: NSObject {
     @objc var fonts:[NSFont] {
         return _fonts
     }
-    
+	
+	public override func awakeFromNib() {
+		featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
+		//selectedFontsFeatures.bind(NSBindingName(rawValue: "state"), to: self, withKeyPath: "buttonState", options: nil)
+	}
+	
     @objc var viewModePopupStrings: [String] {
         var result: [String] = []
         for mode in ViewMode.allCases {
@@ -64,25 +80,15 @@ public class MainController: NSObject {
         print (result)
         return result
     }
-    
-    
-    
-
-    
-    public override func awakeFromNib() {
-        featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
-        //selectedFontsFeatures.bind(NSBindingName(rawValue: "state"), to: self, withKeyPath: "buttonState", options: nil)
-    }
-    
-    
+	
     @objc func action(_ sender:Any) {
         print ("there is an action")
     }
     
-    @objc var buttonState: NSControl.StateValue = .off {
-        didSet {print ("changed")}
-    }
-    
+//    @objc var buttonState: NSControl.StateValue = .off {
+//        didSet {print ("changed")}
+//    }
+//
     func clearContent() {
         _typeControllers = []
         _fonts = []
@@ -126,23 +132,16 @@ public class MainController: NSObject {
             }
             return typeController
         } else {
-            let typeCcontroller = TypeController(type: type)
-            _typeControllers.append(typeCcontroller)
-            return typeCcontroller
+            let typeController = TypeController(type: type)
+            _typeControllers.append(typeController)
+            return typeController
         }
     }
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
-        print ("received \(sender.selectedItem)")
-       // viewMode = ViewMode.init(rawValue: sender.selectedItem as? String) ?? .allFonts
+		if let string =  (sender.selectedItem)?.title {
+       		viewMode = ViewMode.init(rawValue: string) ?? .allFonts
+			print (viewMode)
+		}
     }
-    
-    func changeFeaturesTable () {
-        print("changing Feature Table")
-        willChangeValue(for: \MainController.typeControllers)
-        didChangeValue(for: \MainController.typeControllers)
-        
-        
-    }
-
 }
