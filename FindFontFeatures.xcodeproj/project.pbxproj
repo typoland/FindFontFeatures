@@ -26,6 +26,7 @@
 		B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005D22B77AA500BBAE79 /* SelectorController.swift */; };
 		B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005F22B77B8400BBAE79 /* TypeController.swift */; };
 		B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */; };
+		B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B2E5005D22B77AA500BBAE79 /* SelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorController.swift; sourceTree = "<group>"; };
 		B2E5005F22B77B8400BBAE79 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
 		B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeatureController.swift; sourceTree = "<group>"; };
+		B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expTableHeaderWithButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
 				B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */,
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
+				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
 			);
 			name = FFFeaturesController;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */,
 				B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */,
 				B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */,
+				B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
 				B28C64AC22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift in Sources */,
