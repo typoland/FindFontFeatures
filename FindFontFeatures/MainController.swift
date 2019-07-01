@@ -10,6 +10,8 @@ import Foundation
 import AppKit
 import OTFKit
 
+var selectedFonts :[NSFont] = []
+
 public class MainController: NSObject {
     
     enum ViewMode: String, CaseIterable {
@@ -23,25 +25,18 @@ public class MainController: NSObject {
     @IBOutlet var fontsArrayController: FontsArrayController!
 	@IBOutlet var featuresTreeController: FeaturesTreeController!
 
-	
 	var _typeControllers: [TypeController] = []
 	var viewMode: ViewMode = .allFonts {
 		willSet {
 			willChangeValue(for: \MainController.fonts)
 			willChangeValue(for: \MainController.typeControllers)
-			//willChangeValue(for: \MainController.showFontEnabled)
 		}
 		didSet {
 			didChangeValue(for: \MainController.fonts)
 			didChangeValue(for: \MainController.typeControllers)
-			//didChangeValue(for: \MainController.showFontEnabled)
+			print ("view Mode Changed")
 		}
 	}
-
-//	@objc var showFontEnabled: Bool {
-//		print ("taking showFontEnabled")
-//		return viewMode == .selectionByFont
-//	}
 
     @objc var typeControllers: [TypeController] {
         let filtered: [TypeController]
@@ -77,11 +72,8 @@ public class MainController: NSObject {
 		let filtered:[NSFont]
 		switch viewMode {
 		case .selectionByFeature:
-			filtered = typeControllers.flatMap({
-				$0.selectorControllers.reduce(into: [NSFont](), {
-					$0+=$1.fonts
-				})
-			})
+			let selectorControllers = _typeControllers.flatMap({$0.selectorControllers.filter({$0.search == .on})})
+			filtered = Array(selectorControllers.reduce(into: Set<NSFont>(), {$0 = $0.union($1.fonts)}))
 		default:
 			filtered = _fonts
 		}

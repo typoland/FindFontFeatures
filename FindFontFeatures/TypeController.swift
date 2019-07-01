@@ -9,6 +9,11 @@
 import Foundation
 import AppKit
 import OTFKit
+var selectedSearchFeaturesChanged = "selectedSearchFeaturesChanged"
+
+extension Notification.Name {
+	static var featuresSearchChanged = Notification.Name.init(selectedSearchFeaturesChanged)
+}
 
 class TypeController: BaseFeatureController {
 	
@@ -43,6 +48,7 @@ class TypeController: BaseFeatureController {
 				selectorController.search = newValue == .on ? .on : .off
 			}
 			didChangeValue(for: \TypeController.search)
+			
 		}
 	}
 	

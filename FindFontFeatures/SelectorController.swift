@@ -31,6 +31,7 @@ class SelectorController: BaseFeatureController {
 		didSet {
 			didChangeValue(for: \SelectorController.search)
 			parent.didChangeValue(for: \TypeController.search)
+			NotificationCenter.default.post(name: NSNotification.Name.featuresSearchChanged, object: self)
 		}
 	}
 	
@@ -40,7 +41,6 @@ class SelectorController: BaseFeatureController {
 	
 	@objc override var selected: Bool {
 		willSet {
-			print ("No i odwraca")
 			if newValue, parent.type.exclusive == 1  {
 				for selectorController in parent.selectorControllers {
 					selectorController.selected = false

@@ -15,7 +15,6 @@ class BaseFeatureController: NSObject {
 			self.willChangeValue(for: \BaseFeatureController.selected)
 		}
 		didSet {
-			print (self, "did changed")
 			self.didChangeValue(for: \BaseFeatureController.selected)
 		}
 	}
@@ -27,7 +26,5 @@ class BaseFeatureController: NSObject {
 		didSet {
 			self.didChangeValue(for: \BaseFeatureController.search)
 		}
-	}
-    //@objc var enabled: Bool = false
-    
+	}    
 }

@@ -22,19 +22,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(selectedFeaturesCHanged(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
     }
     
     @objc func selectedFontsChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
         selectedFonts =  notification.object as! [NSFont]
         mainController.didChangeValue(for: \MainController.typeControllers)
-		let treeNode:NSTreeNode = mainController.featuresTreeController.arrangedObjects
-		if let key = mainController.featuresTreeController.childrenKeyPath,
-		let content = (treeNode.representedObject as? [String:Any] ) {
-			print ( "Dudud", content[key] as? [TypeController] )
-		}
     }
-    
+	
+	@objc func selectedFeaturesCHanged(_ notification:Notification) {
+		mainController.willChangeValue(for: \MainController.fonts)
+		print ("Widzimy to", (notification.object as? SelectorController)?.search)
+		mainController.didChangeValue(for: \MainController.fonts)
+	}
     @IBAction func getInstalledFonts(_ sender: Any) {
         mainController.clearContent()
         mainController.add(fontNames: NSFontManager.shared.availableFonts, size: 12)

@@ -11,16 +11,14 @@ import AppKit
 import OTF
 
 class FontsArrayController: NSArrayController {
-    
     @IBOutlet var familyNamesArrayController:NSArrayController!
     @IBOutlet var familyStylesController:NSArrayController!
-    
 }
 
 var familiesSelectionChanged = "familiesSelectionChanged"
 var fontSelectionChanged = "fontSelectionChanged"
 
-var selectedFonts:[NSFont] = []
+//var selectedFonts:[NSFont] = []
 
 extension Notification.Name {
     static var fontSelection = Notification.Name.init(fontSelectionChanged)
@@ -47,10 +45,8 @@ extension FontsArrayController {
             
         default: break
         }
-        
     }
-    
-    
+	
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
         willChangeValue(for: \FontsArrayController.fontFamilyNames)
         willChangeValue(for: \FontsArrayController.filterPredicate)
