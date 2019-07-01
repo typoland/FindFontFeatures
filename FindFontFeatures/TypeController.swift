@@ -46,3 +46,9 @@ extension TypeController {
         }
     }
 }
+
+extension TypeController {
+	override var description: String {
+		return "Type Controller \"\(name)\""
+	}
+}

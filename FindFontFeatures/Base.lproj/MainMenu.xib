@@ -697,11 +697,11 @@
                                 <rect key="frame" x="1" y="38" width="273" height="494"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="78H-xQ-D1U">
-                                    <rect key="frame" x="1" y="0.0" width="271" height="478"/>
+                                    <rect key="frame" x="1" y="0.0" width="271" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="OsN-I8-3jl" viewBased="YES" indentationPerLevel="16" outlineTableColumn="Yrw-Sa-9KY" id="4uP-Mc-8ca">
-                                            <rect key="frame" x="0.0" y="0.0" width="271.5" height="453"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="271" height="468"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -782,7 +782,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="Filters" width="63" minWidth="40" maxWidth="1000" id="kzE-v8-5jB">
+                                                <tableColumn identifier="Filters" width="62.5" minWidth="40" maxWidth="1000" id="kzE-v8-5jB">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Show Font">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -796,11 +796,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Search" id="Bf1-tB-lfo" customClass="CellCheckButton" customModule="FindFontFeatures" customModuleProvider="target">
-                                                            <rect key="frame" x="206.5" y="1" width="63" height="17"/>
+                                                            <rect key="frame" x="206.5" y="1" width="62" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
-                                                                    <rect key="frame" x="1" y="-1" width="59" height="22"/>
+                                                                    <rect key="frame" x="1" y="-1" width="58" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="left" controlSize="mini" inset="2" id="ZaD-Pu-CBh">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -816,6 +816,9 @@
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="1bv-CP-i3c" name="enabled" keyPath="showFontEnabled" id="WWx-Tp-iqD"/>
+                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
@@ -825,7 +828,7 @@
                                         </outlineView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QZo-WH-g5I">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QZo-WH-g5I">
                                     <rect key="frame" x="1" y="478" width="271" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -834,7 +837,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="OsN-I8-3jl">
-                                    <rect key="frame" x="0.0" y="0.0" width="271.5" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="271" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -1123,6 +1126,7 @@
                 </binding>
             </connections>
         </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="F8v-0Y-orI"/>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

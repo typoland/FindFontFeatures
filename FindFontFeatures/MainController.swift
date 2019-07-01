@@ -10,8 +10,6 @@ import Foundation
 import AppKit
 import OTFKit
 
-
-
 public class MainController: NSObject {
     
     enum ViewMode: String, CaseIterable {
@@ -23,7 +21,7 @@ public class MainController: NSObject {
     @IBOutlet weak var typesOutlineView: NSOutlineView!
     @IBOutlet weak var viewModePopUp: NSPopUpButton!
     @IBOutlet var fontsArrayController: FontsArrayController!
-    @IBOutlet var featuresOutlineViewDelegate:FeaturesOutlineViewDelegate!
+    @IBOutlet var featuresOutlineViewDelegate: FeaturesOutlineViewDelegate!
     
 	var _typeControllers: [TypeController] = []
 	var viewMode: ViewMode = .allFonts {
@@ -45,9 +43,7 @@ public class MainController: NSObject {
         case .selectionByFont:
             filtered = _typeControllers.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
-        case .selectionByFeature:
-            filtered = _typeControllers
-        case .allFonts:
+		default:
             filtered = _typeControllers
         }
         return (Array(NSOrderedSet(array: filtered)) as! [TypeController]).sorted(by: {$0.type.name < $1.type.name})
@@ -56,13 +52,11 @@ public class MainController: NSObject {
     @objc var selectors: [SelectorController] {
 		let filtered: [SelectorController]
 		switch viewMode {
-		case .selectionByFeature:
-			filtered = typeControllers.flatMap { $0.selectorControllers }
 		case .selectionByFont:
 			filtered = typeControllers.flatMap { $0.selectorControllers.filter({
 				!Set($0.fonts).intersection(fonts).isEmpty
 			}) }
-		case .allFonts:
+		default:
 			filtered = typeControllers.flatMap { $0.selectorControllers }
 		}
         return filtered
@@ -74,7 +68,18 @@ public class MainController: NSObject {
     }
     
     @objc var fonts:[NSFont] {
-        return _fonts
+		let filtered:[NSFont]
+		switch viewMode {
+		case .selectionByFeature:
+			filtered = typeControllers.flatMap({
+				$0.selectorControllers.reduce(into: [NSFont](), {
+					$0+=$1.fonts
+				})
+			})
+		default:
+			filtered = _fonts
+		}
+        return filtered
     }
 	
 	public override func awakeFromNib() {
@@ -150,7 +155,9 @@ public class MainController: NSObject {
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
 		if let string =  (sender.selectedItem)?.title {
+			willChangeValue(for: \MainController.showFontEnabled)
        		viewMode = ViewMode.init(rawValue: string) ?? .allFonts
+			didChangeValue(for: \MainController.showFontEnabled)
 			print (viewMode)
 		}
     }

@@ -33,6 +33,12 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 		}
 	}
 	
+	func outlineViewSelectionIsChanging(_ notification: Notification) {
+		print (notification)
+		//let column = outlineView.column(withIdentifier: NSUserInterfaceItemIdentifier.init("Types")) {
+		
+		//print (typeControllers[outlineView.selectedRow])
+	}
 	
 	func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
 		//print ("is item expandible", item)
@@ -64,14 +70,14 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 			return (item as! TypeController).selectorControllers[index]
 		}
 	}
-	/*
+	
 	func outlineView(_ outlineView: NSOutlineView, shouldShowOutlineCellForItem item: Any) -> Bool {
-	if item is TypeController {
-	return (item as! TypeController).enabled
+		if item is TypeController {
+			return (item as! TypeController).enabled
+		}
+		return true
 	}
-	return true
-	}
-	*/
+	
 	
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 		if let columnIdentifier = tableColumn?.identifier{
