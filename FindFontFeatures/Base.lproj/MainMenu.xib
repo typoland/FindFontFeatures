@@ -808,7 +808,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Search" id="Bf1-tB-lfo" customClass="CellCheckButton" customModule="FindFontFeatures" customModuleProvider="target">
-                                                            <rect key="frame" x="206.5" y="1" width="62" height="17"/>
+                                                            <rect key="frame" x="207" y="1" width="62" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
@@ -818,7 +818,6 @@
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                         <connections>
-                                                                            <binding destination="1bv-CP-i3c" name="enabled" keyPath="showFontEnabled" id="BUz-hH-jyw"/>
                                                                             <binding destination="Bf1-tB-lfo" name="value" keyPath="objectValue.search" id="nsw-hp-so2"/>
                                                                         </connections>
                                                                     </buttonCell>
@@ -829,9 +828,6 @@
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
-                                                    <connections>
-                                                        <binding destination="1bv-CP-i3c" name="enabled" keyPath="showFontEnabled" id="WWx-Tp-iqD"/>
-                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>

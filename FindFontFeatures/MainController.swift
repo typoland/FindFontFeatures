@@ -29,19 +29,19 @@ public class MainController: NSObject {
 		willSet {
 			willChangeValue(for: \MainController.fonts)
 			willChangeValue(for: \MainController.typeControllers)
-			willChangeValue(for: \MainController.showFontEnabled)
+			//willChangeValue(for: \MainController.showFontEnabled)
 		}
 		didSet {
 			didChangeValue(for: \MainController.fonts)
 			didChangeValue(for: \MainController.typeControllers)
-			didChangeValue(for: \MainController.showFontEnabled)
+			//didChangeValue(for: \MainController.showFontEnabled)
 		}
 	}
 
-	@objc var showFontEnabled: Bool {
-		print ("taking showFontEnabled")
-		return viewMode == .selectionByFont
-	}
+//	@objc var showFontEnabled: Bool {
+//		print ("taking showFontEnabled")
+//		return viewMode == .selectionByFont
+//	}
 
     @objc var typeControllers: [TypeController] {
         let filtered: [TypeController]
@@ -154,9 +154,9 @@ public class MainController: NSObject {
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
 		if let modeString =  (sender.selectedItem)?.title {
-			willChangeValue(for: \MainController.showFontEnabled)
+			//willChangeValue(for: \MainController.showFontEnabled)
        		viewMode = ViewMode.init(rawValue: modeString) ?? .allFonts
-			didChangeValue(for: \MainController.showFontEnabled)
+			//didChangeValue(for: \MainController.showFontEnabled)
 			print (viewMode)
 		}
     }
