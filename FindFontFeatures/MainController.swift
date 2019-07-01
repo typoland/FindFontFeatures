@@ -16,8 +16,8 @@ public class MainController: NSObject {
     
     enum ViewMode: String, CaseIterable {
         case allFonts = "All Fonts & Features"
-        case selectedFeature = "Fonts with Selected Features"
-        case selectedFont = "Selected Font Features"
+        case selectionByFeature = "Fonts with Selected Features"
+        case selectionByFont = "Selected Font Features"
     }
     
     @IBOutlet weak var typesOutlineView: NSOutlineView!
@@ -36,26 +36,36 @@ public class MainController: NSObject {
 
 	@objc var showFontEnabled: Bool {
 		print ("taking showFontEnabled")
-		return viewMode == .selectedFont
+		return viewMode == .selectionByFont
 	}
 
     @objc var typeControllers: [TypeController] {
         let filtered: [TypeController]
         switch viewMode {
-        case .selectedFont:
+        case .selectionByFont:
             filtered = _typeControllers.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
-        case .selectedFeature:
+        case .selectionByFeature:
             filtered = _typeControllers
         case .allFonts:
             filtered = _typeControllers
         }
-
         return (Array(NSOrderedSet(array: filtered)) as! [TypeController]).sorted(by: {$0.type.name < $1.type.name})
     }
     
-    @objc var selectors:[SelectorController] {
-        return typeControllers.flatMap {$0.selectorControllers}
+    @objc var selectors: [SelectorController] {
+		let filtered: [SelectorController]
+		switch viewMode {
+		case .selectionByFeature:
+			filtered = typeControllers.flatMap { $0.selectorControllers }
+		case .selectionByFont:
+			filtered = typeControllers.flatMap { $0.selectorControllers.filter({
+				!Set($0.fonts).intersection(fonts).isEmpty
+			}) }
+		case .allFonts:
+			filtered = typeControllers.flatMap { $0.selectorControllers }
+		}
+        return filtered
     }
 
     var _fonts: [NSFont] = [] {
