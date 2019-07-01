@@ -783,11 +783,11 @@
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                     </buttonCell>
                                                                     <connections>
-                                                                        <binding destination="1sI-fP-PbA" name="alternateTitle" keyPath="objectValue.name" id="oQ8-fF-5eV"/>
                                                                         <binding destination="1sI-fP-PbA" name="enabled" keyPath="objectValue.enabled" id="bqJ-8z-ELt"/>
+                                                                        <binding destination="1sI-fP-PbA" name="alternateTitle" keyPath="objectValue.name" id="oQ8-fF-5eV"/>
                                                                         <binding destination="1sI-fP-PbA" name="title" keyPath="objectValue.name" previousBinding="oQ8-fF-5eV" id="uOa-4h-wpT"/>
-                                                                        <binding destination="1sI-fP-PbA" name="toolTip" keyPath="objectValue.toolTip" previousBinding="uOa-4h-wpT" id="nKh-cR-DFL"/>
                                                                         <binding destination="1sI-fP-PbA" name="value" keyPath="objectValue.selected" id="VV5-08-EAh"/>
+                                                                        <binding destination="1sI-fP-PbA" name="toolTip" keyPath="objectValue.toolTip" previousBinding="uOa-4h-wpT" id="nKh-cR-DFL"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -1052,7 +1052,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="roundTextured" title="All fonts &amp; features" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Pr7-Gr-24g" id="uET-ag-FFS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" id="N40-Rq-bM9">
                                 <items>
                                     <menuItem title="All fonts &amp; features" state="on" id="Pr7-Gr-24g"/>
