@@ -10,26 +10,27 @@ import Foundation
 import AppKit
 
 
-class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineViewDataSource {
+class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate //NSOutlineViewDataSource//, 
+{
 	
-	@IBOutlet weak var outlineView:NSOutlineView!
+	//@IBOutlet weak var outlineView:NSOutlineView!
 	
-	@objc var typeControllers: [TypeController] = [] {
-		didSet {
-			outlineView.reloadData()
-		}
-	}
-	
+//	@objc var typeControllers: [TypeController] = [] {
+//		didSet {
+//			outlineView.reloadData()
+//		}
+//	}
+
 	
 	func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-		//print ("children of", item)
+		print ("children of", item)
 		switch item {
 		case is TypeController:
 			return(item as! TypeController).selectorControllers.count
 		case is SelectorController:
 			return 0
 		default:
-			return typeControllers.count
+			return 0//typeControllers.count
 		}
 	}
 	
@@ -41,7 +42,7 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 	}
 	
 	func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-		//print ("is item expandible", item)
+		print ("is item expandible", item)
 		if  item is TypeController {
 			return true
 		} else {
@@ -50,11 +51,18 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 	}
 	
 	func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
-		//print("Teraz odda dupę, tylko po co?", item, tableColumn?.identifier)
+		print("Teraz odda dupę, tylko po co?", item, tableColumn?.identifier.rawValue)
+		switch tableColumn?.identifier.rawValue {
+		case "Types":
+			print ("Hoho, Types")
+		default:
+			print (tableColumn?.identifier.rawValue)
+		}
 		return item
 	}
 	
 	func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+		print ("height")
 		if item is SelectorController {
 			return 15
 		}
@@ -62,9 +70,9 @@ class FeaturesOutlineViewDelegate: NSObject ,  NSOutlineViewDelegate, NSOutlineV
 	}
 	
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-		//print("childOfItem", item, index)
+		print("childOfItem", item, index)
 		if item == nil {
-			return typeControllers[index]
+			return 5//typeControllers[index]
 		} else {
 			//let keys = (item as! LDOpenTypeFeaturesType).featuresString]
 			return (item as! TypeController).selectorControllers[index]

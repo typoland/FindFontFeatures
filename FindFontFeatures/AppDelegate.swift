@@ -28,6 +28,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainController.willChangeValue(for: \MainController.typeControllers)
         selectedFonts =  notification.object as! [NSFont]
         mainController.didChangeValue(for: \MainController.typeControllers)
+		let treeNode:NSTreeNode = mainController.featuresTreeController.arrangedObjects
+		if let key = mainController.featuresTreeController.childrenKeyPath,
+		let content = (treeNode.representedObject as? [String:Any] ) {
+			print ( "Dudud", content[key] as? [TypeController] )
+		}
     }
     
     @IBAction func getInstalledFonts(_ sender: Any) {

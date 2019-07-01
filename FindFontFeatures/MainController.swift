@@ -21,7 +21,8 @@ public class MainController: NSObject {
     @IBOutlet weak var typesOutlineView: NSOutlineView!
     @IBOutlet weak var viewModePopUp: NSPopUpButton!
     @IBOutlet var fontsArrayController: FontsArrayController!
-    @IBOutlet var featuresOutlineViewDelegate: FeaturesOutlineViewDelegate!
+	@IBOutlet var featuresTreeController: FeaturesTreeController!
+    //@IBOutlet var featuresOutlineViewDelegate: FeaturesOutlineViewDelegate!
     
 	var _typeControllers: [TypeController] = []
 	var viewMode: ViewMode = .allFonts {
@@ -83,7 +84,7 @@ public class MainController: NSObject {
     }
 	
 	public override func awakeFromNib() {
-		featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
+		//featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
 		//selectedFontsFeatures.bind(NSBindingName(rawValue: "state"), to: self, withKeyPath: "buttonState", options: nil)
 	}
 	

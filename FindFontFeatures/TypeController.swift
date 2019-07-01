@@ -11,13 +11,16 @@ import AppKit
 import OTFKit
 
 class TypeController: BaseFeatureController {
+	
     let type: FFFType
 
     @objc var selectorControllers: [SelectorController] = []
     @objc var name: String {
         return type.name
     }
+	
 
+	
     init (type:FFFType) {
         self.type = type
         super.init()
@@ -50,5 +53,15 @@ extension TypeController {
 extension TypeController {
 	override var description: String {
 		return "Type Controller \"\(name)\""
+	}
+}
+
+extension TypeController {
+	@objc var isLeaf: Bool {
+		return false
+	}
+	
+	@objc var count: Int {
+		return selectorControllers.count
 	}
 }

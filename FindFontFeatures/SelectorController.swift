@@ -40,3 +40,9 @@ extension SelectorController {
         return text
     }
 }
+
+extension SelectorController {
+	@objc var isLeaf: Bool {
+		return true
+	}
+}

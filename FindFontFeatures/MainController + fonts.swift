@@ -49,12 +49,13 @@ extension MainController {
                 \FontsArrayController.fontFamilyNames)
 
         case "typeControllers" :
-            
-            featuresOutlineViewDelegate.typeControllers = typeControllers
+            ()
+			//featuresTreeController.didChangeValue(for:  \FeaturesTreeController.arrangedObjects)
+            //featuresOutlineViewDelegate.typeControllers = typeControllers
             //typesOutlineView.reloadData()
             
-            featuresOutlineViewDelegate.didChangeValue(for:
-                \FeaturesOutlineViewDelegate.typeControllers)
+            //featuresOutlineViewDelegate.didChangeValue(for:
+               // \FeaturesOutlineViewDelegate.typeControllers)
         default: break
         }
         super.didChangeValue(forKey: key)

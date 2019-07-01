@@ -20,7 +20,6 @@
 		B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649C22AEDA9300916810 /* FontsArrayController.swift */; };
 		B28C649F22AEE87D00916810 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649E22AEE87D00916810 /* NSFont.swift */; };
 		B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */; };
-		B28C64AC22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */; };
 		B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6A22B23903000BA191 /* FilesTree.swift */; };
 		B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6B22B23903000BA191 /* Tree Protocol.swift */; };
 		B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005D22B77AA500BBAE79 /* SelectorController.swift */; };
@@ -74,7 +73,6 @@
 		B28C649E22AEE87D00916810 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesTreeController.swift; sourceTree = "<group>"; };
 		B28C64AA22AF9F5700916810 /* Go deep in folders.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Go deep in folders.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesOutlineViewDelegate.swift; sourceTree = "<group>"; };
 		B2A35B6A22B23903000BA191 /* FilesTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTree.swift; sourceTree = "<group>"; };
 		B2A35B6B22B23903000BA191 /* Tree Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree Protocol.swift"; sourceTree = "<group>"; };
 		B2E5005D22B77AA500BBAE79 /* SelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorController.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
-				B28C64AB22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift */,
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
 				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
 			);
@@ -280,7 +277,6 @@
 				B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
-				B28C64AC22AFDCF800916810 /* FeaturesOutlineViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
