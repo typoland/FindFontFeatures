@@ -26,6 +26,11 @@ public class MainController: NSObject {
     
 	var _typeControllers: [TypeController] = []
 	var viewMode: ViewMode = .allFonts {
+		willSet {
+			willChangeValue(for: \MainController.fonts)
+			willChangeValue(for: \MainController.typeControllers)
+			willChangeValue(for: \MainController.showFontEnabled)
+		}
 		didSet {
 			didChangeValue(for: \MainController.fonts)
 			didChangeValue(for: \MainController.typeControllers)

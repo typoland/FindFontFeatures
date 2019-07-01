@@ -759,12 +759,15 @@
                                                                     <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="bWY-Ib-XHp">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="miniSystem"/>
+                                                                        <connections>
+                                                                            <binding destination="5m5-vB-AWk" name="value" keyPath="objectValue.selected" id="FHM-Hg-c7H"/>
+                                                                        </connections>
                                                                     </buttonCell>
                                                                     <connections>
+                                                                        <action selector="toogleNonExclusiveSelector:" target="zxI-gQ-l7l" id="heq-bp-Qwm"/>
                                                                         <binding destination="5m5-vB-AWk" name="enabled" keyPath="objectValue.enabled" id="Gya-c9-cdI"/>
                                                                         <binding destination="5m5-vB-AWk" name="title" keyPath="objectValue.name" id="P6I-rN-kwg"/>
                                                                         <binding destination="5m5-vB-AWk" name="toolTip" keyPath="objectValue.toolTip" previousBinding="P6I-rN-kwg" id="gAV-wy-kNr"/>
-                                                                        <binding destination="5m5-vB-AWk" name="value" keyPath="objectValue.name" id="ONW-mw-v9A"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -781,11 +784,12 @@
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                     </buttonCell>
                                                                     <connections>
+                                                                        <action selector="toogleExclusiveSelector:" target="zxI-gQ-l7l" id="NJe-Sj-eZh"/>
                                                                         <binding destination="1sI-fP-PbA" name="alternateTitle" keyPath="objectValue.name" id="oQ8-fF-5eV"/>
                                                                         <binding destination="1sI-fP-PbA" name="enabled" keyPath="objectValue.enabled" id="bqJ-8z-ELt"/>
                                                                         <binding destination="1sI-fP-PbA" name="title" keyPath="objectValue.name" previousBinding="oQ8-fF-5eV" id="uOa-4h-wpT"/>
                                                                         <binding destination="1sI-fP-PbA" name="toolTip" keyPath="objectValue.toolTip" previousBinding="uOa-4h-wpT" id="nKh-cR-DFL"/>
-                                                                        <binding destination="1sI-fP-PbA" name="value" keyPath="objectValue.name" id="4uA-ek-mwz"/>
+                                                                        <binding destination="1sI-fP-PbA" name="value" keyPath="objectValue.selected" id="VV5-08-EAh"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -812,13 +816,17 @@
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
                                                                     <rect key="frame" x="1" y="-1" width="58" height="22"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="left" controlSize="mini" inset="2" id="ZaD-Pu-CBh">
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="left" controlSize="mini" allowsMixedState="YES" inset="2" id="ZaD-Pu-CBh">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                         <connections>
                                                                             <binding destination="1bv-CP-i3c" name="enabled" keyPath="showFontEnabled" id="BUz-hH-jyw"/>
+                                                                            <binding destination="Bf1-tB-lfo" name="value" keyPath="objectValue.search" id="nsw-hp-so2"/>
                                                                         </connections>
                                                                     </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="toogleSearch:" target="zxI-gQ-l7l" id="rbF-gb-82X"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <connections>

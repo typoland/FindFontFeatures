@@ -13,13 +13,35 @@ import OTFKit
 class TypeController: BaseFeatureController {
 	
     let type: FFFType
+	
 
     @objc var selectorControllers: [SelectorController] = []
     @objc var name: String {
         return type.name
     }
-	
 
+	@objc override var search: NSControl.StateValue {
+		get {
+			let state: NSControl.StateValue
+			
+			let selectedNr = selectorControllers.filter({$0.search == .on}).count
+			let count = selectorControllers.count
+			
+			if selectedNr == 0 {
+				state = .off
+			} else if selectedNr == count {
+				state = .on
+			} else {
+				state = .mixed
+			}
+			return state
+		}
+		set {
+			for selectorController in selectorControllers {
+				selectorController.search = newValue
+			}
+		}
+	}
 	
     init (type:FFFType) {
         self.type = type
@@ -63,5 +85,15 @@ extension TypeController {
 	
 	@objc var count: Int {
 		return selectorControllers.count
+	}
+}
+
+extension TypeController {
+	func selectExclusive (selector: SelectorController) {
+		for selectorController in selectorControllers {
+			selectorController.willChangeValue(for: \SelectorController.selected)
+			selectorController.selected = selector == selectorController
+			selectorController.didChangeValue(for: \SelectorController.selected)
+		}
 	}
 }

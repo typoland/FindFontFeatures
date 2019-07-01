@@ -7,10 +7,27 @@
 //
 
 import Foundation
+import AppKit
 class BaseFeatureController: NSObject {
     
-    @objc var selected: Bool = false
-    @objc var search:Bool = false
+	@objc var selected: Bool = false {
+		willSet {
+			self.willChangeValue(for: \BaseFeatureController.selected)
+		}
+		didSet {
+			print (self, "did changed")
+			self.didChangeValue(for: \BaseFeatureController.selected)
+		}
+	}
+	
+	@objc var search: NSControl.StateValue = .off {
+		willSet {
+			self.willChangeValue(for: \BaseFeatureController.search)
+		}
+		didSet {
+			self.didChangeValue(for: \BaseFeatureController.search)
+		}
+	}
     //@objc var enabled: Bool = false
     
 }

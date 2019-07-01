@@ -22,7 +22,18 @@ class SelectorController: BaseFeatureController {
         }
         return true
     }
-    
+	
+	@objc override var search: NSControl.StateValue {
+		willSet {
+			willChangeValue(for: \SelectorController.search)
+			parent.willChangeValue(for: \TypeController.search)
+		}
+		didSet {
+			didChangeValue(for: \SelectorController.search)
+			parent.didChangeValue(for: \TypeController.search)
+		}
+	}
+	
     @objc var name: String {
         return selector.name
     }
@@ -30,7 +41,15 @@ class SelectorController: BaseFeatureController {
     init (selector:FFFSelector, parent:TypeController) {
         self.selector = selector
         self.parent = parent
+		super.init()
+		self.selected = selector.defaultSelector == 1
     }
+}
+
+extension SelectorController {
+	override var description: String {
+		return "Selector Controller \"\(name)\""
+	}
 }
 
 extension SelectorController {
