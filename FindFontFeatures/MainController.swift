@@ -22,8 +22,8 @@ public class MainController: NSObject {
     @IBOutlet weak var viewModePopUp: NSPopUpButton!
     @IBOutlet var fontsArrayController: FontsArrayController!
 	@IBOutlet var featuresTreeController: FeaturesTreeController!
-    //@IBOutlet var featuresOutlineViewDelegate: FeaturesOutlineViewDelegate!
-    
+
+	
 	var _typeControllers: [TypeController] = []
 	var viewMode: ViewMode = .allFonts {
 		willSet {
@@ -73,7 +73,7 @@ public class MainController: NSObject {
         didSet { didChangeValue(for: \MainController.fonts) }
     }
     
-    @objc var fonts:[NSFont] {
+    @objc var fonts: [NSFont] {
 		let filtered:[NSFont]
 		switch viewMode {
 		case .selectionByFeature:
@@ -88,10 +88,6 @@ public class MainController: NSObject {
         return filtered
     }
 	
-	public override func awakeFromNib() {
-		//featuresOutlineViewDelegate.bind(NSBindingName(rawValue: "typeControllers"), to: self, withKeyPath: "typeControllers", options: nil)
-		//selectedFontsFeatures.bind(NSBindingName(rawValue: "state"), to: self, withKeyPath: "buttonState", options: nil)
-	}
 	
     @objc var viewModePopupStrings: [String] {
         var result: [String] = []
@@ -106,10 +102,7 @@ public class MainController: NSObject {
         print ("there is an action")
     }
     
-//    @objc var buttonState: NSControl.StateValue = .off {
-//        didSet {print ("changed")}
-//    }
-//
+
     func clearContent() {
         _typeControllers = []
         _fonts = []
@@ -160,9 +153,9 @@ public class MainController: NSObject {
     }
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
-		if let string =  (sender.selectedItem)?.title {
+		if let modeString =  (sender.selectedItem)?.title {
 			willChangeValue(for: \MainController.showFontEnabled)
-       		viewMode = ViewMode.init(rawValue: string) ?? .allFonts
+       		viewMode = ViewMode.init(rawValue: modeString) ?? .allFonts
 			didChangeValue(for: \MainController.showFontEnabled)
 			print (viewMode)
 		}

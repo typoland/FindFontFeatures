@@ -13,11 +13,22 @@ import OTFKit
 class CellCheckButton: NSTableCellView {
     
     @IBOutlet weak var checkButton:NSButton!
-    
-    override func viewWillDraw() {
-        if objectValue is FFFType{
-            checkButton.allowsMixedState = true
-        }
-    }
-    
+	
+//	override func didChangeValue(forKey key: String) {
+//		if key == "objectValue" {
+//			if let typeController = objectValue as? TypeController {
+//				typeController.addObserver(self, forKeyPath: "search", options: [.old, .new], context: nil)
+//			}
+//		}
+//	}
+//	
+//	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//		print ("obseving")
+//		//super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//	}
+	
+//	@IBAction func click(_ sender: NSButton) {
+//		print ("click")
+//		 sender.state = sender.state != .off ? .on : .off
+//	}
 }

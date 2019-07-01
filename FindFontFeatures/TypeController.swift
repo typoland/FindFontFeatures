@@ -21,6 +21,7 @@ class TypeController: BaseFeatureController {
     }
 
 	@objc override var search: NSControl.StateValue {
+
 		get {
 			let state: NSControl.StateValue
 			
@@ -37,9 +38,11 @@ class TypeController: BaseFeatureController {
 			return state
 		}
 		set {
+			willChangeValue(for: \TypeController.search)
 			for selectorController in selectorControllers {
-				selectorController.search = newValue
+				selectorController.search = newValue == .on ? .on : .off
 			}
+			didChangeValue(for: \TypeController.search)
 		}
 	}
 	

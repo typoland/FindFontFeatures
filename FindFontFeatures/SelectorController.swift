@@ -37,7 +37,19 @@ class SelectorController: BaseFeatureController {
     @objc var name: String {
         return selector.name
     }
-    
+	
+	@objc override var selected: Bool {
+		willSet {
+			print ("No i odwraca")
+			if newValue, parent.type.exclusive == 1  {
+				for selectorController in parent.selectorControllers {
+					selectorController.selected = false
+				}
+			}
+		}
+	}
+	
+
     init (selector:FFFSelector, parent:TypeController) {
         self.selector = selector
         self.parent = parent
