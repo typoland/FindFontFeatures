@@ -1050,14 +1050,20 @@
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Wv-hM-sil">
                         <rect key="frame" x="198" y="527" width="257" height="23"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="roundTextured" title="All fonts &amp; features" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Pr7-Gr-24g" id="uET-ag-FFS">
+                        <popUpButtonCell key="cell" type="roundTextured" title="All fonts &amp; features" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="Pr7-Gr-24g" id="uET-ag-FFS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="N40-Rq-bM9">
                                 <items>
-                                    <menuItem title="All fonts &amp; features" state="on" id="Pr7-Gr-24g"/>
-                                    <menuItem title="Selected fonts features" id="uHx-OC-r4s"/>
-                                    <menuItem title="Show only fonts with selected feature" id="SqW-He-nAq"/>
+                                    <menuItem title="All fonts &amp; features" state="on" id="Pr7-Gr-24g">
+                                        <attributedString key="attributedTitle"/>
+                                    </menuItem>
+                                    <menuItem title="Selected fonts features" id="uHx-OC-r4s">
+                                        <attributedString key="attributedTitle"/>
+                                    </menuItem>
+                                    <menuItem title="Show only fonts with selected feature" id="SqW-He-nAq">
+                                        <attributedString key="attributedTitle"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                             <connections>
@@ -1090,6 +1096,7 @@
                 </binding>
                 <outlet property="familyNamesArrayController" destination="Gya-eo-xDv" id="mNG-ax-Uyt"/>
                 <outlet property="familyStylesController" destination="a1N-6i-hHk" id="DqK-ei-xnG"/>
+                <outlet property="mainController" destination="1bv-CP-i3c" id="taL-vF-Btf"/>
             </connections>
         </arrayController>
         <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="a1N-6i-hHk">

@@ -16,6 +16,7 @@
 		B24A7A3B22AE5BD200EBA62C /* FindFontFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A3A22AE5BD200EBA62C /* FindFontFeaturesTests.swift */; };
 		B26C201122AECDA0003480EB /* OTFKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B26C200F22AECDA0003480EB /* OTFKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B26C201522AED04E003480EB /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C201422AED04E003480EB /* MainController.swift */; };
+		B28473EE22CD450000A6E2F3 /* FontsFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473ED22CD450000A6E2F3 /* FontsFilters.swift */; };
 		B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649822AED26E00916810 /* MainController + fonts.swift */; };
 		B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649C22AEDA9300916810 /* FontsArrayController.swift */; };
 		B28C649F22AEE87D00916810 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649E22AEE87D00916810 /* NSFont.swift */; };
@@ -68,6 +69,7 @@
 		B24A7A3C22AE5BD200EBA62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26C200F22AECDA0003480EB /* OTFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OTFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26C201422AED04E003480EB /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		B28473ED22CD450000A6E2F3 /* FontsFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsFilters.swift; sourceTree = "<group>"; };
 		B28C649822AED26E00916810 /* MainController + fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainController + fonts.swift"; sourceTree = "<group>"; };
 		B28C649C22AEDA9300916810 /* FontsArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsArrayController.swift; sourceTree = "<group>"; };
 		B28C649E22AEE87D00916810 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				B26C201422AED04E003480EB /* MainController.swift */,
 				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
+				B28473ED22CD450000A6E2F3 /* FontsFilters.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
 				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
@@ -267,6 +270,7 @@
 				B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */,
 				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
 				B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */,
+				B28473EE22CD450000A6E2F3 /* FontsFilters.swift in Sources */,
 				B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,

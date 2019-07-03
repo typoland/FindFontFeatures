@@ -8,11 +8,13 @@
 
 import Foundation
 import AppKit
-import OTF
+import OTFKit
 
 class FontsArrayController: NSArrayController {
+	@IBOutlet var mainController:MainController!
     @IBOutlet var familyNamesArrayController:NSArrayController!
     @IBOutlet var familyStylesController:NSArrayController!
+	var nameFilterString: String? = nil
 }
 
 var familiesSelectionChanged = "familiesSelectionChanged"
@@ -23,6 +25,7 @@ var fontSelectionChanged = "fontSelectionChanged"
 extension Notification.Name {
     static var fontSelection = Notification.Name.init(fontSelectionChanged)
 }
+
 
 extension FontsArrayController {
     
@@ -47,35 +50,36 @@ extension FontsArrayController {
         }
     }
 	
+
+	func setPredicates() {
+		filterPredicate = NSCompoundPredicate(
+			type: .and,
+			subpredicates: [
+				NSPredicate(block:
+					FontsFilters.name(string: nameFilterString).predicateBlock),
+				NSPredicate(block:
+					FontsFilters.selectors(typeControllers: mainController!._typeControllers).predicateBlock),
+			])
+		
+	}
+	
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
         willChangeValue(for: \FontsArrayController.fontFamilyNames)
         willChangeValue(for: \FontsArrayController.filterPredicate)
-		
-		
-        if sender.stringValue.isEmpty {
-            filterPredicate = nil
-        } else {
-			// I like it, maybe I should extend thi formula to all possibilities?
-			let predicate = NSPredicate(block:
-			{object, _ in
-				return (object as? NSFont)?.familyName?.contains(sender.stringValue) ?? false
-			})
-            filterPredicate = predicate
-        }
-        
+		nameFilterString = sender.stringValue.isEmpty ? nil : sender.stringValue
+		setPredicates()
         didChangeValue(for: \FontsArrayController.filterPredicate)
         didChangeValue(for: \FontsArrayController.fontFamilyNames)
     }
-    
-
-    
+	
+	
+	//Takes all families from fonts, after applying filters predicate to fonts
     @objc var fontFamilyNames: [String] {
         return Array((arrangedObjects as! [NSFont]).reduce(into: OrderedSet<String>(), { set, font in
             if let fontFamily = font.familyName {
                 set.append(fontFamily)
             } else {
                 print ("Unknown family name of \(font)")
-                
             }
         }))
     }
