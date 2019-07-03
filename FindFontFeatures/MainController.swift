@@ -15,18 +15,17 @@ var selectedFonts :[NSFont] = []
 public class MainController: NSObject {
     
     enum ViewMode: String, CaseIterable {
+		case selectionByFont = "Selected Font Features"
         case allFonts = "All Fonts & Features"
         case selectionByFeature = "Fonts with Selected Features"
-        case selectionByFont = "Selected Font Features"
     }
     
-    @IBOutlet weak var typesOutlineView: NSOutlineView!
     @IBOutlet weak var viewModePopUp: NSPopUpButton!
     @IBOutlet var fontsArrayController: FontsArrayController!
 	@IBOutlet var featuresTreeController: FeaturesTreeController!
 
 	var _typeControllers: [TypeController] = []
-	var viewMode: ViewMode = .allFonts {
+	var viewMode: ViewMode = .selectionByFont {
 		willSet {
 			willChangeValue(for: \MainController.fonts)
 			willChangeValue(for: \MainController.typeControllers)
@@ -34,7 +33,7 @@ public class MainController: NSObject {
 		didSet {
 			didChangeValue(for: \MainController.fonts)
 			didChangeValue(for: \MainController.typeControllers)
-			print ("view Mode Changed")
+			print ("view Mode Changed, fonts and typeControllers")
 		}
 	}
 
@@ -90,16 +89,12 @@ public class MainController: NSObject {
         return result
     }
 	
-    @objc func action(_ sender:Any) {
-        print ("there is an action")
-    }
-    
 
     func clearContent() {
         _typeControllers = []
         _fonts = []
     }
-    
+    //convert font names to fonts
     func add (fontNames: [String], size:CGFloat) {
         var fonts = [NSFont]()
         for fontName in fontNames {
@@ -107,24 +102,30 @@ public class MainController: NSObject {
                 fonts.append(font)
             }
         }
-        add(fonts: fonts)
+        add (fonts: fonts)
     }
-    
+	
+    //add fonts add their type controllers
     func add (fonts: [NSFont]) {
         willChangeValue(for: \MainController.typeControllers)
         willChangeValue(for: \MainController.fonts)
+		// for each font find type controllers
         for font in fonts {
             addTypeControllers(of: font)
         }
         self._fonts = self._fonts + fonts
         didChangeValue(for: \MainController.fonts)
         didChangeValue(for: \MainController.typeControllers)
+		//IT IS OK print ("added \(_fonts.count) fonts and \(_typeControllers.count) typeControllers")
     }
 
     func addTypeControllers (of font: NSFont) {
         let types: [FFFType] = font.featuresDescriptions()
         for type in types {
+			//get new or already defined controller
             let typeController = controllerFor(type: type, from: font)
+			
+			// looks as an error
             for selectorController in typeController.selectorControllers {
                 selectorController.fonts.append(font)
             }
@@ -132,23 +133,29 @@ public class MainController: NSObject {
     }
     
     func controllerFor(type: FFFType, from font: NSFont) -> TypeController {
-        if let typeController = typeControllers.filter ({ $0.type.name == type.name }).first {
-            for selector in type.selectors {
-                typeController.controllerFor(selector: selector).fonts.append(font)
-            }
-            return typeController
+		//check if type controller already exist
+		let typeController:TypeController
+		
+        if let definedController = typeControllers.filter ({ $0.type.name == type.name }).first {
+			typeController = definedController
+			// add font to previuosly defined selectors
+			for selector in type.selectors {
+				typeController.controllerFor(selector: selector).fonts.append(font)
+			}
+		// if not — create and add
         } else {
-            let typeController = TypeController(type: type)
+            typeController = TypeController(type: type)
             _typeControllers.append(typeController)
-            return typeController
+			
         }
+		//assign fonts to selector
+		
+		return typeController
     }
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
 		if let modeString =  (sender.selectedItem)?.title {
-			//willChangeValue(for: \MainController.showFontEnabled)
        		viewMode = ViewMode.init(rawValue: modeString) ?? .allFonts
-			//didChangeValue(for: \MainController.showFontEnabled)
 			print (viewMode)
 		}
     }

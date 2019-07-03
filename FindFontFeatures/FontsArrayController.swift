@@ -50,11 +50,16 @@ extension FontsArrayController {
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
         willChangeValue(for: \FontsArrayController.fontFamilyNames)
         willChangeValue(for: \FontsArrayController.filterPredicate)
-       
+		
+		
         if sender.stringValue.isEmpty {
             filterPredicate = nil
         } else {
-            let predicate = NSPredicate(format: "familyName CONTAINS [c] \"\(sender.stringValue)\"")
+			// I like it, maybe I should extend thi formula to all possibilities?
+			let predicate = NSPredicate(block:
+			{object, _ in
+				return (object as? NSFont)?.familyName?.contains(sender.stringValue) ?? false
+			})
             filterPredicate = predicate
         }
         

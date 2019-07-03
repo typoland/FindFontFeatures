@@ -1076,11 +1076,10 @@
             <connections>
                 <outlet property="featuresTreeController" destination="zxI-gQ-l7l" id="D24-Dr-pux"/>
                 <outlet property="fontsArrayController" destination="9gA-o2-4jU" id="ZlF-rA-LgJ"/>
-                <outlet property="typesOutlineView" destination="4uP-Mc-8ca" id="0XI-ps-FXo"/>
                 <outlet property="viewModePopUp" destination="3Wv-hM-sil" id="2oT-cH-Bee"/>
             </connections>
         </customObject>
-        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
+        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
                 <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fonts" id="e7a-HI-frr">
                     <dictionary key="options">
@@ -1093,12 +1092,12 @@
                 <outlet property="familyStylesController" destination="a1N-6i-hHk" id="DqK-ei-xnG"/>
             </connections>
         </arrayController>
-        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" id="a1N-6i-hHk">
+        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="a1N-6i-hHk">
             <connections>
                 <binding destination="9gA-o2-4jU" name="contentArray" keyPath="selectedFalmiliesFonts" id="jGU-bl-Q06"/>
             </connections>
         </arrayController>
-        <arrayController objectClassName="String" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" alwaysUsesMultipleValuesMarker="YES" id="Gya-eo-xDv">
+        <arrayController objectClassName="String" automaticallyPreparesContent="YES" alwaysUsesMultipleValuesMarker="YES" id="Gya-eo-xDv">
             <connections>
                 <binding destination="9gA-o2-4jU" name="contentArray" keyPath="fontFamilyNames" id="hLK-XP-41a">
                     <dictionary key="options">

@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var mainController: MainController!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+		window.title = ""
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(selectedFeaturesCHanged(_:)), name: Notification.Name.featuresSearchChanged, object: nil)

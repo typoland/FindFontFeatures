@@ -52,11 +52,17 @@ class TypeController: BaseFeatureController {
 		}
 	}
 	
-    init (type:FFFType) {
+    init (type: FFFType) {
         self.type = type
         super.init()
         for selector in type.selectors {
-            selectorControllers.append(SelectorController(selector: FFFType.Selector.init(name: selector.name, nameID: selector.nameID, identifier: selector.identifier, defaultSelector: selector.defaultSelector), parent: self))
+            selectorControllers.append(SelectorController(
+				selector: FFFType.Selector.init(
+					name: selector.name,
+					nameID: selector.nameID,
+					identifier: selector.identifier,
+					defaultSelector: selector.defaultSelector),
+				parent: self))
         }
     }
 
@@ -70,6 +76,7 @@ class TypeController: BaseFeatureController {
 }
 
 extension TypeController {
+	
     func controllerFor(selector: FFFSelector) -> SelectorController {
         if let controller = selectorControllers.filter({$0.selector.name == selector.name}).first {
             return controller
