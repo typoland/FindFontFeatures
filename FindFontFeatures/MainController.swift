@@ -136,7 +136,8 @@ public class MainController: NSObject {
 		//check if type controller already exist
 		let typeController:TypeController
 		
-        if let definedController = typeControllers.filter ({ $0.type.name == type.name }).first {
+        if let definedController = _typeControllers.filter ({ $0.type.name == type.name }).first {
+			print ("exist")
 			typeController = definedController
 			// add font to previuosly defined selectors
 			for selector in type.selectors {
@@ -144,11 +145,12 @@ public class MainController: NSObject {
 			}
 		// if not — create and add
         } else {
+			print ("don't exist")
             typeController = TypeController(type: type)
             _typeControllers.append(typeController)
 			
         }
-		//assign fonts to selector
+		print (_typeControllers.count)
 		
 		return typeController
     }

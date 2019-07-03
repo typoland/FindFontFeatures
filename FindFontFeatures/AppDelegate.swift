@@ -29,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func selectedFontsChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
         selectedFonts =  notification.object as! [NSFont]
+		print (mainController._typeControllers.count)
         mainController.didChangeValue(for: \MainController.typeControllers)
     }
 	

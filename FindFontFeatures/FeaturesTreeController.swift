@@ -9,6 +9,8 @@
 import Foundation
 import AppKit
 
+
+
 class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlineViewDelegate {
 	
 	@IBOutlet var mainController:MainController!
@@ -20,10 +22,6 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 		return 18
 	}
 	
-	enum Columns: String {
-		case types = "Types"
-		case filters = "Filters"
-	}
 	
 	func outlineView(_ outlineView: NSOutlineView,
 					 viewFor tableColumn: NSTableColumn?,
@@ -35,7 +33,7 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 			
 			switch columnIdentifier {
 				
-			case Columns.types.rawValue :
+			case "Types" :
 				switch item {
 				case is SelectorController:
 					
@@ -56,7 +54,7 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 					return nil
 				}
 				
-			case Columns.filters.rawValue :
+			case "Filters" :
 				let cell = outlineView.makeView(
 					withIdentifier:
 					NSUserInterfaceItemIdentifier(rawValue: "Search"), owner: self) as! CellCheckButton//LDTableCellButton
@@ -68,7 +66,8 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				case is TypeController:
-					cell.checkButton.allowsMixedState = (item as! TypeController).search == .mixed
+					cell.checkButton.allowsMixedState =
+						(item as! TypeController).search == .mixed
 					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				default:
