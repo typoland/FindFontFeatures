@@ -19,6 +19,7 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 		}
 		return 18
 	}
+	
 	enum Columns: String {
 		case types = "Types"
 		case filters = "Filters"
@@ -67,7 +68,7 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				case is TypeController:
-					cell.checkButton.allowsMixedState = true
+					cell.checkButton.allowsMixedState = (item as! TypeController).search == .mixed
 					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				default:
@@ -78,6 +79,5 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 			}
 		}
 		return nil
-		
 	}
 }
