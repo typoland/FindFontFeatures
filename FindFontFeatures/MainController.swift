@@ -120,7 +120,7 @@ public class MainController: NSObject {
     }
 
     func addTypeControllers (of font: NSFont) {
-        let types: [FFFType] = font.featuresDescriptions()
+		let types:[OTFType<OTFSelector>] = font.featuresDescriptions()
         for type in types {
 			//get new or already defined controller
             let typeController = controllerFor(type: type, from: font)
@@ -132,7 +132,7 @@ public class MainController: NSObject {
         }
     }
     
-    func controllerFor(type: FFFType, from font: NSFont) -> TypeController {
+    func controllerFor(type: OTFType<OTFSelector>, from font: NSFont) -> TypeController {
 		//check if type controller already exist
 		let typeController:TypeController
 		

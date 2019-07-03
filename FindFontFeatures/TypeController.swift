@@ -17,7 +17,7 @@ extension Notification.Name {
 
 class TypeController: BaseFeatureController {
 	
-    let type: FFFType
+    let type: OTFType<OTFSelector>
 	
 
     @objc var selectorControllers: [SelectorController] = []
@@ -52,12 +52,12 @@ class TypeController: BaseFeatureController {
 		}
 	}
 	
-    init (type: FFFType) {
+    init (type: OTFType<OTFSelector>) {
         self.type = type
         super.init()
         for selector in type.selectors {
             selectorControllers.append(SelectorController(
-				selector: FFFType.Selector.init(
+				selector: OTFType<OTFSelector>.Selector.init(
 					name: selector.name,
 					nameID: selector.nameID,
 					identifier: selector.identifier,
@@ -77,7 +77,7 @@ class TypeController: BaseFeatureController {
 
 extension TypeController {
 	
-    func controllerFor(selector: FFFSelector) -> SelectorController {
+    func controllerFor(selector: OTFSelector) -> SelectorController {
         if let controller = selectorControllers.filter({$0.selector.name == selector.name}).first {
             return controller
         } else {

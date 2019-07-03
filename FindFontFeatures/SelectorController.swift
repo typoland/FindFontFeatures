@@ -12,7 +12,7 @@ import OTFKit
 
 class SelectorController: BaseFeatureController {
     
-    let selector: FFFSelector
+    let selector: OTFSelector
     var parent: TypeController
     var fonts: [NSFont] = []
     
@@ -50,7 +50,7 @@ class SelectorController: BaseFeatureController {
 	}
 	
 
-    init (selector:FFFSelector, parent:TypeController) {
+    init (selector:OTFSelector, parent:TypeController) {
         self.selector = selector
         self.parent = parent
 		super.init()
