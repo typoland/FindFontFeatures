@@ -19,6 +19,7 @@ class FontsArrayController: NSArrayController {
 
 var familiesSelectionChanged = "familiesSelectionChanged"
 var fontSelectionChanged = "fontSelectionChanged"
+var viewModeWasChanged = "viewModeWasChanged"
 
 //var selectedFonts:[NSFont] = []
 
@@ -33,6 +34,7 @@ extension FontsArrayController {
         sortDescriptors = [NSSortDescriptor(key: "fontName", ascending: true)]
         familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &familiesSelectionChanged)
         familyStylesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &fontSelectionChanged)
+		mainController.addObserver(self, forKeyPath: "viewMode", options: [.old, .new], context: &viewModeWasChanged)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -45,6 +47,9 @@ extension FontsArrayController {
             print ("observe fonts")
             let selectedFonts = familyStylesController.selectedObjects as! [NSFont]
             NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFonts)
+		case &viewModeWasChanged:
+			print ("observe viewMode")
+			setPredicates()
             
         default: break
         }
@@ -52,13 +57,32 @@ extension FontsArrayController {
 	
 
 	func setPredicates() {
+		print ("Setting predicates")
+		let availableFontsSet: Set<NSFont>
+		switch mainController._viewMode {
+		case .selectionByFeature:
+			availableFontsSet = mainController._typeControllers.reduce(into:Set<NSFont>(), {set, tc in
+				tc.selectorControllers.forEach { sc in
+					if sc.search == .on {
+						set.formUnion(sc.fonts)
+					}
+				}
+			})
+			
+		default:
+			availableFontsSet = Set(mainController._fonts)
+		}
+		
 		filterPredicate = NSCompoundPredicate(
 			type: .and,
 			subpredicates: [
 				NSPredicate(block:
-					FontsFilters.name(string: nameFilterString).predicateBlock),
+					FontsFilters.name(
+						string: nameFilterString)
+						.predicateBlock),
 				NSPredicate(block:
-					FontsFilters.selectors(typeControllers: mainController!._typeControllers).predicateBlock),
+					FontsFilters.inFonts(availableFontsSet)
+						.predicateBlock)
 			])
 		
 	}

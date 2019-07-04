@@ -12,7 +12,7 @@ import OTFKit
 
 enum FontsFilters {
 	case name (string: String?)
-	case selectors (typeControllers :[TypeController])
+	case inFonts(_ fonts: Set<NSFont>)
 	
 	var predicateBlock: (Any?, [String : Any]?) -> Bool {
 		switch self {
@@ -27,21 +27,38 @@ enum FontsFilters {
 				return true
 			}
 		//true if font contains selector, not just type with selector
-		case .selectors(let typeControllers):
+		
+		case .inFonts(let fonts):
 			return { object, _ in
-				var result = false
 				guard let font = object as? NSFont else {return false}
-				typeControllers.forEach { tc in
-					tc.selectorControllers.forEach { sc in
-						if font.has(type: tc.type, selector: sc.selector) {
-							result = true
-							return
-						}
-					}
-					if result { return }
-				}
-				return result
+				return fonts.contains( font )
 			}
+			/*
+			switch previewType {
+			case .allFonts, .selectionByFont:
+				return { _, _ in
+					return true
+				}
+			case .selectionByFeature:
+				
+				return { object, _ in
+					
+					var result = false
+					guard let font = object as? NSFont else {return false}
+					typeControllers.forEach { tc in
+						tc.selectorControllers.forEach { sc in
+							if font.has(type: tc.type, selector: sc.selector) && sc.search == .on {
+							//if sc.fonts.contains(font) && sc.search == .on {
+								result = true
+								return
+							}
+						}
+						if result { return }
+					}
+					return result
+				}
+			}
+		*/
 		}
 	}
 }

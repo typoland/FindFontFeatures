@@ -35,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func selectedFeaturesCHanged(_ notification:Notification) {
 		mainController.willChangeValue(for: \MainController.fonts)
 		print ("Widzimy to", (notification.object as? SelectorController)?.search)
+		mainController.fontsArrayController.setPredicates()
 		mainController.didChangeValue(for: \MainController.fonts)
 	}
     @IBAction func getInstalledFonts(_ sender: Any) {

@@ -31,6 +31,7 @@ class SelectorController: BaseFeatureController {
 		didSet {
 			didChangeValue(for: \SelectorController.search)
 			parent.didChangeValue(for: \TypeController.search)
+			print ("setting \(search)")
 			NotificationCenter.default.post(name: NSNotification.Name.featuresSearchChanged, object: self)
 		}
 	}

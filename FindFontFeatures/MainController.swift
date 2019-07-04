@@ -24,34 +24,45 @@ public class MainController: NSObject {
     @IBOutlet var fontsArrayController: FontsArrayController!
 	@IBOutlet var featuresTreeController: FeaturesTreeController!
 
-	var _typeControllers: [TypeController] = []
-	var viewMode: ViewMode = .selectionByFont {
+	var _typeControllers: Set<TypeController> = []
+	
+	var _viewMode: ViewMode = .selectionByFont {
 		willSet {
 			willChangeValue(for: \MainController.fonts)
 			willChangeValue(for: \MainController.typeControllers)
+			willChangeValue(for: \MainController.viewMode)
 		}
 		didSet {
 			didChangeValue(for: \MainController.fonts)
 			didChangeValue(for: \MainController.typeControllers)
+			didChangeValue(for: \MainController.viewMode)
+	
 			print ("view Mode Changed, fonts and typeControllers")
 		}
 	}
-
+	@objc var viewMode:String{
+		get {
+			return _viewMode.rawValue
+		}
+		set {
+			_viewMode = ViewMode.init(rawValue: newValue) ?? .allFonts
+		}
+	}
     @objc var typeControllers: [TypeController] {
-        let filtered: [TypeController]
-        switch viewMode {
+        let filtered: Set<TypeController>
+        switch _viewMode {
         case .selectionByFont:
             filtered = _typeControllers.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
 		default:
             filtered = _typeControllers
         }
-        return (Array(NSOrderedSet(array: filtered)) as! [TypeController]).sorted(by: {$0.type.name < $1.type.name})
+        return (Array(filtered)).sorted(by: {$0.type.name < $1.type.name})
     }
     
     @objc var selectors: [SelectorController] {
 		let filtered: [SelectorController]
-		switch viewMode {
+		switch _viewMode {
 		case .selectionByFont:
 			filtered = typeControllers.flatMap { $0.selectorControllers.filter({
 				!Set($0.fonts).intersection(fonts).isEmpty
@@ -68,6 +79,8 @@ public class MainController: NSObject {
     }
     
     @objc var fonts: [NSFont] {
+		return _fonts
+		/*
 		let filtered:[NSFont]
 		switch viewMode {
 		case .selectionByFeature:
@@ -77,6 +90,7 @@ public class MainController: NSObject {
 			filtered = _fonts
 		}
         return filtered
+*/
     }
 	
 	
@@ -145,7 +159,7 @@ public class MainController: NSObject {
 		// if not — create and add
         } else {
             typeController = TypeController(type: type)
-            _typeControllers.append(typeController)
+            _typeControllers.insert(typeController)
         }
 		
 		return typeController
@@ -153,7 +167,7 @@ public class MainController: NSObject {
     
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
 		if let modeString =  (sender.selectedItem)?.title {
-       		viewMode = ViewMode.init(rawValue: modeString) ?? .allFonts
+       		viewMode = modeString
 			print (viewMode)
 		}
     }
