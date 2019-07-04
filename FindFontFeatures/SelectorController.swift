@@ -15,13 +15,13 @@ class SelectorController: BaseFeatureController {
     let selector: OTFSelector
     var parent: TypeController
     var fonts: [NSFont] = []
-    
-    @objc var enabled: Bool {
-        if Set(fonts).intersection(selectedFonts).isEmpty {
-            return false
-        }
-        return true
-    }
+	
+	init (selector:OTFSelector, parent:TypeController) {
+		self.selector = selector
+		self.parent = parent
+		super.init()
+		self.selected = selector.defaultSelector == 1
+	}
 	
 	@objc override var fontSearch: NSControl.StateValue {
 		willSet {
@@ -36,10 +36,6 @@ class SelectorController: BaseFeatureController {
 		}
 	}
 	
-    @objc var name: String {
-        return selector.name
-    }
-	
 	@objc override var selected: Bool {
 		willSet {
 			if newValue, parent.type.exclusive == 1  {
@@ -49,13 +45,21 @@ class SelectorController: BaseFeatureController {
 			}
 		}
 	}
-	
+}
 
-    init (selector:OTFSelector, parent:TypeController) {
-        self.selector = selector
-        self.parent = parent
-		super.init()
-		self.selected = selector.defaultSelector == 1
+extension SelectorController {
+	
+    @objc var enabled: Bool {
+        if Set(fonts).intersection(selectedFonts).isEmpty {
+            return false
+        }
+        return true
+    }	
+}
+
+extension SelectorController {
+    @objc var name: String {
+        return selector.name
     }
 }
 

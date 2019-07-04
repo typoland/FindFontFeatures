@@ -65,7 +65,9 @@ class TypeController: BaseFeatureController {
 				parent: self))
         }
     }
+}
 
+extension TypeController {
     @objc var enabled: Bool {
         var result:Bool = false
         for selectorController in selectorControllers {
@@ -76,8 +78,7 @@ class TypeController: BaseFeatureController {
 }
 
 extension TypeController {
-	
-    func controllerFor(selector: OTFSelector) -> SelectorController {
+    func selectorControllerFor(_ selector: OTFSelector) -> SelectorController {
         if let controller = selectorControllers.filter({$0.selector.name == selector.name}).first {
             return controller
         } else {
