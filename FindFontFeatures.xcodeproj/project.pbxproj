@@ -53,7 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B2375F3B22B27DE50020A1B1 /* OTF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OTF.framework; path = "../../../../Library/Developer/Xcode/DerivedData/FFF2-cfymqtelytocizbnwqvpglwlgscw/Build/Products/Debug/OTF.framework"; sourceTree = "<group>"; };
 		B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
 		B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCheckButton.swift; sourceTree = "<group>"; };
 		B24A7A2622AE5BD100EBA62C /* FindFontFeatures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFontFeatures.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +101,6 @@
 		B24A7A1D22AE5BD100EBA62C = {
 			isa = PBXGroup;
 			children = (
-				B2375F3B22B27DE50020A1B1 /* OTF.framework */,
 				B28C64AA22AF9F5700916810 /* Go deep in folders.playground */,
 				B26C200F22AECDA0003480EB /* OTFKit.framework */,
 				B24A7A2822AE5BD100EBA62C /* FindFontFeatures */,

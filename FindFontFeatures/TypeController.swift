@@ -19,8 +19,19 @@ class TypeController: BaseFeatureController {
 	
     let type: OTFType<OTFSelector>
 	
-
-    @objc var selectorControllers: [SelectorController] = []
+	var _selectorControllers: OrderedSet<SelectorController> = [] {
+		willSet { willChangeValue(for: \TypeController.selectorControllers)  }
+		didSet { didChangeValue(for: \TypeController.selectorControllers)  }
+	}
+	
+	@objc var selectorControllers: [SelectorController] {
+		get {
+			return Array(_selectorControllers)
+		}
+		set {
+			_selectorControllers = OrderedSet(newValue)
+		}
+	}
     @objc var name: String {
         return type.name
     }
