@@ -55,9 +55,7 @@ extension FontsArrayController {
         }
     }
 	
-
 	func setPredicates() {
-		print ("Setting predicates")
 		let availableFontsSet: Set<NSFont>
 		switch mainController._viewMode {
 		case .selectionByFeature:

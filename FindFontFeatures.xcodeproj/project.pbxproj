@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B2375F3C22B27DE50020A1B1 /* OTF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2375F3B22B27DE50020A1B1 /* OTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */; };
 		B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */; };
 		B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */; };
@@ -47,7 +46,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B26C201122AECDA0003480EB /* OTFKit.framework in Embed Frameworks */,
-				B2375F3C22B27DE50020A1B1 /* OTF.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;

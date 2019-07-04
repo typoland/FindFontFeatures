@@ -26,39 +26,14 @@ enum FontsFilters {
 			return { _, _ in
 				return true
 			}
-		//true if font contains selector, not just type with selector
-		
+			
+		//true if font is in fonts
 		case .inFonts(let fonts):
 			return { object, _ in
 				guard let font = object as? NSFont else {return false}
 				return fonts.contains( font )
 			}
-			/*
-			switch previewType {
-			case .allFonts, .selectionByFont:
-				return { _, _ in
-					return true
-				}
-			case .selectionByFeature:
-				
-				return { object, _ in
-					
-					var result = false
-					guard let font = object as? NSFont else {return false}
-					typeControllers.forEach { tc in
-						tc.selectorControllers.forEach { sc in
-							if font.has(type: tc.type, selector: sc.selector) && sc.search == .on {
-							//if sc.fonts.contains(font) && sc.search == .on {
-								result = true
-								return
-							}
-						}
-						if result { return }
-					}
-					return result
-				}
-			}
-		*/
+			
 		}
 	}
 }

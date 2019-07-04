@@ -59,7 +59,8 @@ public class MainController: NSObject {
         }
         return (Array(filtered)).sorted(by: {$0.type.name < $1.type.name})
     }
-    
+	
+	/*
     @objc var selectors: [SelectorController] {
 		let filtered: [SelectorController]
 		switch _viewMode {
@@ -72,25 +73,14 @@ public class MainController: NSObject {
 		}
         return filtered
     }
-
-    var _fonts: [NSFont] = [] {
+*/
+    var _fonts: Set<NSFont> = [] {
         willSet { willChangeValue(for: \MainController.fonts) }
         didSet { didChangeValue(for: \MainController.fonts) }
     }
     
     @objc var fonts: [NSFont] {
-		return _fonts
-		/*
-		let filtered:[NSFont]
-		switch viewMode {
-		case .selectionByFeature:
-			let selectorControllers = _typeControllers.flatMap({$0.selectorControllers.filter({$0.search == .on})})
-			filtered = Array(selectorControllers.reduce(into: Set<NSFont>(), {$0 = $0.union($1.fonts)}))
-		default:
-			filtered = _fonts
-		}
-        return filtered
-*/
+		return Array(_fonts)
     }
 	
 	
@@ -127,7 +117,7 @@ public class MainController: NSObject {
         for font in fonts {
             addTypeControllers(of: font)
         }
-        self._fonts = self._fonts + fonts
+        self._fonts.formUnion(fonts)
         didChangeValue(for: \MainController.fonts)
         didChangeValue(for: \MainController.typeControllers)
 		//IT IS OK print ("added \(_fonts.count) fonts and \(_typeControllers.count) typeControllers")
