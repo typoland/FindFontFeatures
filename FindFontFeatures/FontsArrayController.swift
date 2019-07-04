@@ -14,7 +14,7 @@ class FontsArrayController: NSArrayController {
 	@IBOutlet var mainController:MainController!
     @IBOutlet var familyNamesArrayController:NSArrayController!
     @IBOutlet var familyStylesController:NSArrayController!
-	var nameFilterString: String? = nil
+	@objc var nameFilterString: String? = nil
 }
 
 var familiesSelectionChanged = "familiesSelectionChanged"
@@ -35,6 +35,7 @@ extension FontsArrayController {
         familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &familiesSelectionChanged)
         familyStylesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &fontSelectionChanged)
 		mainController.addObserver(self, forKeyPath: "viewMode", options: [.old, .new], context: &viewModeWasChanged)
+		NotificationCenter.default.addObserver(self, selector: #selector(setPredicates(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -49,13 +50,17 @@ extension FontsArrayController {
             NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFonts)
 		case &viewModeWasChanged:
 			print ("observe viewMode")
-			setPredicates()
+			setPredicates(self)
             
         default: break
         }
     }
 	
-	func setPredicates() {
+	
+	@objc func setPredicates(_ sender:Any) {
+		willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+		willChangeValue(for: \FontsArrayController.fontFamilyNames)
+		print ("setting predicate")
 		let availableFontsSet: Set<NSFont>
 		switch mainController._viewMode {
 		case .selectionByFeature:
@@ -82,16 +87,17 @@ extension FontsArrayController {
 					FontsFilters.inFonts(availableFontsSet)
 						.predicateBlock)
 			])
-		
+		didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+		didChangeValue(for: \FontsArrayController.fontFamilyNames)
 	}
 	
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
-        willChangeValue(for: \FontsArrayController.fontFamilyNames)
-        willChangeValue(for: \FontsArrayController.filterPredicate)
+        //willChangeValue(for: \FontsArrayController.fontFamilyNames)
+        //willChangeValue(for: \FontsArrayController.filterPredicate)
 		nameFilterString = sender.stringValue.isEmpty ? nil : sender.stringValue
-		setPredicates()
-        didChangeValue(for: \FontsArrayController.filterPredicate)
-        didChangeValue(for: \FontsArrayController.fontFamilyNames)
+		setPredicates(self)
+        //didChangeValue(for: \FontsArrayController.filterPredicate)
+        //didChangeValue(for: \FontsArrayController.fontFamilyNames)
     }
 	
 	

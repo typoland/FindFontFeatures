@@ -855,7 +855,7 @@
                         </subviews>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-UY-F4n">
-                        <rect key="frame" x="175" y="9" width="89" height="16"/>
+                        <rect key="frame" x="175" y="13" width="89" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Installed Fonts" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AZd-xc-XfU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1042,6 +1042,13 @@
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <binding destination="9gA-o2-4jU" name="value" keyPath="nameFilterString" id="2K7-N6-thC">
+                                    <dictionary key="options">
+                                        <string key="NSNullPlaceholder">🔎</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </textFieldCell>
                         <connections>
                             <action selector="setFontNameFilter:" target="9gA-o2-4jU" id="snv-Kd-hv5"/>

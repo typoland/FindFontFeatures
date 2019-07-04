@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		window.title = ""
         mainController.add(fontNames: ["Lato", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay-Black"], size: 12)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(selectedFeaturesCHanged(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
+		
     }
     
     @objc func selectedFontsChanged(_ notification:Notification) {
@@ -32,12 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainController.didChangeValue(for: \MainController.typeControllers)
     }
 	
-	@objc func selectedFeaturesCHanged(_ notification:Notification) {
-		mainController.willChangeValue(for: \MainController.fonts)
-		print ("Widzimy to", (notification.object as? SelectorController)?.search)
-		mainController.fontsArrayController.setPredicates()
-		mainController.didChangeValue(for: \MainController.fonts)
-	}
+	
+	
     @IBAction func getInstalledFonts(_ sender: Any) {
         mainController.clearContent()
         mainController.add(fontNames: NSFontManager.shared.availableFonts, size: 12)
