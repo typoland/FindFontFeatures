@@ -48,7 +48,6 @@ class TypeController: BaseFeatureController {
 				selectorController.fontSearch = newValue == .on ? .on : .off
 			}
 			didChangeValue(for: \TypeController.fontSearch)
-			
 		}
 	}
 	
