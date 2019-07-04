@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -808,7 +809,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Search" id="Bf1-tB-lfo" customClass="CellCheckButton" customModule="FindFontFeatures" customModuleProvider="target">
-                                                            <rect key="frame" x="206.5" y="1" width="62" height="17"/>
+                                                            <rect key="frame" x="207" y="1" width="62" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvg-aN-hmo">
@@ -818,7 +819,7 @@
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                         <connections>
-                                                                            <binding destination="Bf1-tB-lfo" name="value" keyPath="objectValue.search" id="nsw-hp-so2"/>
+                                                                            <binding destination="Bf1-tB-lfo" name="value" keyPath="objectValue.fontSearch" id="1AN-en-3wE"/>
                                                                         </connections>
                                                                     </buttonCell>
                                                                 </button>

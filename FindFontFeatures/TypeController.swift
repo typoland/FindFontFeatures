@@ -25,12 +25,12 @@ class TypeController: BaseFeatureController {
         return type.name
     }
 
-	@objc override var search: NSControl.StateValue {
+	@objc override var fontSearch: NSControl.StateValue {
 
 		get {
 			let state: NSControl.StateValue
 			
-			let selectedNr = selectorControllers.filter({$0.search == .on}).count
+			let selectedNr = selectorControllers.filter({$0.fontSearch == .on}).count
 			let count = selectorControllers.count
 			
 			if selectedNr == 0 {
@@ -43,11 +43,11 @@ class TypeController: BaseFeatureController {
 			return state
 		}
 		set {
-			willChangeValue(for: \TypeController.search)
+			willChangeValue(for: \TypeController.fontSearch)
 			for selectorController in selectorControllers {
-				selectorController.search = newValue == .on ? .on : .off
+				selectorController.fontSearch = newValue == .on ? .on : .off
 			}
-			didChangeValue(for: \TypeController.search)
+			didChangeValue(for: \TypeController.fontSearch)
 			
 		}
 	}

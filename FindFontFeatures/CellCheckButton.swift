@@ -17,7 +17,7 @@ class CellCheckButton: NSTableCellView {
 //	override func didChangeValue(forKey key: String) {
 //		if key == "objectValue" {
 //			if let typeController = objectValue as? TypeController {
-//				typeController.addObserver(self, forKeyPath: "search", options: [.old, .new], context: nil)
+//				typeController.addObserver(self, forKeyPath: "fontSearch", options: [.old, .new], context: nil)
 //			}
 //		}
 //	}

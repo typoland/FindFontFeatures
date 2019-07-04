@@ -67,7 +67,7 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 					
 				case is TypeController:
 					cell.checkButton.allowsMixedState =
-						(item as! TypeController).search == .mixed
+						(item as! TypeController).fontSearch == .mixed
 					return mainController._viewMode == .selectionByFeature ? cell : nil
 					
 				default:

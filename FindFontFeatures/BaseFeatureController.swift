@@ -19,12 +19,12 @@ class BaseFeatureController: NSObject {
 		}
 	}
 	
-	@objc var search: NSControl.StateValue = .off {
+	@objc var fontSearch: NSControl.StateValue = .off {
 		willSet {
-			self.willChangeValue(for: \BaseFeatureController.search)
+			self.willChangeValue(for: \BaseFeatureController.fontSearch)
 		}
 		didSet {
-			self.didChangeValue(for: \BaseFeatureController.search)
+			self.didChangeValue(for: \BaseFeatureController.fontSearch)
 		}
 	}    
 }

@@ -23,15 +23,15 @@ class SelectorController: BaseFeatureController {
         return true
     }
 	
-	@objc override var search: NSControl.StateValue {
+	@objc override var fontSearch: NSControl.StateValue {
 		willSet {
-			willChangeValue(for: \SelectorController.search)
-			parent.willChangeValue(for: \TypeController.search)
+			willChangeValue(for: \SelectorController.fontSearch)
+			parent.willChangeValue(for: \TypeController.fontSearch)
 		}
 		didSet {
-			didChangeValue(for: \SelectorController.search)
-			parent.didChangeValue(for: \TypeController.search)
-			print ("setting \(search)")
+			didChangeValue(for: \SelectorController.fontSearch)
+			parent.didChangeValue(for: \TypeController.fontSearch)
+			print ("setting \(fontSearch)")
 			NotificationCenter.default.post(name: NSNotification.Name.featuresSearchChanged, object: self)
 		}
 	}

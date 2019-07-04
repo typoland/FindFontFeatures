@@ -66,7 +66,7 @@ extension FontsArrayController {
 		case .selectionByFeature:
 			availableFontsSet = mainController._typeControllers.reduce(into:Set<NSFont>(), {set, tc in
 				tc.selectorControllers.forEach { sc in
-					if sc.search == .on {
+					if sc.fontSearch == .on {
 						set.formUnion(sc.fonts)
 					}
 				}
