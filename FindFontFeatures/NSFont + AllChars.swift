@@ -10,6 +10,7 @@ import Foundation
 import AppKit
 extension NSFont {
 	@objc var allChars: String {
-		return allCharacters
+		get {return allCharacters}
+		set {}
 	}
 }
