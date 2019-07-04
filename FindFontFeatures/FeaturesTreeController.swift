@@ -11,11 +11,12 @@ import AppKit
 
 
 
-class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutlineViewDelegate {
 	
 	@IBOutlet var mainController:MainController!
 	
-	func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+	func outlineView(_ outlineView: NSOutlineView,
+					 heightOfRowByItem item: Any) -> CGFloat {
 		if (item as? NSTreeNode)?.representedObject is SelectorController {
 			return 15
 		}
@@ -41,7 +42,6 @@ class FeaturesTreeController:NSTreeController, NSOutlineViewDataSource, NSOutlin
 					let identifier = selectorController.parent.type.exclusive != 0 ?
 						NSUserInterfaceItemIdentifier(rawValue: "NonExclusive") :
 						NSUserInterfaceItemIdentifier(rawValue: "Exclusive")
-					
 					return  outlineView.makeView(
 						withIdentifier: identifier,
 						owner: self) as? NSTableCellView//LDTableCellButton
