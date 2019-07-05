@@ -9,15 +9,15 @@
 import Foundation
 import AppKit
 
-class FontController {
+class FontController: NSObject {
 	var _font: NSFont
-	var axisControllers: [AxisController] = []
+	
 	
 	init(_ font:NSFont) {
 		self._font = font
-		self.axisControllers = font.axisControllers
 	}
 }
+
 extension FontController {
 	func size(_ size: Double) -> NSFont {
 		return NSFont(descriptor: _font.fontDescriptor, size: CGFloat(size)) ?? NSFont.labelFont(ofSize: CGFloat(size))
@@ -25,5 +25,13 @@ extension FontController {
 	
 	@objc var font: NSFont {
 		return _font
+	}
+	
+	@objc var fontName:String {
+		return _font.fontName
+	}
+	
+	@objc var axisControllers: [AxisController] {
+		return font.axisControllers
 	}
 }

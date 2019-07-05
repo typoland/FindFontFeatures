@@ -85,7 +85,7 @@ extension FontsArrayController {
 			})
 			
 		default:
-			availableFontsSet = Set(mainController._fonts)
+			availableFontsSet = Set((mainController._fontControllers).map{$0.font})
 		}
 		
 		filterPredicate = NSCompoundPredicate(

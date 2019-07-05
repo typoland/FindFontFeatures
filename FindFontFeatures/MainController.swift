@@ -28,12 +28,12 @@ public class MainController: NSObject {
 	
 	var _viewMode: ViewMode = .selectionByFont {
 		willSet {
-			willChangeValue(for: \MainController.fonts)
+			willChangeValue(for: \MainController.fontControllers)
 			willChangeValue(for: \MainController.typeControllers)
 			willChangeValue(for: \MainController.viewMode)
 		}
 		didSet {
-			didChangeValue(for: \MainController.fonts)
+			didChangeValue(for: \MainController.fontControllers)
 			didChangeValue(for: \MainController.typeControllers)
 			didChangeValue(for: \MainController.viewMode)
 		}
@@ -45,9 +45,9 @@ public class MainController: NSObject {
 	}
 	
 	
-	var _fonts: Set<NSFont> = [] {
-		willSet { willChangeValue(for: \MainController.fonts) }
-		didSet { didChangeValue(for: \MainController.fonts) }
+	var _fontControllers: Set<FontController> = [] {
+		willSet { willChangeValue(for: \MainController.fontControllers) }
+		didSet { didChangeValue(for: \MainController.fontControllers) }
 	}
 }
 	
@@ -80,8 +80,8 @@ extension MainController {
 
 extension MainController {
     
-    @objc var fonts: [NSFont] {
-		return Array(_fonts)
+    @objc var fontControllers: [FontController] {
+		return Array(_fontControllers)
     }
 	
 }
@@ -101,7 +101,7 @@ extension MainController {
 extension MainController {
     func clearContent() {
         _typeControllers = []
-        _fonts = []
+        _fontControllers = []
     }
     //convert font names to fonts
     func add (fontNames: [String], size:CGFloat) {
@@ -117,13 +117,13 @@ extension MainController {
     //add fonts add their type controllers
     func add (fonts: [NSFont]) {
         willChangeValue(for: \MainController.typeControllers)
-        willChangeValue(for: \MainController.fonts)
+        willChangeValue(for: \MainController.fontControllers)
 		// for each font find type controllers
         for font in fonts {
             addTypeControllers(of: font)
         }
-        self._fonts.formUnion(fonts)
-        didChangeValue(for: \MainController.fonts)
+		self._fontControllers.formUnion(fonts.map{FontController($0)})
+        didChangeValue(for: \MainController.fontControllers)
         didChangeValue(for: \MainController.typeControllers)
     }
 

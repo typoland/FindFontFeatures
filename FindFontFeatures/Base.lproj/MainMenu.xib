@@ -1232,9 +1232,9 @@
                 <outlet property="viewModePopUp" destination="3Wv-hM-sil" id="2oT-cH-Bee"/>
             </connections>
         </customObject>
-        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
+        <arrayController objectClassName="FontController" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
-                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fonts" id="e7a-HI-frr">
+                <binding destination="1bv-CP-i3c" name="contentArray" keyPath="fontControllers" id="jFK-rV-59h">
                     <dictionary key="options">
                         <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
                         <bool key="NSHandlesContentAsCompoundValue" value="YES"/>
