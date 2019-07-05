@@ -10,9 +10,11 @@ import Foundation
 import AppKit
 import OTFKit
 var selectedSearchFeaturesChanged = "selectedSearchFeaturesChanged"
+var selectedFeatureSelectorChanged = "selectedSearchFeaturesChanged"
 
 extension Notification.Name {
 	static var featuresSearchChanged = Notification.Name.init(selectedSearchFeaturesChanged)
+	static var featureSelectorChanged = Notification.Name.init(selectedFeatureSelectorChanged)
 }
 
 class TypeController: BaseFeatureController {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2126BC522CF21AA00A14E55 /* NSFontController.swift */; };
 		B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */; };
 		B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */; };
 		B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2126BC522CF21AA00A14E55 /* NSFontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFontController.swift; sourceTree = "<group>"; };
 		B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
 		B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCheckButton.swift; sourceTree = "<group>"; };
 		B24A7A2622AE5BD100EBA62C /* FindFontFeatures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFontFeatures.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
 				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
 				B28473F322CE2C1100A6E2F3 /* AxisController.swift */,
+				B2126BC522CF21AA00A14E55 /* NSFontController.swift */,
 			);
 			name = FFFeaturesController;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				B28473EE22CD450000A6E2F3 /* FontsFilters.swift in Sources */,
 				B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */,
 				B28473F222CE270800A6E2F3 /* NSFont + Axis.swift in Sources */,
+				B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
 				B28473F622CE352800A6E2F3 /* NSFont + AllChars.swift in Sources */,

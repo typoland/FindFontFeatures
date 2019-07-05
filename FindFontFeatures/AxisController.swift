@@ -13,7 +13,9 @@ import OTFKit
 class AxisController:NSObject {
 	
 	var axis:OTFAxis
+	
 	@objc var currentValue:Double
+	
 	init (_ axis:OTFAxis) {
 		self.axis = axis
 		self.currentValue = axis.defaultValue

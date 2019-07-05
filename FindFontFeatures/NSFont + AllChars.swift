@@ -8,9 +8,16 @@
 
 import Foundation
 import AppKit
+
+var defaultString: String? = nil
 extension NSFont {
 	@objc var allChars: String {
-		get {return allCharacters}
-		set {}
+		get {return defaultString ?? allCharacters}
+		set {
+			willChangeValue(for: \NSFont.allChars)
+			defaultString = newValue == "" ? nil : newValue
+			didChangeValue(for: \NSFont.allChars)
+		}
+		
 	}
 }

@@ -14,11 +14,11 @@ extension NSFont {
 	
 	
 	var axesDict:[[OTFAxisProtocolKeys:Any]] {
-		return axes.map{$0.axis.dict}
+		return axisControllers.map{$0.axis.dict}
 	}
 	
 	
-	@objc var axes: [AxisController] {
+	@objc var axisControllers: [AxisController] {
 		
 		var result:[AxisController] = []
 		
