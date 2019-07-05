@@ -52,7 +52,7 @@ extension FontsArrayController {
             willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
             didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
         case &fontSelectionChanged:
-            let selectedFonts = familyStylesController.selectedObjects as! [NSFont]
+            let selectedFonts = familyStylesController.selectedObjects as! [FontController]
 			willChangeValue(for: \FontsArrayController.currentFont)
 			if selectedFonts.count > 0 {
 				currentFont = NSFont(descriptor: selectedFonts[0].fontDescriptor, size: CGFloat(currentSize)) ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
@@ -72,11 +72,11 @@ extension FontsArrayController {
 	@objc func setPredicates(_ sender:Any) {
 		willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
 		willChangeValue(for: \FontsArrayController.fontFamilyNames)
-		let availableFontsSet: Set<NSFont>
+		let availableFontsSet: Set<FontController>
 		
 		switch mainController._viewMode {
 		case .selectionByFeature:
-			availableFontsSet = mainController._typeControllers.reduce(into:Set<NSFont>(), {set, tc in
+			availableFontsSet = mainController._typeControllers.reduce(into:Set<FontController>(), {set, tc in
 				tc.selectorControllers.forEach { sc in
 					if sc.fontSearch == .on {
 						set.formUnion(sc.fonts)
@@ -85,7 +85,7 @@ extension FontsArrayController {
 			})
 			
 		default:
-			availableFontsSet = Set((mainController._fontControllers).map{$0.font})
+			availableFontsSet = Set(mainController._fontControllers)
 		}
 		
 		filterPredicate = NSCompoundPredicate(
@@ -99,6 +99,7 @@ extension FontsArrayController {
 					FontsFilters.inFonts(availableFontsSet)
 						.predicateBlock)
 			])
+		
 		didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
 		didChangeValue(for: \FontsArrayController.fontFamilyNames)
 	}
@@ -173,19 +174,16 @@ extension FontsArrayController {
 	
 	//Takes all families from fonts, after applying filters predicate to fonts
     @objc var fontFamilyNames: [String] {
-        return Array((arrangedObjects as! [NSFont]).reduce(into: OrderedSet<String>(), { set, font in
-            if let fontFamily = font.familyName {
-                set.append(fontFamily)
-            } else {
-                print ("Unknown family name of \(font)")
-            }
+        return Array((arrangedObjects as! [FontController]).reduce(into: OrderedSet<String>(), { set, fontController in
+                set.append(fontController.familyName)
+
         }))
     }
     
-    @objc var selectedFalmiliesFonts: [NSFont] {
-        var result :[NSFont] = []
+    @objc var selectedFalmiliesFonts: [FontController] {
+        var result :[FontController] = []
         for familyName in familyNamesArrayController.selectedObjects as! [String] {
-            result += (arrangedObjects as! [NSFont]).filter({$0.familyName == familyName})
+            result += (arrangedObjects as! [FontController]).filter({$0.familyName == familyName})
         }
         return result
     }

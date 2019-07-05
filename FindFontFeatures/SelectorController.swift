@@ -14,7 +14,7 @@ class SelectorController: BaseFeatureController {
     
     let selector: OTFSelector
     var parent: TypeController
-    var fonts: [NSFont] = []
+    var fonts: [FontController] = []
 	
 	init (selector:OTFSelector, parent:TypeController) {
 		self.selector = selector

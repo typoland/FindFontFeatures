@@ -119,28 +119,30 @@ extension MainController {
         willChangeValue(for: \MainController.typeControllers)
         willChangeValue(for: \MainController.fontControllers)
 		// for each font find type controllers
-        for font in fonts {
-            addTypeControllers(of: font)
+		let newFontControllers = fonts.map{FontController($0)}
+		self._fontControllers.formUnion(newFontControllers)
+        for fontController in newFontControllers {
+            addTypeControllers(of: fontController)
         }
-		self._fontControllers.formUnion(fonts.map{FontController($0)})
+		
         didChangeValue(for: \MainController.fontControllers)
         didChangeValue(for: \MainController.typeControllers)
     }
 
-    func addTypeControllers (of font: NSFont) {
-		let types:[OTFType<OTFSelector>] = font.featuresDescriptions()
+    func addTypeControllers (of fontController: FontController) {
+		let types = fontController.featuresDescriptions
         for type in types {
 			//get new or already defined controller
-            let typeController = controllerFor(type: type, from: font)
+            let typeController = controllerFor(type: type, from: fontController)
 			
 			// looks as an error, but it's OK, lost logic
             for selectorController in typeController.selectorControllers {
-                selectorController.fonts.append(font)
+                selectorController.fonts.append(fontController)
             }
         }
     }
     
-    func controllerFor(type: OTFType<OTFSelector>, from font: NSFont) -> TypeController {
+    func controllerFor(type: OTFType<OTFSelector>, from font: FontController) -> TypeController {
 		//check if type controller already exist
 		let typeController:TypeController
 		

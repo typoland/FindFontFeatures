@@ -166,9 +166,9 @@
 				B28473ED22CD450000A6E2F3 /* FontsFilters.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
-				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
-				B28473F322CE2C1100A6E2F3 /* AxisController.swift */,
 				B2126BC522CF21AA00A14E55 /* NSFontController.swift */,
+				B28473F322CE2C1100A6E2F3 /* AxisController.swift */,
+				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
 			);
 			name = FFFeaturesController;
 			sourceTree = "<group>";
