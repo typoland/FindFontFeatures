@@ -14,7 +14,10 @@ class AxisController:NSObject {
 	
 	var axis:OTFAxis
 	
-	@objc var currentValue:Double
+	@objc var currentValue: Double {
+		willSet { willChangeValue(for: \AxisController.currentValue)}
+		didSet { didChangeValue(for: \AxisController.currentValue)}
+	}
 	
 	init (_ axis:OTFAxis) {
 		self.axis = axis
@@ -38,5 +41,11 @@ extension AxisController {
 	
 	@objc var defaultValue: Double {
 		return axis.defaultValue
+	}
+}
+
+extension AxisController {
+	override var description: String {
+		return "\(axisName): \(currentValue)"
 	}
 }

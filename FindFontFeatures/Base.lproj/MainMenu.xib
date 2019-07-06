@@ -1107,15 +1107,19 @@
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="oIM-Bh-tY9"/>
                                                                 <connections>
-                                                                    <action selector="changeAxis:" target="9gA-o2-4jU" id="NJ6-xN-0Lb"/>
+                                                                    <action selector="changeAxis:" target="9gA-o2-4jU" id="3p5-no-wWD"/>
                                                                     <binding destination="G2p-nL-9dQ" name="hidden" keyPath="canRemove" id="Wmn-Hm-DRf">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                         </dictionary>
                                                                     </binding>
-                                                                    <binding destination="G2p-nL-9dQ" name="value" keyPath="selection.currentValue" previousBinding="laY-3C-x5N" id="ZLO-Dw-4e6"/>
                                                                     <binding destination="G2p-nL-9dQ" name="maxValue" keyPath="selection.maxValue" id="UVy-Vo-h6A"/>
                                                                     <binding destination="G2p-nL-9dQ" name="minValue" keyPath="selection.minValue" previousBinding="UVy-Vo-h6A" id="laY-3C-x5N"/>
+                                                                    <binding destination="G2p-nL-9dQ" name="value" keyPath="selection.currentValue" previousBinding="laY-3C-x5N" id="iw6-Ek-k6R">
+                                                                        <dictionary key="options">
+                                                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                                                        </dictionary>
+                                                                    </binding>
                                                                 </connections>
                                                             </slider>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpZ-to-0WZ">
@@ -1184,7 +1188,7 @@
                                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eU0-mr-8f1">
                                                             <rect key="frame" x="30" y="1" width="601" height="127"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <textFieldCell key="cell" selectable="YES" editable="YES" focusRingType="none" title="Multiline Label" id="DiK-3e-n8u">
+                                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" title="Multiline Label" id="DiK-3e-n8u">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1247,7 +1251,7 @@
                 <outlet property="mainController" destination="1bv-CP-i3c" id="taL-vF-Btf"/>
             </connections>
         </arrayController>
-        <arrayController objectClassName="NSFont" automaticallyPreparesContent="YES" id="a1N-6i-hHk">
+        <arrayController objectClassName="FontController" automaticallyPreparesContent="YES" id="a1N-6i-hHk">
             <connections>
                 <binding destination="9gA-o2-4jU" name="contentArray" keyPath="selectedFalmiliesFonts" id="jGU-bl-Q06"/>
             </connections>
@@ -1262,9 +1266,15 @@
                 </binding>
             </connections>
         </arrayController>
-        <arrayController objectClassName="AxisController" automaticallyPreparesContent="YES" id="G2p-nL-9dQ" userLabel="Axes Controller">
+        <arrayController objectClassName="AxisController" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="G2p-nL-9dQ" userLabel="Axes Controller">
             <connections>
-                <binding destination="a1N-6i-hHk" name="contentArray" keyPath="selection.axisControllers" id="Okf-WK-lf8"/>
+                <binding destination="a1N-6i-hHk" name="contentArray" keyPath="selection.axisControllers" id="lxR-hc-b74">
+                    <dictionary key="options">
+                        <bool key="NSHandlesContentAsCompoundValue" value="YES"/>
+                        <bool key="NSSelectsAllWhenSettingContent" value="YES"/>
+                        <bool key="NSValidatesImmediately" value="YES"/>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="F8v-0Y-orI"/>

@@ -17,16 +17,27 @@ class FontsArrayController: NSArrayController {
 	@IBOutlet var axesController: NSArrayController!
 	
 	@objc var nameFilterString: String? = nil
-	@objc var currentFont: NSFont = NSFont.labelFont(ofSize: 48)
-		//didSet { originalFontName = currentFont.fontName}
+	@objc var currentFontController: FontController? = nil
 	
-	@objc var currentSize: Double = 48
+	@objc var currentSize: Double = 48 {
+		willSet {
+			willChangeValue(for: \FontsArrayController.currentFont)
+		}
+		didSet {
+			currentFontController?.fontSize = currentSize
+			didChangeValue(for: \FontsArrayController.currentFont)
+		}
+	}
+	@objc var currentFont:NSFont {
+		return currentFontController?.font ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
+	}
 	//var originalFontName: String = ""
 }
 
 var familiesSelectionChanged = "familiesSelectionChanged"
 var fontSelectionChanged = "fontSelectionChanged"
 var viewModeWasChanged = "viewModeWasChanged"
+var axisWasChanged = "axisWasChanged"
 
 //var selectedFonts:[NSFont] = []
 
@@ -42,6 +53,7 @@ extension FontsArrayController {
         familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &familiesSelectionChanged)
         familyStylesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &fontSelectionChanged)
 		mainController.addObserver(self, forKeyPath: "viewMode", options: [.old, .new], context: &viewModeWasChanged)
+		axesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &axisWasChanged)
 		NotificationCenter.default.addObserver(self, selector: #selector(setPredicates(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(changeOTFeaturesInCurrentFont(_:)), name: Notification.Name.featureSelectorChanged, object: nil)
     }
@@ -55,12 +67,19 @@ extension FontsArrayController {
             let selectedFonts = familyStylesController.selectedObjects as! [FontController]
 			willChangeValue(for: \FontsArrayController.currentFont)
 			if selectedFonts.count > 0 {
-				currentFont = NSFont(descriptor: selectedFonts[0].fontDescriptor, size: CGFloat(currentSize)) ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
+				currentFontController = selectedFonts[0]
+				currentFontController?.fontSize = currentSize
 			} else {
-				currentFont = NSFont.labelFont(ofSize: CGFloat(currentSize))
+				currentFontController = nil
 			}
 			didChangeValue(for: \FontsArrayController.currentFont)
             NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFonts)
+		case &axisWasChanged:
+			if let axisControllers = axesController.arrangedObjects as? [AxisController] {
+				print ("Controler:", axisControllers)
+				print ("Object:   ", currentFontController?.axisControllers)
+				
+			}
 		case &viewModeWasChanged:
 			setPredicates(self)
             
@@ -83,7 +102,6 @@ extension FontsArrayController {
 					}
 				}
 			})
-			
 		default:
 			availableFontsSet = Set(mainController._fontControllers)
 		}
@@ -110,14 +128,7 @@ extension FontsArrayController {
     }
 	
 	@IBAction func setCurrentFontSize(_ sender:NSControl) {
-		willChangeValue(for: \FontsArrayController.currentSize)
-		willChangeValue(for: \FontsArrayController.currentFont)
 		currentSize = sender.doubleValue
-		let fontDescriptor = currentFont.fontDescriptor
-		print ("Font Descriptor", fontDescriptor)
-		currentFont = NSFont(descriptor: fontDescriptor, size: CGFloat(currentSize)) ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
-		didChangeValue(for: \FontsArrayController.currentFont)
-		didChangeValue(for: \FontsArrayController.currentSize)
 	}
 	
 	@objc func changeOTFeaturesInCurrentFont(_ notification:Notification) {
@@ -125,51 +136,24 @@ extension FontsArrayController {
 		
 		if let selectorController = (notification.object as? SelectorController){
 			willChangeValue(for: \FontsArrayController.currentFont)
-			let type = selectorController.parent.type
-			let selector = selectorController.selector
-			
-			let fontDescriptor = currentFont.fontDescriptor.addingAttributes([
-				NSFontDescriptor.AttributeName.featureSettings: [
-					[
-						NSFontDescriptor.FeatureKey.typeIdentifier:
-							type.identifier,
-						NSFontDescriptor.FeatureKey.selectorIdentifier:
-							selector.identifier
-					]
-				]
-				])
-			
-			currentFont = NSFont(descriptor: fontDescriptor, size: CGFloat(currentSize)) ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
-
+			currentFontController?.setSelector(selectorController)
 			didChangeValue(for: \FontsArrayController.currentFont)
 		}
 	}
 	
 
 	@IBAction func changeAxis(_ sender:NSSlider) {
-		
-		if let axisControllers = axesController.arrangedObjects as? [AxisController] {
-			let oldFont = CTFontCopyGraphicsFont(currentFont, nil)
-			var variations : [CFString:CFNumber] = [ : ] //Error in documentation
-			for axisController in axisControllers {
-				variations[axisController.axisName as CFString] = axisController.currentValue as CFNumber
-			}
-			print ("variations:" , variations)
-			
-			if let newFont = oldFont.copy(withVariations: variations as CFDictionary) {
-				
-				willChangeValue(for: \FontsArrayController.currentFont)
-				print ("newFont", newFont)
-				
-				currentFont = CTFontCreateWithGraphicsFont(
-					newFont,
-					CGFloat(currentSize),
-					nil,
-					currentFont.fontDescriptor)
-				print ("patatj", currentFont.fontDescriptor)
-				didChangeValue(for: \FontsArrayController.currentFont)
-			}
+		if let axesControllers = axesController.selectedObjects as? [AxisController], axesControllers.count == 1 {
+			willChangeValue(for: \FontsArrayController.currentFont)
+			let axisCOntroller = axesControllers[0]
+			print (axisCOntroller.currentValue)
+			//currentFontController?.axisControllers = axesController.arrangedObjects as! [AxisController]
+			print ("Font", currentFontController?.axisControllers)
+			print ("Menu", axesControllers)
+			currentFontController?.setVariations(axisController: axisCOntroller)
+			didChangeValue(for: \FontsArrayController.currentFont)
 		}
+		
 	}
 	
 	//Takes all families from fonts, after applying filters predicate to fonts

@@ -14,13 +14,13 @@ extension NSFont {
 	
 	
 	var axesDict:[[OTFAxisProtocolKeys:Any]] {
-		return axisControllers.map{$0.axis.dict}
+		return axes.map{$0.dict}
 	}
 	
 	
-	@objc var axisControllers: [AxisController] {
+	var axes: [OTFAxis] {
 		
-		var result:[AxisController] = []
+		var result:[OTFAxis] = []
 		
 		let variation = CTFontCopyVariation(self as CTFont) as? [Int:Double] ?? [:]
 		//print ("VARIATION", variation)
@@ -33,7 +33,7 @@ extension NSFont {
 								   default: variation[identifier] ?? axisDescription[OTFAxisProtocolKeys.defaultValue.rawValue] as? Double ?? 0,
 								   max: axisDescription[OTFAxisProtocolKeys.maxValue.rawValue] as? Double ?? 0)
 				//print(axis)
-				result.append(AxisController(axis))
+				result.append(axis)
 			}
 		}
 		return result
