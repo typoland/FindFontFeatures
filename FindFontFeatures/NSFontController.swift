@@ -13,15 +13,15 @@ import OTFKit
 class FontController: NSObject {
 	var _font: NSFont
 	var _size: CGFloat = 12
-	var featureSettings: [NSFontDescriptor.FeatureKey:Int] = [:]
+	//var featureSettings: [NSFontDescriptor.FeatureKey:Int] = [:]
 	
 	@objc var axisControllers: [AxisController]
-		
-	
+	//var typeControllers: [TypeController]
 	
 	init(_ font:NSFont) {
 		self._font = font
 		self.axisControllers = font.axes.map { AxisController($0) }
+		//self.typeControllers = font.featuresDescriptions().map { TypeController(type: $0) }
 	}
 }
 
@@ -58,6 +58,10 @@ extension FontController {
 		set {_font.allChars = newValue}
 	}
 	
+	var featureSettings : [NSFontDescriptor.FeatureKey:Int] {
+		return [:]
+	}
+	
 	@objc var fontDescriptor: NSFontDescriptor {
 		return _font.fontDescriptor.addingAttributes([
 			NSFontDescriptor.AttributeName.featureSettings:
@@ -87,37 +91,8 @@ extension FontController {
 	func setSelector(_ selectorController: SelectorController) {
 		let type = selectorController.parent.type
 		let selector = selectorController.selector
-		featureSettings = [
-			NSFontDescriptor.FeatureKey.typeIdentifier:
-				type.identifier,
-			NSFontDescriptor.FeatureKey.selectorIdentifier:
-				selector.identifier
-		]
+		//print (typeControllers)
 		
-	}
-	
-	func setVariations(axisController:AxisController) {
 		
-		/*let oldFont = CTFontCopyGraphicsFont(_font, nil)
-		var variations : [CFString:CFNumber] = [ : ] //Error in documentation
-		for axisController in axisControllers {
-			variations[axisController.axisName as CFString] = axisController.currentValue as CFNumber
-		}
-		print ("variations:" , variations)
-		
-		if let newFont = oldFont.copy(withVariations: variations as CFDictionary) {
-			
-			//willChangeValue(for: \FontsArrayController.currentFont)
-			print ("newFont", newFont)
-			
-			currentFont = CTFontCreateWithGraphicsFont(
-				newFont,
-				CGFloat(currentSize),
-				nil,
-				fontDescriptor)
-			print ("patatj", fontDescriptor)
-			//didChangeValue(for: \FontsArrayController.currentFont)
-		}
-*/
 	}
 }

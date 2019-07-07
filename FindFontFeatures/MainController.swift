@@ -121,9 +121,10 @@ extension MainController {
 		// for each font find type controllers
 		let newFontControllers = fonts.map{FontController($0)}
 		self._fontControllers.formUnion(newFontControllers)
-        for fontController in newFontControllers {
-            addTypeControllers(of: fontController)
-        }
+		
+//        for fontController in newFontControllers {
+//            addTypeControllers(of: fontController)
+//        }
 		
         didChangeValue(for: \MainController.fontControllers)
         didChangeValue(for: \MainController.typeControllers)

@@ -30,6 +30,11 @@
 		B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5005F22B77B8400BBAE79 /* TypeController.swift */; };
 		B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */; };
 		B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */; };
+		B2E8B9FB22D0966900159FD5 /* NSFont + VericalMeasurment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */; };
+		B2E8B9FD22D096B200159FD5 /* String + render.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FC22D096B200159FD5 /* String + render.swift */; };
+		B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */; };
+		B2E8BA0122D0975500159FD5 /* NSBitmapImageRep Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */; };
+		B2E8BA0322D097B700159FD5 /* GraynessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8BA0222D097B700159FD5 /* GraynessController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +91,11 @@
 		B2E5005F22B77B8400BBAE79 /* TypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeController.swift; sourceTree = "<group>"; };
 		B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeatureController.swift; sourceTree = "<group>"; };
 		B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expTableHeaderWithButton.swift; sourceTree = "<group>"; };
+		B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont + VericalMeasurment.swift"; sourceTree = "<group>"; };
+		B2E8B9FC22D096B200159FD5 /* String + render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + render.swift"; sourceTree = "<group>"; };
+		B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage + Grayness.swift"; sourceTree = "<group>"; };
+		B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBitmapImageRep Extensions.swift"; sourceTree = "<group>"; };
+		B2E8BA0222D097B700159FD5 /* GraynessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraynessController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,9 +178,22 @@
 				B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */,
 				B2126BC522CF21AA00A14E55 /* NSFontController.swift */,
 				B28473F322CE2C1100A6E2F3 /* AxisController.swift */,
+				B2E8B9F922D095BD00159FD5 /* Grayness */,
 				B2E5006722B8F0E700BBAE79 /* expTableHeaderWithButton.swift */,
 			);
 			name = FFFeaturesController;
+			sourceTree = "<group>";
+		};
+		B2E8B9F922D095BD00159FD5 /* Grayness */ = {
+			isa = PBXGroup;
+			children = (
+				B2E8BA0222D097B700159FD5 /* GraynessController.swift */,
+				B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */,
+				B2E8B9FC22D096B200159FD5 /* String + render.swift */,
+				B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */,
+				B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */,
+			);
+			name = Grayness;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,16 +306,21 @@
 				B28473F222CE270800A6E2F3 /* NSFont + Axis.swift in Sources */,
 				B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
+				B2E8BA0322D097B700159FD5 /* GraynessController.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
 				B28473F622CE352800A6E2F3 /* NSFont + AllChars.swift in Sources */,
 				B26C201522AED04E003480EB /* MainController.swift in Sources */,
+				B2E8B9FB22D0966900159FD5 /* NSFont + VericalMeasurment.swift in Sources */,
 				B28473F422CE2C1100A6E2F3 /* AxisController.swift in Sources */,
 				B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */,
+				B2E8B9FD22D096B200159FD5 /* String + render.swift in Sources */,
 				B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */,
 				B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */,
 				B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */,
+				B2E8BA0122D0975500159FD5 /* NSBitmapImageRep Extensions.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
+				B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typoland.FindFontFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -474,7 +502,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typoland.FindFontFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -143,17 +143,7 @@ extension FontsArrayController {
 	
 
 	@IBAction func changeAxis(_ sender:NSSlider) {
-		if let axesControllers = axesController.selectedObjects as? [AxisController], axesControllers.count == 1 {
-			willChangeValue(for: \FontsArrayController.currentFont)
-			let axisCOntroller = axesControllers[0]
-			print (axisCOntroller.currentValue)
-			//currentFontController?.axisControllers = axesController.arrangedObjects as! [AxisController]
-			print ("Font", currentFontController?.axisControllers)
-			print ("Menu", axesControllers)
-			currentFontController?.setVariations(axisController: axisCOntroller)
-			didChangeValue(for: \FontsArrayController.currentFont)
-		}
-		
+		didChangeValue(for: \FontsArrayController.currentFont)
 	}
 	
 	//Takes all families from fonts, after applying filters predicate to fonts
