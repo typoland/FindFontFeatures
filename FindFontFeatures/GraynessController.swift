@@ -11,29 +11,15 @@ import AppKit
 
 class GraynessController: NSObject {
 	
-	enum PreviewType: String {
-		case grays = "Individual glyphs gray"
-		case gray = "Overall line gray"
-		case glyphs = "Rendered Glyphs"
-		
-		func toogle() -> PreviewType {
-			switch self {
-			case .glyphs: return .grays
-			case .grays: return .gray
-			case .gray: return .glyphs
-			}
-		}
-		
+	enum PreviewType: String, CaseIterable {
+		case glyphRectangles = "Individual glyphs gray"
+		case justGrayLine = "Overall line gray"
+		case trimmedGlyphs = "Rendered Glyphs"
 	}
 	
 	@IBOutlet var fontsArrayController: FontsArrayController!
-	//@IBOutlet weak var preview: NSImageView!
 	@IBOutlet weak var textField: NSTextField!
 	@IBOutlet weak var measurmentPopUpButton: NSPopUpButton!
-	
-	//var lineCgImage: CGImage?
-	//var glyphsCGImages: CGImage?
-	//var grayCGImage: CGImage?
 	
 	var foregroundColorGray: NSColor {
 		return NSColor(named: NSColor.Name("GraynessForeground"))!.usingColorSpace(.deviceGray)!
@@ -71,15 +57,17 @@ class GraynessController: NSObject {
 		willSet {
 			willChangeValue(for: \GraynessController.font)
 			willChangeValue(for: \GraynessController.image)
+			willChangeValue(for: \GraynessController.grayness)
 		}
 		didSet {
 			didChangeValue(for: \GraynessController.image)
 			didChangeValue(for: \GraynessController.font)
+			didChangeValue(for: \GraynessController.grayness)
 		}
 		
 	}
 	
-	var currentPreview: PreviewType = .grays {
+	var currentPreview: PreviewType = .trimmedGlyphs {
 		willSet{willChangeValue(for: \GraynessController.image)}
 		didSet{didChangeValue(for: \GraynessController.image)}
 	}
@@ -90,99 +78,75 @@ class GraynessController: NSObject {
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-		
 		font = fontsArrayController.currentFontController?.font
-		
-		
 	}
 	
-	@IBAction func tooglePreview(_ sender:Any) {
-		currentPreview = currentPreview.toogle()
-		print (currentPreview)
-		
-		
-	}
 	
 	@objc var image:NSImage? {
 		let image:CGImage?
 		switch currentPreview {
-		case .glyphs:
-			image = glyphsCGImage
-		case .gray:
-			image = grayImage
-		case .grays:
-			image = lineImage
+		case .glyphRectangles:
+			image = glyphsRectanglesCGImage
+		case .justGrayLine:
+			image = justGrayLineCGImage
+		case .trimmedGlyphs:
+			image = trimmedGlyphsCGImage
 		}
 		return image == nil ? nil : NSImage(cgImage: image!, size: NSSize.zero)
 	}
 	
 	@objc func controlTextDidChange (_ notification:Notification) {
-		guard let textField = notification.object as? NSTextField  else {return}
-		changeString(textField)
+		guard let text = (notification.object as? NSTextField)?.stringValue else {return}
+		stringToRender = text
 	}
 	
-	@IBAction func changeString(_ sender:NSTextField) {
-		stringToRender = sender.stringValue// stringValue
-	}
-	
-	
-	@IBAction func changeMeasurment(_ sender:NSPopUpButton) {
-		guard let name = sender.selectedItem?.representedObject as? String,
-			let mes = NSFont.VerticalMeasurment.init(rawValue: name)
-			else {return}
-		measurmentLine = mes
-	}
-	
-	
-	
-	
-	var attributes:[NSAttributedString.Key:Any] {
-		return font == nil ? [:] : [NSAttributedString.Key.foregroundColor: fontColor,
-									NSAttributedString.Key.font: font!]
-	}
-	
-	@objc var fontColor: NSColor {
-		return NSColor.white
-	}
 	
 	@objc var measurmentItems: [String] {
 		return NSFont.VerticalMeasurment.allCases.map({$0.rawValue})
 	}
+
+	@IBAction func changeMeasurment(_ sender:NSPopUpButton) {
+		guard let name = sender.selectedItem?.representedObject as? String,
+			let verticalUp = NSFont.VerticalMeasurment.init(rawValue: name)
+			else { return }
+		measurmentLine = verticalUp
+	}
 	
 	
+	@objc var previewTypeItems: [String] {
+		return PreviewType.allCases.map({$0.rawValue})
+	}
+	
+	@IBAction func changePreview(_ sender:NSPopUpButton) {
+		guard let name = sender.selectedItem?.representedObject as? String,
+			let type = PreviewType.init(rawValue: name)
+			else {return}
+		currentPreview = type
+	}
+	
+	var attributesForRender:[NSAttributedString.Key:Any] {
+		return font == nil ? [:] : [NSAttributedString.Key.foregroundColor: NSColor.white,
+									NSAttributedString.Key.font: font!]
+	}
 	
 	override init() {
 		super.init()
 	}
-	
-	//	func setupGrayness() {
-	//		textField.cell?.font = fontController?.font ?? NSFont.labelFont(ofSize: 12)
-	//	}
-	
+
 	@objc var grayness: Double {
-		return lineImage?.overralGrayness() ?? 0.0
+		return trimmedGlyphsCGImage?.overralGrayness() ?? 0.0
 	}
 	
-	func uiGray(_ gray:CGFloat) -> NSColor {
-		//let bval = backgroundColorGray.whiteComponent
-		//let fval = foregroundColorGray.whiteComponent
-		return foregroundColorGray.withAlphaComponent(gray)
-		//return (((1-gray) - bval) / (fval - bval))
-		//return gray
-	}
-	
-	var lineImage: CGImage? {
-		
+	var trimmedGlyphsCGImage: CGImage? {
 		return font == nil
 			? nil
 			: stringToRender.renderImage(
 				to: measurmentLine,
-				attributes:attributes)
+				attributes: attributesForRender)
 	}
-	
-	
-	var grayImage: CGImage? {
-		if let image = lineImage, let font = font {
+
+	var justGrayLineCGImage: CGImage? {
+		if let image = trimmedGlyphsCGImage, let font = font {
 			let width = CGFloat(image.width)
 			let height = font.height(of: measurmentLine)
 			let colorspace = CGColorSpaceCreateDeviceGray()// CGColorSpaceCreateDeviceRGB()
@@ -197,8 +161,10 @@ class GraynessController: NSObject {
 				let graphicsContext = NSGraphicsContext(cgContext: context, flipped: false)
 				graphicsContext.saveGraphicsState()
 				NSGraphicsContext.current = graphicsContext
-				let color =  uiGray(CGFloat(grayness))
-				context.setFillColor(gray: color.whiteComponent, alpha: color.alphaComponent)
+				//let color =  uiGray(CGFloat(grayness))
+				context.setFillColor(gray: backgroundColorGray.whiteComponent, alpha: 1.0)
+				context.fill(NSMakeRect(0, 0, width, height))
+				context.setFillColor(gray: foregroundColorGray.whiteComponent, alpha: CGFloat(grayness))
 				
 				context.fill(NSMakeRect(0, 0, width, height))
 				
@@ -210,25 +176,25 @@ class GraynessController: NSObject {
 		return nil
 	}
 	
-	var glyphsCGImage: CGImage? {
+	var glyphsRectanglesCGImage: CGImage? {
 		if let font = font {
 			var images = [(width:Int, gray:CGFloat)]()
 			for i in 0..<stringToRender.count {
-				if let pic = stringToRender.renderImage(to: measurmentLine, attributes: attributes, from: i, glyps: 1) {
+				if let pic = stringToRender.renderImage(to: measurmentLine, attributes: attributesForRender, from: i, glyps: 1) {
 					
 					images.append((width: pic.width, gray:CGFloat(pic.overralGrayness())))
 					
 				}
 			}
 			
-			let width = images.reduce(into:0, {$0+=$1.width})
-			let height = Int(font.height(of: measurmentLine))
+			let width = CGFloat(images.reduce(into:0, {$0+=$1.width}))
+			let height = font.height(of: measurmentLine)
 			let colorspace = CGColorSpaceCreateDeviceGray()// CGColorSpaceCreateDeviceRGB()
 			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
 			
 			if let context = CGContext(data: nil,
-									   width: width,
-									   height: height,
+									   width: Int(width),
+									   height: Int(height),
 									   bitsPerComponent: 8,
 									   bytesPerRow: 0,
 									   space: colorspace,
@@ -242,12 +208,14 @@ class GraynessController: NSObject {
 				let averageGray: CGFloat = images.reduce(into: 0, {$0 = $0+$1.gray}) / CGFloat(images.count)
 				
 				var x:CGFloat = 0.0
+				context.setFillColor(gray:backgroundColorGray.whiteComponent, alpha: 1)
+				context.fill(NSMakeRect(0, 0, width, height))
 				for image in images {
-					let foreground = uiGray(CGFloat(image.gray == 0 ? averageGray : image.gray))
-					context.setFillColor(gray: foreground.whiteComponent, alpha: foreground.alphaComponent)
+					
+					context.setFillColor(gray: foregroundColorGray.whiteComponent, alpha: CGFloat(image.gray))
 					context.fill(NSMakeRect(x, 0, CGFloat(image.width), font.height(of: measurmentLine)))
 					let amplified: CGFloat = minGray == maxGray ? 0 : (CGFloat(image.gray) - minGray) / (maxGray-minGray)
-					context.setFillColor(gray: uiGray(amplified).whiteComponent, alpha: uiGray(amplified).alphaComponent)
+					context.setFillColor(gray:foregroundColorGray.whiteComponent, alpha: amplified)
 					context.fill(NSMakeRect(x, 0, CGFloat(image.width), 1))
 					
 					x += CGFloat(image.width)

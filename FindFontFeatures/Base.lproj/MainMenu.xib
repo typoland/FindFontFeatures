@@ -1245,8 +1245,27 @@
                                                                 <binding destination="xPl-ZZ-D8Q" name="value" keyPath="image" id="O3K-2c-KZN"/>
                                                             </connections>
                                                         </imageView>
+                                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ujd-2X-35j">
+                                                            <rect key="frame" x="14" y="11" width="157" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="kcF-vo-Atm">
+                                                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="systemBold" size="12"/>
+                                                                <menu key="menu" id="tLk-pO-23o">
+                                                                    <items>
+                                                                        <menuItem title="Item 1" state="on" id="zuq-ig-cYQ"/>
+                                                                        <menuItem title="Item 2" id="akJ-GR-PKr"/>
+                                                                        <menuItem title="Item 3" id="o5M-5O-ayc"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="changePreview:" target="xPl-ZZ-D8Q" id="X2j-xg-sec"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="contentValues" keyPath="previewTypeItems" id="djx-d3-VUl"/>
+                                                            </connections>
+                                                        </popUpButton>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-ms-Ijs">
-                                                            <rect key="frame" x="222" y="17" width="40" height="14"/>
+                                                            <rect key="frame" x="285" y="17" width="40" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="gray:" id="iaX-M3-3Bj">
                                                                 <font key="font" metaFont="smallSystem"/>
@@ -1255,7 +1274,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6og-Ey-xGY">
-                                                            <rect key="frame" x="120" y="11" width="103" height="22"/>
+                                                            <rect key="frame" x="183" y="11" width="103" height="22"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="right" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="nac-Z6-zCN">
                                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -1273,19 +1292,8 @@
                                                                 <binding destination="xPl-ZZ-D8Q" name="contentValues" keyPath="measurmentItems" id="Yhe-WD-0Uh"/>
                                                             </connections>
                                                         </popUpButton>
-                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-Mw-0jM">
-                                                            <rect key="frame" x="13" y="13" width="106" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <buttonCell key="cell" type="recessed" title="Toogle Preview" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VzF-0H-ACF">
-                                                                <behavior key="behavior" lightByContents="YES"/>
-                                                                <font key="font" metaFont="systemBold" size="12"/>
-                                                            </buttonCell>
-                                                            <connections>
-                                                                <action selector="tooglePreview:" target="xPl-ZZ-D8Q" id="qgZ-RO-ttc"/>
-                                                            </connections>
-                                                        </button>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pi-EH-Gag">
-                                                            <rect key="frame" x="260" y="17" width="61" height="14"/>
+                                                            <rect key="frame" x="323" y="17" width="61" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="DNc-zU-fCk">
                                                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" minimumFractionDigits="1" maximumFractionDigits="4" id="4SO-Tl-2Xs"/>

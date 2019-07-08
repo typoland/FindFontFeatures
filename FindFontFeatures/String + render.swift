@@ -32,7 +32,7 @@ extension String {
 					 from first:Int = 0,
 					 glyps number: Int? = nil) -> CGImage? {
 		
-		
+		//let scaleFactor = NSScreen.main?.backingScaleFactor ?? 1
 		let storage = self.storage(attributes: attributes)
 		let manager = storage.layoutManagers[0]
 		let last = number == nil ? storage.length - 1 : first + number!
@@ -40,7 +40,7 @@ extension String {
 		let firstGlyphLocation = manager.location(forGlyphAt: first)
 		let layoutLocation = manager.location(forGlyphAt: last)
 		let font = attributes[NSAttributedString.Key.font] as! NSFont
-		
+		//font = NSFont(descriptor: font.fontDescriptor, size: font.pointSize * scaleFactor)!
 		let width = Int(layoutLocation.x - firstGlyphLocation.x)
 		let height = Int(font.height(of: measurment))
 		
