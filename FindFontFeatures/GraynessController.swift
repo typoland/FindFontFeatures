@@ -144,20 +144,25 @@ class GraynessController: NSObject {
 				to: measurmentLine,
 				attributes: attributesForRender)
 	}
-
+	
+	static func graynessContext(width:Int, height: Int) -> CGContext? {
+		let colorspace = CGColorSpaceCreateDeviceGray()// CGColorSpaceCreateDeviceRGB()
+		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+		return CGContext(data: nil,
+						 width: Int(width),
+						 height: Int(height),
+						 bitsPerComponent: 8,
+						 bytesPerRow: 0,
+						 space: colorspace,
+						 bitmapInfo: bitmapInfo.rawValue)
+	}
+	
 	var justGrayLineCGImage: CGImage? {
 		if let image = trimmedGlyphsCGImage, let font = font {
 			let width = CGFloat(image.width)
 			let height = font.height(of: measurmentLine)
-			let colorspace = CGColorSpaceCreateDeviceGray()// CGColorSpaceCreateDeviceRGB()
-			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
-			if let context = CGContext(data: nil,
-									   width: Int(width),
-									   height: Int(height),
-									   bitsPerComponent: 8,
-									   bytesPerRow: 0,
-									   space: colorspace,
-									   bitmapInfo: bitmapInfo.rawValue) {
+
+			if let context = GraynessController.graynessContext(width: Int(width), height: Int(height)) {
 				let graphicsContext = NSGraphicsContext(cgContext: context, flipped: false)
 				graphicsContext.saveGraphicsState()
 				NSGraphicsContext.current = graphicsContext
@@ -189,16 +194,9 @@ class GraynessController: NSObject {
 			
 			let width = CGFloat(images.reduce(into:0, {$0+=$1.width}))
 			let height = font.height(of: measurmentLine)
-			let colorspace = CGColorSpaceCreateDeviceGray()// CGColorSpaceCreateDeviceRGB()
-			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
-			
-			if let context = CGContext(data: nil,
-									   width: Int(width),
-									   height: Int(height),
-									   bitsPerComponent: 8,
-									   bytesPerRow: 0,
-									   space: colorspace,
-									   bitmapInfo: bitmapInfo.rawValue) {
+	
+			if let context = GraynessController.graynessContext(width: Int(width
+			), height: Int(height)) {
 				let graphicsContext = NSGraphicsContext(cgContext: context, flipped: false)
 				graphicsContext.saveGraphicsState()
 				NSGraphicsContext.current = graphicsContext
