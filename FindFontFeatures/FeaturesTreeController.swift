@@ -23,6 +23,31 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 		return 18
 	}
 	
+	@IBAction func shoutSelected (_ sender:NSButton) {
+		//print ("shout selcted \(sender.title) \(sender.objectValue)")
+		if let selectorController = ((sender.superview as? NSTableCellView)?.objectValue) as? SelectorController {
+			print (selectorController.selected)
+			NotificationCenter.default.post(name: Notification.Name.featureSelectorChanged, object: selectorController)
+			
+		}
+	}
+	
+	@IBAction func shoutSearch (_ sender: NSButton) {
+		let item = (sender.superview as? NSTableCellView)?.objectValue
+		switch item {
+		case is SelectorController:
+			
+			let selectorController = item as! SelectorController
+			print ("selector controller \(selectorController.fontSearch)")
+		case is TypeController:
+			let typeController = item as! TypeController
+			print ("Type Controller \(typeController.fontSearch)")
+		default:
+			break
+		}
+		
+
+	}
 	
 	func outlineView(_ outlineView: NSOutlineView,
 					 viewFor tableColumn: NSTableColumn?,

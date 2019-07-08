@@ -17,7 +17,10 @@ class FontsArrayController: NSArrayController {
 	@IBOutlet var axesController: NSArrayController!
 	
 	@objc var nameFilterString: String? = nil
-	@objc var currentFontController: FontController? = nil
+	@objc var currentFontController: FontController? = nil {
+		willSet { willChangeValue(for: \FontsArrayController.currentFont)}
+		didSet { didChangeValue(for: \FontsArrayController.currentFont)}
+	}
 	
 	@objc var currentSize: Double = 48 {
 		willSet {
@@ -51,35 +54,33 @@ extension FontsArrayController {
     override func awakeFromNib() {
         sortDescriptors = [NSSortDescriptor(key: "fontName", ascending: true)]
         familyNamesArrayController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &familiesSelectionChanged)
+		
         familyStylesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &fontSelectionChanged)
+		
 		mainController.addObserver(self, forKeyPath: "viewMode", options: [.old, .new], context: &viewModeWasChanged)
-		axesController.addObserver(self, forKeyPath: "selection", options: [.old, .new], context: &axisWasChanged)
+
 		NotificationCenter.default.addObserver(self, selector: #selector(setPredicates(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
+		
 		NotificationCenter.default.addObserver(self, selector: #selector(changeOTFeaturesInCurrentFont(_:)), name: Notification.Name.featureSelectorChanged, object: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch context {
+			
         case &familiesSelectionChanged:
             willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
             didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+			
         case &fontSelectionChanged:
-            let selectedFonts = familyStylesController.selectedObjects as! [FontController]
-			willChangeValue(for: \FontsArrayController.currentFont)
-			if selectedFonts.count > 0 {
-				currentFontController = selectedFonts[0]
+            let selectedFontsControllers = familyStylesController.selectedObjects as! [FontController]
+			if selectedFontsControllers.count > 0 {
+				currentFontController = selectedFontsControllers[0]
 				currentFontController?.fontSize = currentSize
 			} else {
 				currentFontController = nil
 			}
-			didChangeValue(for: \FontsArrayController.currentFont)
-            NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFonts)
-		case &axisWasChanged:
-			if let axisControllers = axesController.arrangedObjects as? [AxisController] {
-				print ("Controler:", axisControllers)
-				print ("Object:   ", currentFontController?.axisControllers)
-				
-			}
+            NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFontsControllers)
+
 		case &viewModeWasChanged:
 			setPredicates(self)
             
@@ -94,14 +95,16 @@ extension FontsArrayController {
 		let availableFontsSet: Set<FontController>
 		
 		switch mainController._viewMode {
+			
 		case .selectionByFeature:
-			availableFontsSet = mainController._typeControllers.reduce(into:Set<FontController>(), {set, tc in
-				tc.selectorControllers.forEach { sc in
-					if sc.fontSearch == .on {
-						set.formUnion(sc.fonts)
+			availableFontsSet = mainController._typeControllers.reduce(into:Set<FontController>(), {set, typeController in
+				typeController.selectorControllers.forEach { selectorController in
+					if selectorController.fontSearch == .on {
+						set.formUnion(selectorController.fonts)
 					}
 				}
 			})
+			
 		default:
 			availableFontsSet = Set(mainController._fontControllers)
 		}
@@ -132,6 +135,7 @@ extension FontsArrayController {
 	}
 	
 	@objc func changeOTFeaturesInCurrentFont(_ notification:Notification) {
+		
 		setPredicates(self)
 		
 		if let selectorController = (notification.object as? SelectorController){
@@ -143,6 +147,7 @@ extension FontsArrayController {
 	
 
 	@IBAction func changeAxis(_ sender:NSSlider) {
+		willChangeValue(for: \FontsArrayController.currentFont)
 		didChangeValue(for: \FontsArrayController.currentFont)
 	}
 	

@@ -31,25 +31,22 @@ class SelectorController: BaseFeatureController {
 		didSet {
 			didChangeValue(for: \SelectorController.fontSearch)
 			parent.didChangeValue(for: \TypeController.fontSearch)
-			//print ("setting \(fontSearch)")
-			
 		}
 	}
 	
 	@objc override var selected: Bool {
 		willSet {
-			//print ("selected \(self) will set to \(newValue)")
-			if newValue, parent.type.exclusive == 1  {
-				for selectorController in parent.selectorControllers {
-					selectorController.selected = false
-				}
+			willChangeValue(for: \SelectorController.selected)
+			if newValue {
+				parent.switchOffExlusiveSelectors()
 			}
 		}
 		didSet {
-			//why it stops???
-			NotificationCenter.default.post(name: Notification.Name.featureSelectorChanged, object: self)
+			didChangeValue(for: \SelectorController.selected)
 		}
 	}
+	
+
 }
 
 extension SelectorController {

@@ -67,7 +67,7 @@ class GraynessController: NSObject {
 		
 	}
 	
-	var currentPreview: PreviewType = .trimmedGlyphs {
+	var currentPreview: PreviewType = .glyphRectangles {
 		willSet{willChangeValue(for: \GraynessController.image)}
 		didSet{didChangeValue(for: \GraynessController.image)}
 	}

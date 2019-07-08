@@ -122,9 +122,9 @@ extension MainController {
 		let newFontControllers = fonts.map{FontController($0)}
 		self._fontControllers.formUnion(newFontControllers)
 		
-//        for fontController in newFontControllers {
-//            addTypeControllers(of: fontController)
-//        }
+        for fontController in newFontControllers {
+            addTypeControllers(of: fontController)
+        }
 		
         didChangeValue(for: \MainController.fontControllers)
         didChangeValue(for: \MainController.typeControllers)
@@ -135,11 +135,10 @@ extension MainController {
         for type in types {
 			//get new or already defined controller
             let typeController = controllerFor(type: type, from: fontController)
-			
-			// looks as an error, but it's OK, lost logic
-            for selectorController in typeController.selectorControllers {
-                selectorController.fonts.append(fontController)
-            }
+			print (type.name, type.exclusive)
+//            for selectorController in typeController.selectorControllers {
+//                selectorController.fonts.append(fontController)
+//            }
         }
     }
     

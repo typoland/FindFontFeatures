@@ -21,7 +21,7 @@ enum FontsFilters {
 			return { object, _ in
 				return (object as? FontController)?.familyName.contains(string) ?? false
 			}
-		//if name is nil, all font are returned
+		//if search string is nil, all font are returned
 		case .name(.none):
 			return { _, _ in
 				return true
@@ -30,7 +30,7 @@ enum FontsFilters {
 		//true if font is in fonts
 		case .inFonts(let fonts):
 			return { object, _ in
-				guard let font = object as? FontController else {return false}
+				guard let font = object as? FontController else { return false }
 				return fonts.contains( font )
 			}
 			

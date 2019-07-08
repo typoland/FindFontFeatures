@@ -37,7 +37,13 @@ class TypeController: BaseFeatureController {
     @objc var name: String {
         return type.name
     }
-
+	
+	func switchOffExlusiveSelectors() {
+		if type.exclusive == 1 {
+			_selectorControllers.forEach({$0.selected = false})
+		}
+	}
+	
 	@objc override var fontSearch: NSControl.StateValue {
 
 		get {

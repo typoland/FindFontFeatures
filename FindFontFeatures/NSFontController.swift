@@ -16,13 +16,16 @@ class FontController: NSObject {
 	//var featureSettings: [NSFontDescriptor.FeatureKey:Int] = [:]
 	
 	@objc var axisControllers: [AxisController]
+	var featureSettings : [NSFontDescriptor.FeatureKey:Int]
 	//var typeControllers: [TypeController]
 	
 	init(_ font:NSFont) {
 		self._font = font
 		self.axisControllers = font.axes.map { AxisController($0) }
+		self.featureSettings = font.featuresDescriptions()
 		//self.typeControllers = font.featuresDescriptions().map { TypeController(type: $0) }
 	}
+	
 }
 
 extension FontController {
@@ -58,9 +61,7 @@ extension FontController {
 		set {_font.allChars = newValue}
 	}
 	
-	var featureSettings : [NSFontDescriptor.FeatureKey:Int] {
-		return [:]
-	}
+	
 	
 	@objc var fontDescriptor: NSFontDescriptor {
 		return _font.fontDescriptor.addingAttributes([
@@ -84,14 +85,18 @@ extension FontController {
 		}
 		return _variations as CFDictionary
 	}
-
 }
 
 extension FontController {
 	func setSelector(_ selectorController: SelectorController) {
 		let type = selectorController.parent.type
 		let selector = selectorController.selector
-		//print (typeControllers)
+		print ("Setting features \(type.identifier) \(selector.identifier)")
+		featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
+		
+		featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier] = selector.identifier
+		
+		
 		
 		
 	}

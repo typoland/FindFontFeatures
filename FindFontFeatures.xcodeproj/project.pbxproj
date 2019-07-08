@@ -167,9 +167,7 @@
 		B26C201622AED064003480EB /* FFFeaturesController */ = {
 			isa = PBXGroup;
 			children = (
-				B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */,
-				B2E5005F22B77B8400BBAE79 /* TypeController.swift */,
-				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
+				B2E8BA0422D37E4500159FD5 /* OTFControllers */,
 				B26C201422AED04E003480EB /* MainController.swift */,
 				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
@@ -194,6 +192,16 @@
 				B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */,
 			);
 			name = Grayness;
+			sourceTree = "<group>";
+		};
+		B2E8BA0422D37E4500159FD5 /* OTFControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2E5006322B7E93C00BBAE79 /* BaseFeatureController.swift */,
+				B2E5005F22B77B8400BBAE79 /* TypeController.swift */,
+				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
+			);
+			name = OTFControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
