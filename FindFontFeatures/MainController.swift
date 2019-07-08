@@ -26,20 +26,29 @@ public class MainController: NSObject {
 
 	
 	
-	var viewMode: ViewMode = .selectionByFont {
+	var _viewMode: ViewMode = .selectionByFont {
 		willSet {
 			willChangeValue(for: \MainController.fontControllers)
 			willChangeValue(for: \MainController.typeControllers)
+			willChangeValue(for: \MainController.viewMode)
 			
 		}
 		didSet {
 			didChangeValue(for: \MainController.fontControllers)
 			didChangeValue(for: \MainController.typeControllers)
+			didChangeValue(for: \MainController.viewMode)
 	
 		}
 	}
 	
-	var _typeControllers: Set<TypeController> = [] {
+	@objc var viewMode: String {
+		get { return _viewMode.rawValue }
+		set { _viewMode = ViewMode.init(rawValue: newValue) ?? .allFonts}
+	}
+	
+	
+	
+	var typeControllersSet: Set<TypeController> = [] {
 		willSet { willChangeValue(for: \MainController.typeControllers) }
 		didSet { didChangeValue(for: \MainController.typeControllers) }
 	}
@@ -60,12 +69,13 @@ extension MainController {
 extension MainController {
     @objc var typeControllers: [TypeController] {
         let filtered: Set<TypeController>
-        switch viewMode {
+		
+        switch _viewMode {
         case .selectionByFont:
-            filtered = _typeControllers.filter {
+            filtered = typeControllersSet.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
 		default:
-            filtered = _typeControllers
+            filtered = typeControllersSet
         }
         return (Array(filtered)).sorted(by: {$0.type.name < $1.type.name})
     }
@@ -83,7 +93,7 @@ extension MainController {
 
 extension MainController {
     func clearContent() {
-        _typeControllers = []
+        typeControllersSet = []
         fontControllersSet = []
     }
     //convert font names to fonts
@@ -128,7 +138,7 @@ extension MainController {
 		//check if type controller already exist
 		let typeController:TypeController
 		
-        if let definedController = _typeControllers.filter ({ $0.type.name == type.name }).first {
+        if let definedController = typeControllersSet.filter ({ $0.type.name == type.name }).first {
 			typeController = definedController
 			// add font to previuosly defined selectors
 			for selector in type.selectors {
@@ -137,7 +147,7 @@ extension MainController {
 		// if not — create and add
         } else {
             typeController = TypeController(type: type)
-            _typeControllers.insert(typeController)
+            typeControllersSet.insert(typeController)
         }
 		return typeController
 	}
@@ -147,7 +157,7 @@ extension MainController {
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
 		if let string = (sender.selectedItem)?.title,
 		let mode =  ViewMode.init(rawValue: string) {
-       		viewMode = mode
+       		_viewMode = mode
 		}
     }
 }

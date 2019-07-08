@@ -82,6 +82,7 @@ extension FontsArrayController {
             NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFontsControllers)
 
 		case &viewModeWasChanged:
+			print ("viewModeWasChanged")
 			setPredicates(self)
             
         default: break
@@ -94,10 +95,10 @@ extension FontsArrayController {
 		willChangeValue(for: \FontsArrayController.fontFamilyNames)
 		let availableFontsSet: Set<FontController>
 		
-		switch mainController.viewMode {
+		switch mainController._viewMode {
 			
 		case .selectionByFeature:
-			availableFontsSet = mainController._typeControllers.reduce(into:Set<FontController>(), {set, typeController in
+			availableFontsSet = mainController.typeControllersSet.reduce(into:Set<FontController>(), {set, typeController in
 				typeController.selectorControllers.forEach { selectorController in
 					if selectorController.fontSearch == .on {
 						set.formUnion(selectorController.fonts)

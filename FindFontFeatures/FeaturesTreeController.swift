@@ -24,11 +24,12 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 	}
 	
 	@IBAction func shoutSelected (_ sender:NSButton) {
-		//print ("shout selcted \(sender.title) \(sender.objectValue)")
-		if let selectorController = ((sender.superview as? NSTableCellView)?.objectValue) as? SelectorController {
-			print (selectorController.selected)
-			NotificationCenter.default.post(name: Notification.Name.featureSelectorChanged, object: selectorController)
-			
+		if let selectorController
+			= ((sender.superview as? NSTableCellView)?.objectValue)
+				as? SelectorController {
+			NotificationCenter.default.post(
+				name: Notification.Name.featureSelectorChanged,
+				object: selectorController)
 		}
 	}
 	
@@ -36,17 +37,16 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 		let item = (sender.superview as? NSTableCellView)?.objectValue
 		switch item {
 		case is SelectorController:
-			
 			let selectorController = item as! SelectorController
 			print ("selector controller \(selectorController.fontSearch)")
+			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: selectorController)
 		case is TypeController:
 			let typeController = item as! TypeController
 			print ("Type Controller \(typeController.fontSearch)")
+			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: typeController)
 		default:
 			break
 		}
-		
-
 	}
 	
 	func outlineView(_ outlineView: NSOutlineView,
@@ -88,12 +88,12 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 					
 				case is SelectorController:
 					cell.checkButton.allowsMixedState = false
-					return mainController.viewMode == .selectionByFeature ? cell : nil
+					return mainController._viewMode == .selectionByFeature ? cell : nil
 					
 				case is TypeController:
 					cell.checkButton.allowsMixedState =
 						(item as! TypeController).fontSearch == .mixed
-					return mainController.viewMode == .selectionByFeature ? cell : nil
+					return mainController._viewMode == .selectionByFeature ? cell : nil
 					
 				default:
 					return nil
