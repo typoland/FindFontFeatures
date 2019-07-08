@@ -985,7 +985,7 @@
                                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-UY-F4n">
                                                                 <rect key="frame" x="1" y="5" width="148" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                                <buttonCell key="cell" type="recessed" title="Installed Fonts" bezelStyle="recessed" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AZd-xc-XfU">
+                                                                <buttonCell key="cell" type="recessed" title="Load Installed Fonts" bezelStyle="recessed" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AZd-xc-XfU">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                     <font key="font" metaFont="systemBold" size="12"/>
                                                                 </buttonCell>
@@ -1227,8 +1227,12 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <action selector="changeString:" target="ZOb-wc-qV3" id="qfY-7g-b3V"/>
-                                                                <binding destination="9gA-o2-4jU" name="font" keyPath="currentFont" id="gRL-sC-gul"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="font" keyPath="font" id="Pi9-bv-kEA"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="hidden" keyPath="font" id="Moi-g7-0ZU">
+                                                                    <dictionary key="options">
+                                                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                                                    </dictionary>
+                                                                </binding>
                                                                 <binding destination="xPl-ZZ-D8Q" name="value" keyPath="stringToRender" id="Efv-0U-Tz7"/>
                                                                 <outlet property="delegate" destination="xPl-ZZ-D8Q" id="KQS-nF-uXa"/>
                                                             </connections>
@@ -1237,6 +1241,9 @@
                                                             <rect key="frame" x="9" y="261" width="612" height="106"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="alS-28-M0U"/>
+                                                            <connections>
+                                                                <binding destination="xPl-ZZ-D8Q" name="value" keyPath="image" id="O3K-2c-KZN"/>
+                                                            </connections>
                                                         </imageView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-ms-Ijs">
                                                             <rect key="frame" x="222" y="17" width="40" height="14"/>
@@ -1262,19 +1269,19 @@
                                                                 </menu>
                                                             </popUpButtonCell>
                                                             <connections>
-                                                                <action selector="changeMeasurment:" target="ZOb-wc-qV3" id="NrR-So-2Gx"/>
-                                                                <binding destination="ZOb-wc-qV3" name="contentValues" keyPath="measurmentItems" id="Cxi-dl-hUj"/>
+                                                                <action selector="changeMeasurment:" target="xPl-ZZ-D8Q" id="B9Z-gH-cKc"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="contentValues" keyPath="measurmentItems" id="Yhe-WD-0Uh"/>
                                                             </connections>
                                                         </popUpButton>
                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-Mw-0jM">
                                                             <rect key="frame" x="13" y="13" width="106" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <buttonCell key="cell" type="recessed" title="Toogle Preview" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VzF-0H-ACF">
                                                                 <behavior key="behavior" lightByContents="YES"/>
                                                                 <font key="font" metaFont="systemBold" size="12"/>
                                                             </buttonCell>
                                                             <connections>
-                                                                <action selector="tooglePreview:" target="ZOb-wc-qV3" id="r0i-uB-u1A"/>
+                                                                <action selector="tooglePreview:" target="xPl-ZZ-D8Q" id="qgZ-RO-ttc"/>
                                                             </connections>
                                                         </button>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pi-EH-Gag">
@@ -1287,7 +1294,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <binding destination="ZOb-wc-qV3" name="value" keyPath="grayness" id="9g8-zm-f8L"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="value" keyPath="grayness" id="HJ5-YL-y9v"/>
                                                             </connections>
                                                         </textField>
                                                     </subviews>
@@ -1317,16 +1324,8 @@
         <customObject id="xPl-ZZ-D8Q" userLabel="Grayness Controller" customClass="GraynessController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
                 <outlet property="fontsArrayController" destination="9gA-o2-4jU" id="L0H-hT-ZXz"/>
-                <outlet property="preview" destination="d5V-ja-nIe" id="bt4-gx-Fgj"/>
+                <outlet property="measurmentPopUpButton" destination="6og-Ey-xGY" id="q9w-xK-hul"/>
                 <outlet property="textField" destination="eGh-9V-CMl" id="3z4-yj-1iL"/>
-            </connections>
-        </customObject>
-        <customObject id="ZOb-wc-qV3" userLabel="Grayness" customClass="GraynessController" customModule="FindFontFeatures" customModuleProvider="target">
-            <connections>
-                <outlet property="fontsArrayController" destination="9gA-o2-4jU" id="inE-1M-zoK"/>
-                <outlet property="measurmentPopUpButton" destination="6og-Ey-xGY" id="kFZ-5M-ON9"/>
-                <outlet property="preview" destination="d5V-ja-nIe" id="YkN-k4-4VQ"/>
-                <outlet property="textField" destination="eGh-9V-CMl" id="m0V-CW-QGe"/>
             </connections>
         </customObject>
         <arrayController objectClassName="FontController" automaticallyPreparesContent="YES" id="9gA-o2-4jU" customClass="FontsArrayController" customModule="FindFontFeatures" customModuleProvider="target">
