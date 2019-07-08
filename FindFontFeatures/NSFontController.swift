@@ -22,8 +22,7 @@ class FontController: NSObject {
 	init(_ font:NSFont) {
 		self._font = font
 		self.axisControllers = font.axes.map { AxisController($0) }
-		self.featureSettings = font.featuresDescriptions()
-		//self.typeControllers = font.featuresDescriptions().map { TypeController(type: $0) }
+		self.featureSettings = [:]
 	}
 	
 }
@@ -91,6 +90,8 @@ extension FontController {
 	func setSelector(_ selectorController: SelectorController) {
 		let type = selectorController.parent.type
 		let selector = selectorController.selector
+		
+		
 		print ("Setting features \(type.identifier) \(selector.identifier)")
 		featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
 		

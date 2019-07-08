@@ -88,12 +88,12 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 					
 				case is SelectorController:
 					cell.checkButton.allowsMixedState = false
-					return mainController._viewMode == .selectionByFeature ? cell : nil
+					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				case is TypeController:
 					cell.checkButton.allowsMixedState =
 						(item as! TypeController).fontSearch == .mixed
-					return mainController._viewMode == .selectionByFeature ? cell : nil
+					return mainController.viewMode == .selectionByFeature ? cell : nil
 					
 				default:
 					return nil

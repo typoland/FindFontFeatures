@@ -94,7 +94,7 @@ extension FontsArrayController {
 		willChangeValue(for: \FontsArrayController.fontFamilyNames)
 		let availableFontsSet: Set<FontController>
 		
-		switch mainController._viewMode {
+		switch mainController.viewMode {
 			
 		case .selectionByFeature:
 			availableFontsSet = mainController._typeControllers.reduce(into:Set<FontController>(), {set, typeController in
@@ -106,7 +106,7 @@ extension FontsArrayController {
 			})
 			
 		default:
-			availableFontsSet = Set(mainController._fontControllers)
+			availableFontsSet = Set(mainController.fontControllersSet)
 		}
 		
 		filterPredicate = NSCompoundPredicate(

@@ -710,7 +710,7 @@
                                 </items>
                             </menu>
                             <connections>
-                                <binding destination="1bv-CP-i3c" name="contentValues" keyPath="viewModePopupStrings" id="h0a-i2-GNp"/>
+                                <binding destination="1bv-CP-i3c" name="contentValues" keyPath="viewModeStrings" id="A3S-dr-3wm"/>
                             </connections>
                         </popUpButtonCell>
                         <connections>

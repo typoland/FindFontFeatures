@@ -33,7 +33,6 @@
 		B2E8B9FB22D0966900159FD5 /* NSFont + VericalMeasurment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */; };
 		B2E8B9FD22D096B200159FD5 /* String + render.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FC22D096B200159FD5 /* String + render.swift */; };
 		B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */; };
-		B2E8BA0122D0975500159FD5 /* NSBitmapImageRep Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */; };
 		B2E8BA0322D097B700159FD5 /* GraynessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8BA0222D097B700159FD5 /* GraynessController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +93,6 @@
 		B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont + VericalMeasurment.swift"; sourceTree = "<group>"; };
 		B2E8B9FC22D096B200159FD5 /* String + render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + render.swift"; sourceTree = "<group>"; };
 		B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage + Grayness.swift"; sourceTree = "<group>"; };
-		B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBitmapImageRep Extensions.swift"; sourceTree = "<group>"; };
 		B2E8BA0222D097B700159FD5 /* GraynessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraynessController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +187,6 @@
 				B2E8B9FA22D0966900159FD5 /* NSFont + VericalMeasurment.swift */,
 				B2E8B9FC22D096B200159FD5 /* String + render.swift */,
 				B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */,
-				B2E8BA0022D0975500159FD5 /* NSBitmapImageRep Extensions.swift */,
 			);
 			name = Grayness;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				B2E5006422B7E93C00BBAE79 /* BaseFeatureController.swift in Sources */,
 				B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */,
 				B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */,
-				B2E8BA0122D0975500159FD5 /* NSBitmapImageRep Extensions.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
 				B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */,

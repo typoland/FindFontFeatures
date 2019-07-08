@@ -26,16 +26,16 @@ public class MainController: NSObject {
 
 	
 	
-	var _viewMode: ViewMode = .selectionByFont {
+	var viewMode: ViewMode = .selectionByFont {
 		willSet {
 			willChangeValue(for: \MainController.fontControllers)
 			willChangeValue(for: \MainController.typeControllers)
-			willChangeValue(for: \MainController.viewMode)
+			
 		}
 		didSet {
 			didChangeValue(for: \MainController.fontControllers)
 			didChangeValue(for: \MainController.typeControllers)
-			didChangeValue(for: \MainController.viewMode)
+	
 		}
 	}
 	
@@ -45,28 +45,22 @@ public class MainController: NSObject {
 	}
 	
 	
-	var _fontControllers: Set<FontController> = [] {
+	var fontControllersSet: Set<FontController> = [] {
 		willSet { willChangeValue(for: \MainController.fontControllers) }
 		didSet { didChangeValue(for: \MainController.fontControllers) }
 	}
 }
 	
 extension MainController {
-	@objc var viewMode:String{
-		get {
-			return _viewMode.rawValue
-		}
-		set {
-			_viewMode = ViewMode.init(rawValue: newValue) ?? .allFonts
-		}
+	@objc var viewModeStrings: [String] {
+		return ViewMode.allCases.map {$0.rawValue}
 	}
-	
 }
 
 extension MainController {
     @objc var typeControllers: [TypeController] {
         let filtered: Set<TypeController>
-        switch _viewMode {
+        switch viewMode {
         case .selectionByFont:
             filtered = _typeControllers.filter {
                 !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
@@ -81,27 +75,16 @@ extension MainController {
 extension MainController {
     
     @objc var fontControllers: [FontController] {
-		return Array(_fontControllers)
+		return Array(fontControllersSet)
     }
 	
 }
 
-extension MainController {
-    @objc var viewModePopupStrings: [String] {
-        var result: [String] = []
-        for mode in ViewMode.allCases {
-            result.append(mode.rawValue)
-        }
-        print (result)
-        return result
-    }
-	
-}
 
 extension MainController {
     func clearContent() {
         _typeControllers = []
-        _fontControllers = []
+        fontControllersSet = []
     }
     //convert font names to fonts
     func add (fontNames: [String], size:CGFloat) {
@@ -120,7 +103,7 @@ extension MainController {
         willChangeValue(for: \MainController.fontControllers)
 		// for each font find type controllers
 		let newFontControllers = fonts.map{FontController($0)}
-		self._fontControllers.formUnion(newFontControllers)
+		self.fontControllersSet.formUnion(newFontControllers)
 		
         for fontController in newFontControllers {
             addTypeControllers(of: fontController)
@@ -134,8 +117,7 @@ extension MainController {
 		let types = fontController.featuresDescriptions
         for type in types {
 			//get new or already defined controller
-            let typeController = controllerFor(type: type, from: fontController)
-			print (type.name, type.exclusive)
+            _ = controllerFor(type: type, from: fontController)
 //            for selectorController in typeController.selectorControllers {
 //                selectorController.fonts.append(fontController)
 //            }
@@ -163,9 +145,9 @@ extension MainController {
 
 extension MainController {
     @IBAction func setCurrentViewMode (_ sender: NSPopUpButton) {
-		if let modeString =  (sender.selectedItem)?.title {
-       		viewMode = modeString
-			print (viewMode)
+		if let string = (sender.selectedItem)?.title,
+		let mode =  ViewMode.init(rawValue: string) {
+       		viewMode = mode
 		}
     }
 }
