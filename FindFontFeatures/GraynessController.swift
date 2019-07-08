@@ -35,7 +35,15 @@ class GraynessController: NSObject {
 	var glyphsCGImages: CGImage?
 	var grayCGImage: CGImage?
 	
-	@objc var string: String = "hhhooonono" {
+	var foregroundColorGray: NSColor {
+		return NSColor(named: NSColor.Name("GraynessForeground"))!.usingColorSpace(.deviceGray)!
+	}
+	
+	var backgroundColorGray: NSColor {
+		return NSColor(named: NSColor.Name("GraynessBackground"))!.usingColorSpace(.deviceGray)!
+	}
+	
+	@objc var stringToRender: String = "hhhooonono" {
 		didSet { setupGrayness() }
 	}
 	
@@ -52,8 +60,8 @@ class GraynessController: NSObject {
 		didSet {setupGrayness()}
 	}
 	
-	@objc var foregroundColor: NSColor = NSColor.controlTextColor
-	@objc var backgroundColor: NSColor = NSColor.textBackgroundColor
+	//@objc var foregroundColor: NSColor = NSColor.controlTextColor
+	//@objc var backgroundColor: NSColor = NSColor.textBackgroundColor
 	
 	override func awakeFromNib() {
 		fontsArrayController.addObserver(self, forKeyPath: "currentFont", options: [.old, .new], context: nil)
@@ -74,8 +82,11 @@ class GraynessController: NSObject {
 	}
 	
 	@IBAction func changeString(_ sender:NSTextField) {
-		string = sender.stringValue// stringValue
+		willChangeValue(for: \GraynessController.stringToRender)
 		
+		stringToRender = sender.stringValue// stringValue
+		didChangeValue(for: \GraynessController.stringToRender)
+
 	}
 	
 	
@@ -135,18 +146,11 @@ class GraynessController: NSObject {
 		return lineCgImage?.overralGrayness() ?? 0.0
 	}
 	
-	func uiGray(_ gray:CGFloat) -> CGFloat {
-		let bval = (
-			NSColor(named: NSColor.Name("GraynessBackground"))
-				?? NSColor.textBackgroundColor)
-			.usingColorSpace(.deviceGray)!.whiteComponent
-		let fval = (NSColor(named: NSColor.Name("GraynessForeground"))
-			?? NSColor.textColor)
-			.usingColorSpace(.deviceGray)!.whiteComponent
-		
-		
-		print (bval, fval)
-		return (((1-gray) - bval) / (fval - bval))
+	func uiGray(_ gray:CGFloat) -> NSColor {
+		//let bval = backgroundColorGray.whiteComponent
+		//let fval = foregroundColorGray.whiteComponent
+		return foregroundColorGray.withAlphaComponent(gray)
+		//return (((1-gray) - bval) / (fval - bval))
 		//return gray
 	}
 	
@@ -166,7 +170,8 @@ class GraynessController: NSObject {
 			let graphicsContext = NSGraphicsContext(cgContext: context, flipped: false)
 			graphicsContext.saveGraphicsState()
 			NSGraphicsContext.current = graphicsContext
-			context.setFillColor(gray: uiGray(CGFloat(grayness)), alpha: 1)
+			let color =  uiGray(CGFloat(grayness))
+			context.setFillColor(gray: color.whiteComponent, alpha: color.alphaComponent)
 			
 			context.fill(NSMakeRect(0, 0, width, height))
 			
@@ -182,8 +187,8 @@ class GraynessController: NSObject {
 	
 	func resetGlyphsCGImage() {
 		var images = [(width:Int, gray:CGFloat)]()
-		for i in 0..<string.count {
-			if let pic = string.renderImage(to: measurmentLine, attributes: attributes, from: i, glyps: 1) {
+		for i in 0..<stringToRender.count {
+			if let pic = stringToRender.renderImage(to: measurmentLine, attributes: attributes, from: i, glyps: 1) {
 				
 				images.append((width: pic.width, gray:CGFloat(pic.overralGrayness())))
 				
@@ -212,10 +217,11 @@ class GraynessController: NSObject {
 			
 			var x:CGFloat = 0.0
 			for image in images {
-				context.setFillColor(gray: uiGray(CGFloat(image.gray == 0 ? averageGray : image.gray)), alpha: 1)
+				let foreground = uiGray(CGFloat(image.gray == 0 ? averageGray : image.gray))
+				context.setFillColor(gray: foreground.whiteComponent, alpha: foreground.alphaComponent)
 				context.fill(NSMakeRect(x, 0, CGFloat(image.width), font.height(of: measurmentLine)))
 				let amplified: CGFloat = minGray == maxGray ? 0 : (CGFloat(image.gray) - minGray) / (maxGray-minGray)
-				context.setFillColor(gray: uiGray(amplified), alpha: 1)
+				context.setFillColor(gray: uiGray(amplified).whiteComponent, alpha: uiGray(amplified).alphaComponent)
 				context.fill(NSMakeRect(x, 0, CGFloat(image.width), 1))
 				
 				x += CGFloat(image.width)
@@ -235,7 +241,7 @@ class GraynessController: NSObject {
 	
 	func resetCGImage() {
 		willChangeValue(for: \GraynessController.grayness)
-		lineCgImage = string.renderImage(to: measurmentLine,
+		lineCgImage = stringToRender.renderImage(to: measurmentLine,
 										 attributes:attributes)
 		didChangeValue(for: \GraynessController.grayness)
 	}

@@ -1077,7 +1077,7 @@
                                                                 </tableHeaderView>
                                                             </scrollView>
                                                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2e-Ap-fuf">
-                                                                <rect key="frame" x="48" y="21" width="163" height="16"/>
+                                                                <rect key="frame" x="49" y="21" width="160" height="16"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                 <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="5pU-4P-5dU" id="XVH-FX-TPx">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -1229,6 +1229,7 @@
                                                             <connections>
                                                                 <action selector="changeString:" target="ZOb-wc-qV3" id="qfY-7g-b3V"/>
                                                                 <binding destination="9gA-o2-4jU" name="font" keyPath="currentFont" id="gRL-sC-gul"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="value" keyPath="stringToRender" id="Efv-0U-Tz7"/>
                                                                 <outlet property="delegate" destination="xPl-ZZ-D8Q" id="KQS-nF-uXa"/>
                                                             </connections>
                                                         </textField>
