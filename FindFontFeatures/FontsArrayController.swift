@@ -31,10 +31,10 @@ class FontsArrayController: NSArrayController {
 			didChangeValue(for: \FontsArrayController.currentFont)
 		}
 	}
+	
 	@objc var currentFont:NSFont {
 		return currentFontController?.font ?? NSFont.labelFont(ofSize: CGFloat(currentSize))
 	}
-	//var originalFontName: String = ""
 }
 
 var familiesSelectionChanged = "familiesSelectionChanged"
@@ -42,7 +42,6 @@ var fontSelectionChanged = "fontSelectionChanged"
 var viewModeWasChanged = "viewModeWasChanged"
 var axisWasChanged = "axisWasChanged"
 
-//var selectedFonts:[NSFont] = []
 
 extension Notification.Name {
     static var fontSelection = Notification.Name.init(fontSelectionChanged)

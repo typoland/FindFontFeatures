@@ -1182,8 +1182,8 @@
                                 <rect key="frame" x="0.0" y="364" width="721" height="394"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <tabView fixedFrame="YES" controlSize="mini" type="bottomTabsBezelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="zvK-Aw-ndl">
-                                        <rect key="frame" x="-7" y="-2" width="735" height="400"/>
+                                    <tabView fixedFrame="YES" controlSize="mini" translatesAutoresizingMaskIntoConstraints="NO" id="zvK-Aw-ndl">
+                                        <rect key="frame" x="-7" y="-10" width="735" height="406"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <font key="font" metaFont="miniSystem"/>
                                         <tabViewItems>
@@ -1222,11 +1222,11 @@
                                             </tabViewItem>
                                             <tabViewItem label="Grayness" identifier="" id="G7V-DG-kCm" userLabel="Grayness Tab">
                                                 <view key="view" ambiguous="YES" id="MB4-fE-tOv">
-                                                    <rect key="frame" x="10" y="7" width="715" height="374"/>
+                                                    <rect key="frame" x="10" y="19" width="715" height="374"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-9V-CMl">
-                                                            <rect key="frame" x="9" y="43" width="696" height="214"/>
+                                                            <rect key="frame" x="9" y="43" width="696" height="181"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="border" focusRingType="none" alignment="center" drawsBackground="YES" id="LfE-Ks-mRX">
                                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -1244,36 +1244,9 @@
                                                                 <outlet property="delegate" destination="xPl-ZZ-D8Q" id="KQS-nF-uXa"/>
                                                             </connections>
                                                         </textField>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5V-ja-nIe">
-                                                            <rect key="frame" x="9" y="261" width="696" height="106"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="alS-28-M0U"/>
-                                                            <connections>
-                                                                <binding destination="xPl-ZZ-D8Q" name="value" keyPath="image" id="O3K-2c-KZN"/>
-                                                            </connections>
-                                                        </imageView>
-                                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ujd-2X-35j">
-                                                            <rect key="frame" x="14" y="11" width="157" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="kcF-vo-Atm">
-                                                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                                                <font key="font" metaFont="systemBold" size="12"/>
-                                                                <menu key="menu" id="tLk-pO-23o">
-                                                                    <items>
-                                                                        <menuItem title="Item 1" state="on" id="zuq-ig-cYQ"/>
-                                                                        <menuItem title="Item 2" id="akJ-GR-PKr"/>
-                                                                        <menuItem title="Item 3" id="o5M-5O-ayc"/>
-                                                                    </items>
-                                                                </menu>
-                                                            </popUpButtonCell>
-                                                            <connections>
-                                                                <action selector="changePreview:" target="xPl-ZZ-D8Q" id="X2j-xg-sec"/>
-                                                                <binding destination="xPl-ZZ-D8Q" name="contentValues" keyPath="previewTypeItems" id="djx-d3-VUl"/>
-                                                            </connections>
-                                                        </popUpButton>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-ms-Ijs">
-                                                            <rect key="frame" x="285" y="17" width="40" height="14"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <rect key="frame" x="288" y="345" width="40" height="14"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="gray:" id="iaX-M3-3Bj">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1281,8 +1254,8 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6og-Ey-xGY">
-                                                            <rect key="frame" x="183" y="11" width="103" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <rect key="frame" x="181" y="341" width="103" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="right" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="nac-Z6-zCN">
                                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="systemBold" size="12"/>
@@ -1300,8 +1273,8 @@
                                                             </connections>
                                                         </popUpButton>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pi-EH-Gag">
-                                                            <rect key="frame" x="323" y="17" width="61" height="14"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <rect key="frame" x="326" y="345" width="61" height="14"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="DNc-zU-fCk">
                                                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" minimumFractionDigits="1" maximumFractionDigits="4" id="4SO-Tl-2Xs"/>
                                                                 <font key="font" metaFont="systemBold" size="11"/>
@@ -1312,6 +1285,33 @@
                                                                 <binding destination="xPl-ZZ-D8Q" name="value" keyPath="grayness" id="HJ5-YL-y9v"/>
                                                             </connections>
                                                         </textField>
+                                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ujd-2X-35j">
+                                                            <rect key="frame" x="12" y="341" width="157" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="kcF-vo-Atm">
+                                                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="systemBold" size="12"/>
+                                                                <menu key="menu" id="tLk-pO-23o">
+                                                                    <items>
+                                                                        <menuItem title="Item 1" state="on" id="zuq-ig-cYQ"/>
+                                                                        <menuItem title="Item 2" id="akJ-GR-PKr"/>
+                                                                        <menuItem title="Item 3" id="o5M-5O-ayc"/>
+                                                                    </items>
+                                                                </menu>
+                                                            </popUpButtonCell>
+                                                            <connections>
+                                                                <action selector="changePreview:" target="xPl-ZZ-D8Q" id="X2j-xg-sec"/>
+                                                                <binding destination="xPl-ZZ-D8Q" name="contentValues" keyPath="previewTypeItems" id="djx-d3-VUl"/>
+                                                            </connections>
+                                                        </popUpButton>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5V-ja-nIe">
+                                                            <rect key="frame" x="9" y="231" width="699" height="106"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="alS-28-M0U"/>
+                                                            <connections>
+                                                                <binding destination="xPl-ZZ-D8Q" name="value" keyPath="image" id="O3K-2c-KZN"/>
+                                                            </connections>
+                                                        </imageView>
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>
@@ -1384,7 +1384,7 @@
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="F8v-0Y-orI"/>
-        <treeController objectClassName="TypeController" automaticallyPreparesContent="YES" childrenKeyPath="selectorControllers" countKeyPath="count" leafKeyPath="isLeaf" id="zxI-gQ-l7l" customClass="FeaturesTreeController" customModule="FindFontFeatures" customModuleProvider="target">
+        <treeController objectClassName="TypeController" automaticallyPreparesContent="YES" childrenKeyPath="selectorControllers" countKeyPath="count" leafKeyPath="isLeaf" avoidsEmptySelection="NO" preservesSelection="NO" selectsInsertedObjects="NO" id="zxI-gQ-l7l" customClass="FeaturesTreeController" customModule="FindFontFeatures" customModuleProvider="target">
             <connections>
                 <binding destination="1bv-CP-i3c" name="contentArray" keyPath="typeControllers" id="SyB-qp-MKo">
                     <dictionary key="options">

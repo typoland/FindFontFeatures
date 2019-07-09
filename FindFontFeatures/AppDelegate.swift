@@ -25,7 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
 		
     }
-    
+	
+	var fontSize:CGFloat {
+		return CGFloat(mainController.fontsArrayController.currentSize)
+	}
+	
     @objc func selectedFontsChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
         selectedFonts =  notification.object as! [NSFont]
@@ -36,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
     @IBAction func getInstalledFonts(_ sender: Any) {
         mainController.clearContent()
-        mainController.add(fontNames: NSFontManager.shared.availableFonts, size: 12)
+        mainController.add(fontNames: NSFontManager.shared.availableFonts, size: fontSize)
     }
 
     @objc func openDocument(_ sender:Any) {
@@ -52,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     paths: openPanel.urls.map{$0.path}).allFilePaths {
                     
                     fontsPaths.forEach { path in
-                        if let font = try? NSFont.read(from: path, size: 12) {
+                        if let font = try? NSFont.read(from: path, size: self.fontSize) {
                             fonts.append(font)
                         }
                     }

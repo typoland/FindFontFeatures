@@ -24,18 +24,17 @@ public class MainController: NSObject {
     @IBOutlet var fontsArrayController: FontsArrayController!
 	@IBOutlet var featuresTreeController: FeaturesTreeController!
 
-	
-	
 	var _viewMode: ViewMode = .selectionByFont {
 		willSet {
-			willChangeValue(for: \MainController.fontControllers)
-			willChangeValue(for: \MainController.typeControllers)
+			//willChangeValue(for: \MainController.fontControllers)
+			//willChangeValue(for: \MainController.typeControllers)
 			willChangeValue(for: \MainController.viewMode)
+
 			
 		}
 		didSet {
-			didChangeValue(for: \MainController.fontControllers)
-			didChangeValue(for: \MainController.typeControllers)
+			//didChangeValue(for: \MainController.fontControllers)
+			//didChangeValue(for: \MainController.typeControllers)
 			didChangeValue(for: \MainController.viewMode)
 	
 		}
@@ -111,6 +110,7 @@ extension MainController {
     func add (fonts: [NSFont]) {
         willChangeValue(for: \MainController.typeControllers)
         willChangeValue(for: \MainController.fontControllers)
+		willChangeValue(for: \MainController.viewMode)
 		// for each font find type controllers
 		let newFontControllers = fonts.map{FontController($0)}
 		self.fontControllersSet.formUnion(newFontControllers)
@@ -121,6 +121,7 @@ extension MainController {
 		
         didChangeValue(for: \MainController.fontControllers)
         didChangeValue(for: \MainController.typeControllers)
+		didChangeValue(for: \MainController.viewMode)
     }
 
     func addTypeControllers (of fontController: FontController) {

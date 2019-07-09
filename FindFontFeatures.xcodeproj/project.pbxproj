@@ -20,7 +20,6 @@
 		B28473F222CE270800A6E2F3 /* NSFont + Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473F122CE270800A6E2F3 /* NSFont + Axis.swift */; };
 		B28473F422CE2C1100A6E2F3 /* AxisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473F322CE2C1100A6E2F3 /* AxisController.swift */; };
 		B28473F622CE352800A6E2F3 /* NSFont + AllChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */; };
-		B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649822AED26E00916810 /* MainController + fonts.swift */; };
 		B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649C22AEDA9300916810 /* FontsArrayController.swift */; };
 		B28C649F22AEE87D00916810 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649E22AEE87D00916810 /* NSFont.swift */; };
 		B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */; };
@@ -79,7 +78,6 @@
 		B28473F122CE270800A6E2F3 /* NSFont + Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont + Axis.swift"; sourceTree = "<group>"; };
 		B28473F322CE2C1100A6E2F3 /* AxisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisController.swift; sourceTree = "<group>"; };
 		B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont + AllChars.swift"; sourceTree = "<group>"; };
-		B28C649822AED26E00916810 /* MainController + fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainController + fonts.swift"; sourceTree = "<group>"; };
 		B28C649C22AEDA9300916810 /* FontsArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsArrayController.swift; sourceTree = "<group>"; };
 		B28C649E22AEE87D00916810 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesTreeController.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				B2E8BA0422D37E4500159FD5 /* OTFControllers */,
 				B26C201422AED04E003480EB /* MainController.swift */,
-				B28C649822AED26E00916810 /* MainController + fonts.swift */,
 				B28C649C22AEDA9300916810 /* FontsArrayController.swift */,
 				B28473ED22CD450000A6E2F3 /* FontsFilters.swift */,
 				B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */,
@@ -307,7 +304,6 @@
 				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
 				B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */,
 				B28473EE22CD450000A6E2F3 /* FontsFilters.swift in Sources */,
-				B28C649922AED26E00916810 /* MainController + fonts.swift in Sources */,
 				B28473F222CE270800A6E2F3 /* NSFont + Axis.swift in Sources */,
 				B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */,
 				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,

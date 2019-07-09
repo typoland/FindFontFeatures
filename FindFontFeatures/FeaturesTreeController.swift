@@ -10,7 +10,6 @@ import Foundation
 import AppKit
 
 
-
 class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutlineViewDelegate {
 	
 	@IBOutlet var mainController:MainController!

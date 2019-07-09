@@ -93,11 +93,12 @@ extension FontController {
 		
 		
 		print ("Setting features \(type.identifier) \(selector.identifier)")
+		
 		featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
 		
-		featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier] = selector.identifier
+		featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier] = selectorController.selected ? selector.identifier : selector.identifier + 1
 		
-		
+		print (featureSettings)
 		
 		
 	}
