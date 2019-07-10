@@ -114,7 +114,7 @@ extension MainController {
         willChangeValue(for: \MainController.fontControllers)
 		willChangeValue(for: \MainController.viewMode)
 		// for each font find type controllers
-		let newFontControllers = fonts.map{FontController($0)}
+		let newFontControllers = fonts.map{FontController($0, fontsController: fontsArrayController)}
 		self.fontControllersSet.formUnion(newFontControllers)
 		
         for fontController in newFontControllers {

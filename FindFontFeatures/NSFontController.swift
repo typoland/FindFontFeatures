@@ -13,16 +13,17 @@ import OTFKit
 class FontController: NSObject {
 	var _font: NSFont
 	var _size: CGFloat = 12
-	//var featureSettings: [NSFontDescriptor.FeatureKey:Int] = [:]
+	var fontArrayController: FontsArrayController?
 	
 	@objc var axisControllers: [AxisController]
 	@objc var selectorControllers: [SelectorController] = []
 	//var featuresSettings : [[NSFontDescriptor.FeatureKey:Int]]
 	//var typeControllers: [TypeController]
 	
-	init(_ font:NSFont) {
+	init(_ font:NSFont, fontsController: FontsArrayController?) {
 		self._font = font
 		self.axisControllers = font.axes.map { AxisController($0) }
+		self.fontArrayController = fontsController
 	}
 	
 }
@@ -30,7 +31,7 @@ class FontController: NSObject {
 extension FontController {
 	@objc var fontSize: Double {
 		set { _size = CGFloat(newValue) }
-		get { return Double(_size) }
+		get { return fontArrayController == nil ? Double(_size) : fontArrayController!.currentSize }
 	}
 	
 	@objc var font: NSFont {
@@ -38,12 +39,12 @@ extension FontController {
 			.copy(withVariations: variations) {
 			return CTFontCreateWithGraphicsFont(
 				newFont,
-				_size,
+				CGFloat(fontSize),
 				nil,
 				fontDescriptor)
 			
 		}
-		return NSFont(descriptor: fontDescriptor, size: _size) ?? NSFont.labelFont(ofSize: CGFloat(fontSize))
+		return NSFont(descriptor: fontDescriptor, size: CGFloat(fontSize)) ?? NSFont.labelFont(ofSize: CGFloat(fontSize))
 	}
 	
 	@objc var fontName: String {
@@ -113,15 +114,6 @@ extension FontController {
 		return _variations as CFDictionary
 	}
 }
-
-//extension FontController {
-//	func setSelector(_ selectorController: SelectorController) {
-//
-//		//selectorControllers.forEach({print ("\($0)\n\($0.selector)\n")})
-//
-//		print ()
-//	}
-//}
 
 extension FontController {
 	override var description: String {
