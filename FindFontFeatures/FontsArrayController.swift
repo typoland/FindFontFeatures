@@ -97,10 +97,11 @@ extension FontsArrayController {
 		switch mainController._viewMode {
 			
 		case .selectionByFeature:
-			availableFontsSet = mainController.typeControllersSet.reduce(into:Set<FontController>(), {set, typeController in
+			availableFontsSet = mainController.typeControllersSet.reduce(
+				into:Set(mainController.fontControllers), {set, typeController in
 				typeController.selectorControllers.forEach { selectorController in
 					if selectorController.fontSearch == .on {
-						set.formUnion(selectorController.fonts)
+						set.formIntersection(selectorController.fonts)
 					}
 				}
 			})

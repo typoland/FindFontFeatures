@@ -93,7 +93,6 @@ extension FontController {
 					featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier]
 						= selectorController.selected ? selector.identifier : selector.identifier + 1
 					result.append(featureSettings)
-					
 				}
 			}
 		}
