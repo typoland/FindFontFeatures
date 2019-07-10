@@ -16,13 +16,13 @@ class FontController: NSObject {
 	//var featureSettings: [NSFontDescriptor.FeatureKey:Int] = [:]
 	
 	@objc var axisControllers: [AxisController]
-	var featureSettings : [NSFontDescriptor.FeatureKey:Int]
+	@objc var selectorControllers: [SelectorController] = []
+	//var featuresSettings : [[NSFontDescriptor.FeatureKey:Int]]
 	//var typeControllers: [TypeController]
 	
 	init(_ font:NSFont) {
 		self._font = font
 		self.axisControllers = font.axes.map { AxisController($0) }
-		self.featureSettings = [:]
 	}
 	
 }
@@ -65,10 +65,39 @@ extension FontController {
 	@objc var fontDescriptor: NSFontDescriptor {
 		return _font.fontDescriptor.addingAttributes([
 			NSFontDescriptor.AttributeName.featureSettings:
-				[ featureSettings ],
+				featuresSettings,
 			NSFontDescriptor.AttributeName.size:
 				_size
 			])
+	}
+	
+	var featuresSettings:[[NSFontDescriptor.FeatureKey:Int]] {
+		var result:[[NSFontDescriptor.FeatureKey:Int]] = [[:]]
+		for selectorController in selectorControllers {
+			let type = selectorController.parent.type
+
+			if type.exclusive == 1 {
+				
+				if selectorController.selected {
+					let selector = selectorController.selector
+					var featureSettings:[NSFontDescriptor.FeatureKey:Int] = [:]
+					featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
+					featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier] = selector.identifier
+					result.append(featureSettings)
+				}
+			} else {
+				for selectorController in selectorController.parent.selectorControllers {
+					let selector = selectorController.selector
+					var featureSettings:[NSFontDescriptor.FeatureKey:Int] = [:]
+					featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
+					featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier]
+						= selectorController.selected ? selector.identifier : selector.identifier + 1
+					result.append(featureSettings)
+					
+				}
+			}
+		}
+		return result
 	}
 	
 	var featuresDescriptions: [OTFType<OTFSelector>] {
@@ -86,20 +115,17 @@ extension FontController {
 	}
 }
 
+//extension FontController {
+//	func setSelector(_ selectorController: SelectorController) {
+//
+//		//selectorControllers.forEach({print ("\($0)\n\($0.selector)\n")})
+//
+//		print ()
+//	}
+//}
+
 extension FontController {
-	func setSelector(_ selectorController: SelectorController) {
-		let type = selectorController.parent.type
-		let selector = selectorController.selector
-		
-		
-		print ("Setting features \(type.identifier) \(selector.identifier)")
-		
-		featureSettings[NSFontDescriptor.FeatureKey.typeIdentifier] = type.identifier
-		
-		featureSettings[NSFontDescriptor.FeatureKey.selectorIdentifier] = selectorController.selected ? selector.identifier : selector.identifier + 1
-		
-		print (featureSettings)
-		
-		
+	override var description: String {
+		return "Font Controller \"\(_font.fontName)\" \(selectorControllers.count) selectors"
 	}
 }

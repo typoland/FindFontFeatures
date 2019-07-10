@@ -138,11 +138,10 @@ extension FontsArrayController {
 		
 		setPredicates(self)
 		
-		if let selectorController = (notification.object as? SelectorController){
+		//if let selectorController = (notification.object as? SelectorController){
 			willChangeValue(for: \FontsArrayController.currentFont)
-			currentFontController?.setSelector(selectorController)
 			didChangeValue(for: \FontsArrayController.currentFont)
-		}
+		//}
 	}
 	
 

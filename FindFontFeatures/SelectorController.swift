@@ -67,7 +67,7 @@ extension SelectorController {
 
 extension SelectorController {
 	override var description: String {
-		return "Selector Controller \"\(name)\""
+		return "Selector Controller \"\(name)\" is \(selected ? "ON":"OFF")"
 	}
 }
 

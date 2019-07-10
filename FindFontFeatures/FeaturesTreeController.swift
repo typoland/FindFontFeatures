@@ -23,6 +23,7 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 	}
 	
 	@IBAction func shoutSelected (_ sender:NSButton) {
+		
 		if let selectorController
 			= ((sender.superview as? NSTableCellView)?.objectValue)
 				as? SelectorController {

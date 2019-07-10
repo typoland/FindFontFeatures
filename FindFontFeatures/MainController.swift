@@ -57,6 +57,8 @@ public class MainController: NSObject {
 		willSet { willChangeValue(for: \MainController.fontControllers) }
 		didSet { didChangeValue(for: \MainController.fontControllers) }
 	}
+	
+	var selectorsControllersSet: Set<SelectorController> = []
 }
 	
 extension MainController {
@@ -116,7 +118,7 @@ extension MainController {
 		self.fontControllersSet.formUnion(newFontControllers)
 		
         for fontController in newFontControllers {
-            addTypeControllers(of: fontController)
+            addTypeControllers(for: fontController)
         }
 		
         didChangeValue(for: \MainController.fontControllers)
@@ -124,32 +126,44 @@ extension MainController {
 		didChangeValue(for: \MainController.viewMode)
     }
 
-    func addTypeControllers (of fontController: FontController) {
+    func addTypeControllers (for fontController: FontController) {
 		let types = fontController.featuresDescriptions
         for type in types {
 			//get new or already defined controller
-            _ = controllerFor(type: type, from: fontController)
+            let typeController = controllerFor(type: type, from: fontController)
+			
 //            for selectorController in typeController.selectorControllers {
 //                selectorController.fonts.append(fontController)
 //            }
         }
     }
     
-    func controllerFor(type: OTFType<OTFSelector>, from font: FontController) -> TypeController {
+    func controllerFor(type: OTFType<OTFSelector>, from fontController: FontController) -> TypeController {
 		//check if type controller already exist
 		let typeController:TypeController
 		
         if let definedController = typeControllersSet.filter ({ $0.type.name == type.name }).first {
+			
 			typeController = definedController
-			// add font to previuosly defined selectors
+			print ("add \(type.selectors.count) selectors to \(type.name)" )
 			for selector in type.selectors {
-				typeController.selectorControllerFor(selector).fonts.append(font)
+				let selectorController = typeController.selectorControllerFor(selector)
+				selectorController.fonts.append(fontController)
+				fontController.selectorControllers.append(selectorController)
+				print (selectorController)
 			}
 		// if not — create and add
         } else {
+			print ("create \(type.selectors.count) selectors in \(type.name)" )
             typeController = TypeController(type: type)
             typeControllersSet.insert(typeController)
+			for selectorController in typeController.selectorControllers {
+				selectorController.fonts.append(fontController)
+				fontController.selectorControllers.append(selectorController)
+			}
         }
+		print ("CONTROLLERS in \(fontController):\n\(fontController.selectorControllers.count)")
+		print ()
 		return typeController
 	}
 }
