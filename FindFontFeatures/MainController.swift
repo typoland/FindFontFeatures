@@ -145,16 +145,16 @@ extension MainController {
         if let definedController = typeControllersSet.filter ({ $0.type.name == type.name }).first {
 			
 			typeController = definedController
-			print ("add \(type.selectors.count) selectors to \(type.name)" )
+
 			for selector in type.selectors {
 				let selectorController = typeController.selectorControllerFor(selector)
 				selectorController.fonts.append(fontController)
 				fontController.selectorControllers.append(selectorController)
-				print (selectorController)
+
 			}
 		// if not — create and add
         } else {
-			print ("create \(type.selectors.count) selectors in \(type.name)" )
+
             typeController = TypeController(type: type)
             typeControllersSet.insert(typeController)
 			for selectorController in typeController.selectorControllers {
@@ -162,8 +162,7 @@ extension MainController {
 				fontController.selectorControllers.append(selectorController)
 			}
         }
-		print ("CONTROLLERS in \(fontController):\n\(fontController.selectorControllers.count)")
-		print ()
+
 		return typeController
 	}
 }

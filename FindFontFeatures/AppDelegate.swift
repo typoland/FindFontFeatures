@@ -26,6 +26,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
     }
 	
+	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+		return true
+	}
 	var fontSize:CGFloat {
 		return CGFloat(mainController.fontsArrayController.currentSize)
 	}
