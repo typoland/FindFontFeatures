@@ -61,6 +61,7 @@ extension FontsArrayController {
 		NotificationCenter.default.addObserver(self, selector: #selector(setPredicates(_:)), name: Notification.Name.featuresSearchChanged, object: nil)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(changeOTFeaturesInCurrentFont(_:)), name: Notification.Name.featureSelectorChanged, object: nil)
+		
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -74,14 +75,13 @@ extension FontsArrayController {
             let selectedFontsControllers = familyStylesController.selectedObjects as! [FontController]
 			if selectedFontsControllers.count > 0 {
 				currentFontController = selectedFontsControllers[0]
-				currentFontController?.fontSize = currentSize
 			} else {
 				currentFontController = nil
 			}
             NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFontsControllers)
 
 		case &viewModeWasChanged:
-			print ("viewModeWasChanged")
+			//print ("viewModeWasChanged")
 			setPredicates(self)
             
         default: break
@@ -92,6 +92,8 @@ extension FontsArrayController {
 	@objc func setPredicates(_ sender:Any) {
 		willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
 		willChangeValue(for: \FontsArrayController.fontFamilyNames)
+		mainController.willChangeValue(for: \MainController.typeControllers)
+
 		let availableFontsSet: Set<FontController>
 		
 		switch mainController._viewMode {
@@ -124,6 +126,7 @@ extension FontsArrayController {
 		
 		didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
 		didChangeValue(for: \FontsArrayController.fontFamilyNames)
+		mainController.willChangeValue(for: \MainController.typeControllers)
 	}
 	
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
@@ -136,13 +139,9 @@ extension FontsArrayController {
 	}
 	
 	@objc func changeOTFeaturesInCurrentFont(_ notification:Notification) {
-		
+		willChangeValue(for: \FontsArrayController.currentFont)
 		setPredicates(self)
-		
-		//if let selectorController = (notification.object as? SelectorController){
-			willChangeValue(for: \FontsArrayController.currentFont)
-			didChangeValue(for: \FontsArrayController.currentFont)
-		//}
+		didChangeValue(for: \FontsArrayController.currentFont)
 	}
 	
 

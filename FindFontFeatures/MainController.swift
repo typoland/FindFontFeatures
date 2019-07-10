@@ -68,6 +68,7 @@ extension MainController {
 }
 
 extension MainController {
+	
     @objc var typeControllers: [TypeController] {
         let filtered: Set<TypeController>
 		
@@ -84,11 +85,9 @@ extension MainController {
 }
 
 extension MainController {
-    
     @objc var fontControllers: [FontController] {
 		return Array(fontControllersSet)
     }
-	
 }
 
 
@@ -110,8 +109,8 @@ extension MainController {
 	
     //add fonts add their type controllers
     func add (fonts: [NSFont]) {
-        willChangeValue(for: \MainController.typeControllers)
-        willChangeValue(for: \MainController.fontControllers)
+        //willChangeValue(for: \MainController.typeControllers)
+        //willChangeValue(for: \MainController.fontControllers)
 		willChangeValue(for: \MainController.viewMode)
 		// for each font find type controllers
 		let newFontControllers = fonts.map{FontController($0, fontsController: fontsArrayController)}
@@ -121,8 +120,8 @@ extension MainController {
             addTypeControllers(for: fontController)
         }
 		
-        didChangeValue(for: \MainController.fontControllers)
-        didChangeValue(for: \MainController.typeControllers)
+       //didChangeValue(for: \MainController.fontControllers)
+        //didChangeValue(for: \MainController.typeControllers)
 		didChangeValue(for: \MainController.viewMode)
     }
 

@@ -22,11 +22,19 @@ class GraynessController: NSObject {
 	@IBOutlet weak var measurmentPopUpButton: NSPopUpButton!
 	
 	var foregroundColorGray: NSColor {
-		return NSColor(named: NSColor.Name("GraynessForeground"))!.usingColorSpace(.deviceGray)!
+		if #available(OSX 10.13, *) {
+			return NSColor(named: NSColor.Name("GraynessForeground"))!.usingColorSpace(.deviceGray)!
+		} else {
+			return NSColor.textColor
+		}
 	}
 	
 	var backgroundColorGray: NSColor {
-		return NSColor(named: NSColor.Name("GraynessBackground"))!.usingColorSpace(.deviceGray)!
+		if #available(OSX 10.13, *) {
+			return NSColor(named: NSColor.Name("GraynessBackground"))!.usingColorSpace(.deviceGray)!
+		} else {
+			return NSColor.textBackgroundColor
+		}
 	}
 	
 	@objc var stringToRender: String = "hhhooonono" {

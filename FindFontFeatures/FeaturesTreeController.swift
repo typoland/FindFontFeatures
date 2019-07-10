@@ -14,6 +14,13 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 	
 	@IBOutlet var mainController:MainController!
 	
+	override func awakeFromNib() {
+		mainController.addObserver(self, forKeyPath: "viewMode", options: [.old, .new], context: &viewModeWasChanged)
+	}
+	
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		
+	}
 	func outlineView(_ outlineView: NSOutlineView,
 					 heightOfRowByItem item: Any) -> CGFloat {
 		if (item as? NSTreeNode)?.representedObject is SelectorController {
@@ -38,11 +45,11 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 		switch item {
 		case is SelectorController:
 			let selectorController = item as! SelectorController
-			print ("selector controller \(selectorController.fontSearch)")
+			//print ("selector controller \(selectorController.fontSearch)")
 			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: selectorController)
 		case is TypeController:
 			let typeController = item as! TypeController
-			print ("Type Controller \(typeController.fontSearch)")
+			//print ("Type Controller \(typeController.fontSearch)")
 			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: typeController)
 		default:
 			break

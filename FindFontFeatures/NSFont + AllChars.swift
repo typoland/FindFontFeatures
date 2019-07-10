@@ -10,6 +10,7 @@ import Foundation
 import AppKit
 
 var defaultString: String? = nil
+
 extension NSFont {
 	@objc var allChars: String {
 		get {return defaultString ?? allCharacters}
