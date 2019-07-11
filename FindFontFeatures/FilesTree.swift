@@ -30,7 +30,7 @@ class FilesTree: TreeProtocol {
             }
         }
     }
-    
+
     var allFilePaths: [String] {
         return leafs.flatMap({$0})
     }

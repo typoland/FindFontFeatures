@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1013,50 +1012,55 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="252" height="309"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="30" headerView="Ogt-Sa-GHz" viewBased="YES" id="ckA-Si-8G0">
+                                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnResizing="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" headerView="Ogt-Sa-GHz" viewBased="YES" id="ckA-Si-8G0">
                                                                             <rect key="frame" x="0.0" y="0.0" width="252" height="284"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                             <tableColumns>
-                                                                                <tableColumn width="249" minWidth="40" maxWidth="1000" id="0qY-sF-S7G">
+                                                                                <tableColumn editable="NO" width="249" minWidth="40" maxWidth="1000" id="0qY-sF-S7G" userLabel="Style Column">
                                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Style">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                     </tableHeaderCell>
                                                                                     <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="CNg-p1-Wms">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="system" size="23"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <connections>
+                                                                                            <binding destination="9gA-o2-4jU" name="font" keyPath="selection.font" id="yP9-1E-w53"/>
+                                                                                            <binding destination="9gA-o2-4jU" name="value" keyPath="selection.fontName" id="enf-ol-Pi5">
+                                                                                                <dictionary key="options">
+                                                                                                    <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                                                    <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                        </connections>
                                                                                     </textFieldCell>
                                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                     <prototypeCellViews>
-                                                                                        <tableCellView id="SgJ-YD-dIo">
-                                                                                            <rect key="frame" x="1" y="1" width="249" height="34"/>
+                                                                                        <tableCellView id="bCy-RT-uQO">
+                                                                                            <rect key="frame" x="1" y="1" width="249" height="30"/>
                                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                             <subviews>
-                                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHQ-L5-pXV">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="34"/>
+                                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sC5-4B-ht9">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="XZL-5h-OAn">
-                                                                                                        <font key="font" metaFont="system" size="24"/>
+                                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="bn0-y0-pck">
+                                                                                                        <font key="font" metaFont="system" size="23"/>
                                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                                     </textFieldCell>
                                                                                                     <connections>
-                                                                                                        <binding destination="SgJ-YD-dIo" name="value" keyPath="objectValue.fontName" id="EqO-LT-Kx5">
-                                                                                                            <dictionary key="options">
-                                                                                                                <bool key="NSValidatesImmediately" value="YES"/>
-                                                                                                            </dictionary>
-                                                                                                        </binding>
-                                                                                                        <binding destination="SgJ-YD-dIo" name="fontName" keyPath="objectValue.fontName" id="XSe-rF-Fjd"/>
+                                                                                                        <binding destination="bCy-RT-uQO" name="font" keyPath="objectValue.fontForTable" id="jT9-Z1-vgq"/>
+                                                                                                        <binding destination="bCy-RT-uQO" name="value" keyPath="objectValue.fontName" id="iPJ-ih-0DO"/>
                                                                                                     </connections>
                                                                                                 </textField>
                                                                                             </subviews>
                                                                                             <connections>
-                                                                                                <outlet property="textField" destination="gHQ-L5-pXV" id="u3j-OS-8w6"/>
+                                                                                                <outlet property="textField" destination="sC5-4B-ht9" id="P4p-FK-wd9"/>
                                                                                             </connections>
                                                                                         </tableCellView>
                                                                                     </prototypeCellViews>
@@ -1189,11 +1193,11 @@
                                         <tabViewItems>
                                             <tabViewItem label="Font Sample" identifier="" id="F5u-IU-GKr">
                                                 <view key="view" ambiguous="YES" id="d67-UQ-We5">
-                                                    <rect key="frame" x="19" y="7" width="680" height="386"/>
+                                                    <rect key="frame" x="28" y="7" width="671" height="386"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eU0-mr-8f1">
-                                                            <rect key="frame" x="2" y="1" width="678" height="383"/>
+                                                            <rect key="frame" x="2" y="1" width="669" height="383"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" title="Multiline Label" id="DiK-3e-n8u">
                                                                 <font key="font" metaFont="system"/>
@@ -1226,12 +1230,12 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <binding destination="xPl-ZZ-D8Q" name="font" keyPath="font" id="Pi9-bv-kEA"/>
                                                                 <binding destination="xPl-ZZ-D8Q" name="hidden" keyPath="font" id="Moi-g7-0ZU">
                                                                     <dictionary key="options">
                                                                         <string key="NSValueTransformerName">NSIsNil</string>
                                                                     </dictionary>
                                                                 </binding>
+                                                                <binding destination="xPl-ZZ-D8Q" name="font" keyPath="font" id="Pi9-bv-kEA"/>
                                                                 <binding destination="xPl-ZZ-D8Q" name="value" keyPath="stringToRender" id="Efv-0U-Tz7"/>
                                                                 <outlet property="delegate" destination="xPl-ZZ-D8Q" id="KQS-nF-uXa"/>
                                                             </connections>
@@ -1247,12 +1251,12 @@
                                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6og-Ey-xGY">
                                                             <rect key="frame" x="311" y="354" width="104" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" id="nac-Z6-zCN">
+                                                            <popUpButtonCell key="cell" type="recessed" bezelStyle="recessed" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" id="nac-Z6-zCN">
                                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="systemBold" size="12"/>
                                                                 <menu key="menu" id="g02-Ja-Z9J">
                                                                     <items>
-                                                                        <menuItem title="Item 1" state="on" id="925-BC-uwL"/>
+                                                                        <menuItem title="Item 1" id="925-BC-uwL"/>
                                                                         <menuItem title="Item 2" id="0Kv-HK-wyO"/>
                                                                         <menuItem title="Item 3" id="C38-dc-89x"/>
                                                                     </items>
@@ -1266,12 +1270,12 @@
                                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ujd-2X-35j">
                                                             <rect key="frame" x="61" y="354" width="169" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <popUpButtonCell key="cell" type="recessed" title="Item 1" bezelStyle="recessed" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" id="kcF-vo-Atm">
+                                                            <popUpButtonCell key="cell" type="recessed" bezelStyle="recessed" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxX" id="kcF-vo-Atm">
                                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="systemBold" size="12"/>
                                                                 <menu key="menu" id="tLk-pO-23o">
                                                                     <items>
-                                                                        <menuItem title="Item 1" state="on" id="zuq-ig-cYQ"/>
+                                                                        <menuItem title="Item 1" id="zuq-ig-cYQ"/>
                                                                         <menuItem title="Item 2" id="akJ-GR-PKr"/>
                                                                         <menuItem title="Item 3" id="o5M-5O-ayc"/>
                                                                     </items>

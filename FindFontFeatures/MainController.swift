@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 import OTFKit
 
-var selectedFonts :[NSFont] = []
+var selectedFontControllers :[FontController] = []
 
 public class MainController: NSObject {
     
@@ -75,7 +75,7 @@ extension MainController {
         switch _viewMode {
         case .selectionByFont:
             filtered = typeControllersSet.filter {
-                !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFonts).isEmpty }).isEmpty }
+                !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFontControllers).isEmpty }).isEmpty }
 		default:
             filtered = typeControllersSet
         }

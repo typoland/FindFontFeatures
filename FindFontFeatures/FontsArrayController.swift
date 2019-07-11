@@ -44,7 +44,7 @@ var axisWasChanged = "axisWasChanged"
 
 
 extension Notification.Name {
-    static var fontSelection = Notification.Name.init(fontSelectionChanged)
+    static var fontControllersSelectionChanged = Notification.Name.init(fontSelectionChanged)
 }
 
 
@@ -78,7 +78,7 @@ extension FontsArrayController {
 			} else {
 				currentFontController = nil
 			}
-            NotificationCenter.default.post(name: Notification.Name.fontSelection, object: selectedFontsControllers)
+            NotificationCenter.default.post(name: Notification.Name.fontControllersSelectionChanged, object: selectedFontsControllers)
 
 		case &viewModeWasChanged:
 			//print ("viewModeWasChanged")

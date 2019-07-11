@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2126BC522CF21AA00A14E55 /* NSFontController.swift */; };
-		B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */; };
 		B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */; };
 		B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */; };
 		B24A7A2C22AE5BD200EBA62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 		B28473F422CE2C1100A6E2F3 /* AxisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473F322CE2C1100A6E2F3 /* AxisController.swift */; };
 		B28473F622CE352800A6E2F3 /* NSFont + AllChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */; };
 		B28C649D22AEDA9300916810 /* FontsArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649C22AEDA9300916810 /* FontsArrayController.swift */; };
-		B28C649F22AEE87D00916810 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C649E22AEE87D00916810 /* NSFont.swift */; };
 		B28C64A322AEFB7B00916810 /* FeaturesTreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */; };
 		B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6A22B23903000BA191 /* FilesTree.swift */; };
 		B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35B6B22B23903000BA191 /* Tree Protocol.swift */; };
@@ -33,6 +31,7 @@
 		B2E8B9FD22D096B200159FD5 /* String + render.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FC22D096B200159FD5 /* String + render.swift */; };
 		B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */; };
 		B2E8BA0322D097B700159FD5 /* GraynessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8BA0222D097B700159FD5 /* GraynessController.swift */; };
+		B2E8C3B422D7281600159FD5 /* NSFont + initFromPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E8C3B322D7281600159FD5 /* NSFont + initFromPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +60,6 @@
 
 /* Begin PBXFileReference section */
 		B2126BC522CF21AA00A14E55 /* NSFontController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFontController.swift; sourceTree = "<group>"; };
-		B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
 		B2375F3F22B28F6C0020A1B1 /* CellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCheckButton.swift; sourceTree = "<group>"; };
 		B24A7A2622AE5BD100EBA62C /* FindFontFeatures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindFontFeatures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,9 +77,7 @@
 		B28473F322CE2C1100A6E2F3 /* AxisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisController.swift; sourceTree = "<group>"; };
 		B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont + AllChars.swift"; sourceTree = "<group>"; };
 		B28C649C22AEDA9300916810 /* FontsArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsArrayController.swift; sourceTree = "<group>"; };
-		B28C649E22AEE87D00916810 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		B28C64A222AEFB7B00916810 /* FeaturesTreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesTreeController.swift; sourceTree = "<group>"; };
-		B28C64AA22AF9F5700916810 /* Go deep in folders.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Go deep in folders.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B2A35B6A22B23903000BA191 /* FilesTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesTree.swift; sourceTree = "<group>"; };
 		B2A35B6B22B23903000BA191 /* Tree Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree Protocol.swift"; sourceTree = "<group>"; };
 		B2E5005D22B77AA500BBAE79 /* SelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorController.swift; sourceTree = "<group>"; };
@@ -92,6 +88,8 @@
 		B2E8B9FC22D096B200159FD5 /* String + render.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + render.swift"; sourceTree = "<group>"; };
 		B2E8B9FE22D0970F00159FD5 /* CGImage + Grayness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage + Grayness.swift"; sourceTree = "<group>"; };
 		B2E8BA0222D097B700159FD5 /* GraynessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraynessController.swift; sourceTree = "<group>"; };
+		B2E8C3B022D727F600159FD5 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
+		B2E8C3B322D7281600159FD5 /* NSFont + initFromPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSFont + initFromPath.swift"; path = "../../OTF/OTF/NSFont + initFromPath.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +113,6 @@
 		B24A7A1D22AE5BD100EBA62C = {
 			isa = PBXGroup;
 			children = (
-				B28C64AA22AF9F5700916810 /* Go deep in folders.playground */,
 				B26C200F22AECDA0003480EB /* OTFKit.framework */,
 				B24A7A2822AE5BD100EBA62C /* FindFontFeatures */,
 				B24A7A3922AE5BD200EBA62C /* FindFontFeaturesTests */,
@@ -135,18 +132,13 @@
 		B24A7A2822AE5BD100EBA62C /* FindFontFeatures */ = {
 			isa = PBXGroup;
 			children = (
-				B2A35B6B22B23903000BA191 /* Tree Protocol.swift */,
-				B2A35B6A22B23903000BA191 /* FilesTree.swift */,
-				B2375F3D22B2819F0020A1B1 /* NSFont + initFromPath.swift */,
-				B28473F122CE270800A6E2F3 /* NSFont + Axis.swift */,
-				B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */,
+				B2E8C3AF22D727E000159FD5 /* NSFont Extensions */,
 				B24A7A2922AE5BD100EBA62C /* AppDelegate.swift */,
 				B26C201622AED064003480EB /* FFFeaturesController */,
 				B24A7A2B22AE5BD200EBA62C /* Assets.xcassets */,
 				B24A7A2D22AE5BD200EBA62C /* MainMenu.xib */,
 				B24A7A3022AE5BD200EBA62C /* Info.plist */,
 				B24A7A3122AE5BD200EBA62C /* FindFontFeatures.entitlements */,
-				B28C649E22AEE87D00916810 /* NSFont.swift */,
 			);
 			path = FindFontFeatures;
 			sourceTree = "<group>";
@@ -196,6 +188,19 @@
 				B2E5005D22B77AA500BBAE79 /* SelectorController.swift */,
 			);
 			name = OTFControllers;
+			sourceTree = "<group>";
+		};
+		B2E8C3AF22D727E000159FD5 /* NSFont Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2A35B6B22B23903000BA191 /* Tree Protocol.swift */,
+				B2A35B6A22B23903000BA191 /* FilesTree.swift */,
+				B2E8C3B022D727F600159FD5 /* NSFont + initFromPath.swift */,
+				B28473F122CE270800A6E2F3 /* NSFont + Axis.swift */,
+				B28473F522CE352800A6E2F3 /* NSFont + AllChars.swift */,
+				B2E8C3B322D7281600159FD5 /* NSFont + initFromPath.swift */,
+			);
+			name = "NSFont Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,12 +306,10 @@
 			files = (
 				B2A35B6C22B23903000BA191 /* FilesTree.swift in Sources */,
 				B2E5006022B77B8400BBAE79 /* TypeController.swift in Sources */,
-				B28C649F22AEE87D00916810 /* NSFont.swift in Sources */,
 				B2375F4022B28F6C0020A1B1 /* CellCheckButton.swift in Sources */,
 				B28473EE22CD450000A6E2F3 /* FontsFilters.swift in Sources */,
 				B28473F222CE270800A6E2F3 /* NSFont + Axis.swift in Sources */,
 				B2126BC622CF21AA00A14E55 /* NSFontController.swift in Sources */,
-				B2375F3E22B2819F0020A1B1 /* NSFont + initFromPath.swift in Sources */,
 				B2E8BA0322D097B700159FD5 /* GraynessController.swift in Sources */,
 				B2A35B6D22B23903000BA191 /* Tree Protocol.swift in Sources */,
 				B28473F622CE352800A6E2F3 /* NSFont + AllChars.swift in Sources */,
@@ -320,6 +323,7 @@
 				B2E5006822B8F0E700BBAE79 /* expTableHeaderWithButton.swift in Sources */,
 				B2E5005E22B77AA500BBAE79 /* SelectorController.swift in Sources */,
 				B24A7A2A22AE5BD100EBA62C /* AppDelegate.swift in Sources */,
+				B2E8C3B422D7281600159FD5 /* NSFont + initFromPath.swift in Sources */,
 				B2E8B9FF22D0970F00159FD5 /* CGImage + Grayness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,12 +481,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3ASHMCMJEN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FindFontFeatures/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typoland.FindFontFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -497,12 +505,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3ASHMCMJEN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FindFontFeatures/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typoland.FindFontFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

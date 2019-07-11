@@ -52,7 +52,7 @@ class SelectorController: BaseFeatureController {
 extension SelectorController {
 	
     @objc var enabled: Bool {
-        if Set(fonts).intersection(selectedFonts).isEmpty {
+		if Set(fonts.map{$0}).intersection(selectCoreedFontControllers).isEmpty {
             return false
         }
         return true

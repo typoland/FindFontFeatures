@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 		window.title = ""
         mainController.add(fontNames: ["Lato-Regular", "Lato-Bold", "Lato-Thin","Clan", "Clan-Bold", ".SFNSDisplay", "Decovar Alpha"], size: fontSize)
-        NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsChanged(_:)), name: Notification.Name.fontSelection, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedFontsControllersChanged(_:)), name: Notification.Name.fontControllersSelectionChanged, object: nil)
 		
     }
 	
@@ -33,9 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		return CGFloat(mainController.fontsArrayController.currentSize)
 	}
 	
-    @objc func selectedFontsChanged(_ notification:Notification) {
+    @objc func selectedFontsControllersChanged(_ notification:Notification) {
         mainController.willChangeValue(for: \MainController.typeControllers)
-        selectedFonts =  notification.object as! [NSFont]
+        selectedFontControllers =  notification.object as! [FontController]
         mainController.didChangeValue(for: \MainController.typeControllers)
     }
 	

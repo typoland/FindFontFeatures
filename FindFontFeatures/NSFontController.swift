@@ -61,7 +61,9 @@ extension FontController {
 		set {_font.allChars = newValue}
 	}
 	
-	
+	@objc var fontForTable: NSFont {
+		return NSFont(descriptor: fontDescriptor, size: 23) ?? NSFont.labelFont(ofSize: 23)
+	}
 	
 	@objc var fontDescriptor: NSFontDescriptor {
 		return _font.fontDescriptor.addingAttributes([
