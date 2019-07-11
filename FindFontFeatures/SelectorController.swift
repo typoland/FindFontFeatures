@@ -12,11 +12,11 @@ import OTFKit
 
 class SelectorController: BaseFeatureController {
     
-    let selector: OTFSelector
+    let selector: OTFS
     var parent: TypeController
     var fonts: [FontController] = []
 	
-	init (selector:OTFSelector, parent:TypeController) {
+	init (selector:OTFS, parent:TypeController) {
 		self.selector = selector
 		self.parent = parent
 		super.init()
@@ -25,34 +25,32 @@ class SelectorController: BaseFeatureController {
 	
 	@objc override var fontSearch: NSControl.StateValue {
 		willSet {
-			willChangeValue(for: \SelectorController.fontSearch)
-			parent.willChangeValue(for: \TypeController.fontSearch)
+			willChangeValue(for: \.fontSearch)
+			parent.willChangeValue(for: \.fontSearch)
 		}
 		didSet {
-			didChangeValue(for: \SelectorController.fontSearch)
-			parent.didChangeValue(for: \TypeController.fontSearch)
+			didChangeValue(for: \.fontSearch)
+			parent.didChangeValue(for: \.fontSearch)
 		}
 	}
 	
 	@objc override var selected: Bool {
 		willSet {
-			willChangeValue(for: \SelectorController.selected)
+			willChangeValue(for: \.selected)
 			if newValue {
 				parent.switchOffExlusiveSelectors()
 			}
 		}
 		didSet {
-			didChangeValue(for: \SelectorController.selected)
+			didChangeValue(for: \.selected)
 		}
 	}
-	
 
 }
 
 extension SelectorController {
-	
-    @objc var enabled: Bool {
-		if Set(fonts.map{$0}).intersection(selectCoreedFontControllers).isEmpty {
+	@objc var enabled: Bool {
+		if Set(fonts.map{$0}).intersection(selectedFontControllers).isEmpty {
             return false
         }
         return true

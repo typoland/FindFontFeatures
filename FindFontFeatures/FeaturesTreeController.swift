@@ -35,7 +35,7 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 			= ((sender.superview as? NSTableCellView)?.objectValue)
 				as? SelectorController {
 			NotificationCenter.default.post(
-				name: Notification.Name.featureSelectorChanged,
+				name: .featureSelectorChanged,
 				object: selectorController)
 		}
 	}
@@ -46,11 +46,15 @@ class FeaturesTreeController: NSTreeController, NSOutlineViewDataSource, NSOutli
 		case is SelectorController:
 			let selectorController = item as! SelectorController
 			//print ("selector controller \(selectorController.fontSearch)")
-			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: selectorController)
+			NotificationCenter.default.post(
+				name: .featuresSearchChanged,
+				object: selectorController)
 		case is TypeController:
 			let typeController = item as! TypeController
 			//print ("Type Controller \(typeController.fontSearch)")
-			NotificationCenter.default.post(name: Notification.Name.featuresSearchChanged, object: typeController)
+			NotificationCenter.default.post(
+				name: .featuresSearchChanged,
+				object: typeController)
 		default:
 			break
 		}

@@ -10,6 +10,9 @@ import Foundation
 import AppKit
 import OTFKit
 
+typealias OTFS = OTFSelector
+typealias OTFT = OTFType<OTFS>
+
 var selectedFontControllers :[FontController] = []
 
 public class MainController: NSObject {
@@ -28,14 +31,14 @@ public class MainController: NSObject {
 		willSet {
 			//willChangeValue(for: \MainController.fontControllers)
 			//willChangeValue(for: \MainController.typeControllers)
-			willChangeValue(for: \MainController.viewMode)
+			willChangeValue(for: \.viewMode)
 
 			
 		}
 		didSet {
 			//didChangeValue(for: \MainController.fontControllers)
 			//didChangeValue(for: \MainController.typeControllers)
-			didChangeValue(for: \MainController.viewMode)
+			didChangeValue(for: \.viewMode)
 	
 		}
 	}
@@ -48,14 +51,14 @@ public class MainController: NSObject {
 	
 	
 	var typeControllersSet: Set<TypeController> = [] {
-		willSet { willChangeValue(for: \MainController.typeControllers) }
-		didSet { didChangeValue(for: \MainController.typeControllers) }
+		willSet { willChangeValue(for: \.typeControllers) }
+		didSet { didChangeValue(for: \.typeControllers) }
 	}
 	
 	
 	var fontControllersSet: Set<FontController> = [] {
-		willSet { willChangeValue(for: \MainController.fontControllers) }
-		didSet { didChangeValue(for: \MainController.fontControllers) }
+		willSet { willChangeValue(for: \.fontControllers) }
+		didSet { didChangeValue(for: \.fontControllers) }
 	}
 	
 	var selectorsControllersSet: Set<SelectorController> = []
@@ -111,7 +114,7 @@ extension MainController {
     func add (fonts: [NSFont]) {
         //willChangeValue(for: \MainController.typeControllers)
         //willChangeValue(for: \MainController.fontControllers)
-		willChangeValue(for: \MainController.viewMode)
+		willChangeValue(for: \.viewMode)
 		// for each font find type controllers
 		let newFontControllers = fonts.map{FontController($0, fontsController: fontsArrayController)}
 		self.fontControllersSet.formUnion(newFontControllers)
@@ -122,7 +125,7 @@ extension MainController {
 		
        //didChangeValue(for: \MainController.fontControllers)
         //didChangeValue(for: \MainController.typeControllers)
-		didChangeValue(for: \MainController.viewMode)
+		didChangeValue(for: \.viewMode)
     }
 
     func addTypeControllers (for fontController: FontController) {
@@ -137,7 +140,7 @@ extension MainController {
         }
     }
     
-    func controllerFor(type: OTFType<OTFSelector>, from fontController: FontController) -> TypeController {
+    func controllerFor(type: OTFT, from fontController: FontController) -> TypeController {
 		//check if type controller already exist
 		let typeController:TypeController
 		

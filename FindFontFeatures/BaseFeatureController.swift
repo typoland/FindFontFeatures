@@ -12,19 +12,19 @@ class BaseFeatureController: NSObject {
     
 	@objc var selected: Bool = false {
 		willSet {
-			self.willChangeValue(for: \BaseFeatureController.selected)
+			self.willChangeValue(for: \.selected)
 		}
 		didSet {
-			self.didChangeValue(for: \BaseFeatureController.selected)
+			self.didChangeValue(for: \.selected)
 		}
 	}
 	
 	@objc var fontSearch: NSControl.StateValue = .off {
 		willSet {
-			self.willChangeValue(for: \BaseFeatureController.fontSearch)
+			self.willChangeValue(for: \.fontSearch)
 		}
 		didSet {
-			self.didChangeValue(for: \BaseFeatureController.fontSearch)
+			self.didChangeValue(for: \.fontSearch)
 		}
 	}    
 }

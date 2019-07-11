@@ -102,8 +102,8 @@ extension FontController {
 		return result
 	}
 	
-	var featuresDescriptions: [OTFType<OTFSelector>] {
-		let types: [OTFType<OTFSelector>] = _font.featuresDescriptions()
+	var featuresDescriptions: [OTFT] {
+		let types: [OTFT] = _font.featuresDescriptions()
 		return types
 	}
 	

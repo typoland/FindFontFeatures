@@ -68,8 +68,8 @@ extension FontsArrayController {
         switch context {
 			
         case &familiesSelectionChanged:
-            willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
-            didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
+            willChangeValue(for: \.selectedFalmiliesFonts)
+            didChangeValue(for: \.selectedFalmiliesFonts)
 			
         case &fontSelectionChanged:
             let selectedFontsControllers = familyStylesController.selectedObjects as! [FontController]
@@ -78,7 +78,7 @@ extension FontsArrayController {
 			} else {
 				currentFontController = nil
 			}
-            NotificationCenter.default.post(name: Notification.Name.fontControllersSelectionChanged, object: selectedFontsControllers)
+            NotificationCenter.default.post(name: .fontControllersSelectionChanged, object: selectedFontsControllers)
 
 		case &viewModeWasChanged:
 			//print ("viewModeWasChanged")
@@ -90,9 +90,9 @@ extension FontsArrayController {
 	
 	
 	@objc func setPredicates(_ sender:Any) {
-		willChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
-		willChangeValue(for: \FontsArrayController.fontFamilyNames)
-		mainController.willChangeValue(for: \MainController.typeControllers)
+		willChangeValue(for: \.selectedFalmiliesFonts)
+		willChangeValue(for: \.fontFamilyNames)
+		mainController.willChangeValue(for: \.typeControllers)
 
 		let availableFontsSet: Set<FontController>
 		
@@ -124,9 +124,9 @@ extension FontsArrayController {
 						.predicateBlock)
 			])
 		
-		didChangeValue(for: \FontsArrayController.selectedFalmiliesFonts)
-		didChangeValue(for: \FontsArrayController.fontFamilyNames)
-		mainController.willChangeValue(for: \MainController.typeControllers)
+		didChangeValue(for: \.selectedFalmiliesFonts)
+		didChangeValue(for: \.fontFamilyNames)
+		mainController.willChangeValue(for: \.typeControllers)
 	}
 	
     @IBAction func setFontNameFilter(_ sender:NSTextField) {
@@ -139,15 +139,15 @@ extension FontsArrayController {
 	}
 	
 	@objc func changeOTFeaturesInCurrentFont(_ notification:Notification) {
-		willChangeValue(for: \FontsArrayController.currentFont)
+		willChangeValue(for: \.currentFont)
 		setPredicates(self)
-		didChangeValue(for: \FontsArrayController.currentFont)
+		didChangeValue(for: \.currentFont)
 	}
 	
 
 	@IBAction func changeAxis(_ sender:NSSlider) {
-		willChangeValue(for: \FontsArrayController.currentFont)
-		didChangeValue(for: \FontsArrayController.currentFont)
+		willChangeValue(for: \.currentFont)
+		didChangeValue(for: \.currentFont)
 	}
 	
 	//Takes all families from fonts, after applying filters predicate to fonts

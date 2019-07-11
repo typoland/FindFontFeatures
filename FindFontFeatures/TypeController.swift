@@ -19,11 +19,11 @@ extension Notification.Name {
 
 class TypeController: BaseFeatureController {
 	
-    let type: OTFType<OTFSelector>
+    let type: OTFT
 	
 	var _selectorControllers: OrderedSet<SelectorController> = [] {
-		willSet { willChangeValue(for: \TypeController.selectorControllers)  }
-		didSet { didChangeValue(for: \TypeController.selectorControllers)  }
+		willSet { willChangeValue(for: \.selectorControllers)  }
+		didSet { didChangeValue(for: \.selectorControllers)  }
 	}
 	
 	@objc var selectorControllers: [SelectorController] {
@@ -62,20 +62,20 @@ class TypeController: BaseFeatureController {
 			return state
 		}
 		set {
-			willChangeValue(for: \TypeController.fontSearch)
+			willChangeValue(for: \.fontSearch)
 			for selectorController in selectorControllers {
 				selectorController.fontSearch = newValue == .on ? .on : .off
 			}
-			didChangeValue(for: \TypeController.fontSearch)
+			didChangeValue(for: \.fontSearch)
 		}
 	}
 	
-    init (type: OTFType<OTFSelector>) {
+    init (type: OTFT) {
         self.type = type
         super.init()
         for selector in type.selectors {
             selectorControllers.append(SelectorController(
-				selector: OTFType<OTFSelector>.Selector.init(
+				selector: OTFT.Selector.init(
 					name: selector.name,
 					nameID: selector.nameID,
 					identifier: selector.identifier,
@@ -96,7 +96,7 @@ extension TypeController {
 }
 
 extension TypeController {
-    func selectorControllerFor(_ selector: OTFSelector) -> SelectorController {
+    func selectorControllerFor(_ selector: OTFS) -> SelectorController {
         if let controller = selectorControllers.filter({$0.selector.name == selector.name}).first {
             return controller
         } else {
