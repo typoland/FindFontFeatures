@@ -43,7 +43,7 @@ class FindFontFeaturesTests: XCTestCase {
 				print ("\t",typeController)
 				typeController.selectorControllers.forEach({ sc in
 					print ("\t\t\(sc)")
-					sc.fonts.forEach({fc in
+					sc.foundInFontControllers.forEach({fc in
 						print ("\t\t\tFC:\(fc.font.fontName)")
 					})
 				})

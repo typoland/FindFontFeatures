@@ -14,7 +14,7 @@ class SelectorController: BaseFeatureController {
     
     let selector: OTFS
     var parent: TypeController
-    var fonts: [FontController] = []
+    var foundInFontControllers: [FontController] = []
 	
 	init (selector:OTFS, parent:TypeController) {
 		self.selector = selector
@@ -34,7 +34,7 @@ class SelectorController: BaseFeatureController {
 		}
 	}
 	
-	@objc override var selected: Bool {
+	@objc var selected: Bool = false {
 		willSet {
 			willChangeValue(for: \.selected)
 			if newValue {
@@ -45,12 +45,11 @@ class SelectorController: BaseFeatureController {
 			didChangeValue(for: \.selected)
 		}
 	}
-
 }
 
 extension SelectorController {
 	@objc var enabled: Bool {
-		if Set(fonts.map{$0}).intersection(selectedFontControllers).isEmpty {
+		if Set(foundInFontControllers.map{$0}).intersection(SELECTED_FONTS_CONTROLLERS).isEmpty {
             return false
         }
         return true
@@ -71,7 +70,7 @@ extension SelectorController {
 
 extension SelectorController {
     @objc var toolTip : String {
-        var text = fonts.reduce(into: "Found in Fonts:\n", {$0+="\t\($1.fontName)\n"})
+        var text = foundInFontControllers.reduce(into: "Found in Fonts:\n", {$0+="\t\($1.fontName)\n"})
         _ = text.removeLast()
         return text
     }

@@ -103,7 +103,7 @@ extension FontsArrayController {
 				into:Set(mainController.fontControllers), {set, typeController in
 				typeController.selectorControllers.forEach { selectorController in
 					if selectorController.fontSearch == .on {
-						set.formIntersection(selectorController.fonts)
+						set.formIntersection(selectorController.foundInFontControllers)
 					}
 				}
 			})

@@ -86,6 +86,7 @@ class TypeController: BaseFeatureController {
 }
 
 extension TypeController {
+	//it never works
     @objc var enabled: Bool {
         var result:Bool = false
         for selectorController in selectorControllers {
@@ -124,11 +125,11 @@ extension TypeController {
 }
 
 extension TypeController {
-	func selectExclusive (selector: SelectorController) {
+	func selectExclusive (selector controller: SelectorController) {
 		for selectorController in selectorControllers {
-			selectorController.willChangeValue(for: \SelectorController.selected)
-			selectorController.selected = selector == selectorController
-			selectorController.didChangeValue(for: \SelectorController.selected)
+			selectorController.willChangeValue(for: \.selected)
+			selectorController.selected = controller == selectorController
+			selectorController.didChangeValue(for: \.selected)
 		}
 	}
 }

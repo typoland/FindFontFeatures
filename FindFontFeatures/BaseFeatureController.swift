@@ -8,16 +8,8 @@
 
 import Foundation
 import AppKit
+
 class BaseFeatureController: NSObject {
-    
-	@objc var selected: Bool = false {
-		willSet {
-			self.willChangeValue(for: \.selected)
-		}
-		didSet {
-			self.didChangeValue(for: \.selected)
-		}
-	}
 	
 	@objc var fontSearch: NSControl.StateValue = .off {
 		willSet {

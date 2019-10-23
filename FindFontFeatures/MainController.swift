@@ -13,7 +13,7 @@ import OTFKit
 typealias OTFS = OTFSelector
 typealias OTFT = OTFType<OTFS>
 
-var selectedFontControllers :[FontController] = []
+var SELECTED_FONTS_CONTROLLERS :[FontController] = []
 
 public class MainController: NSObject {
     
@@ -45,9 +45,13 @@ public class MainController: NSObject {
 	
 	@objc var viewMode: String {
 		get { return _viewMode.rawValue }
-		set { _viewMode = ViewMode.init(rawValue: newValue) ?? .allFonts}
+		set {
+			willChangeValue(for: \.viewMode)
+			_viewMode = ViewMode.init(rawValue: newValue) ?? .allFonts
+			didChangeValue(for: \.viewMode)
+		}
+		
 	}
-	
 	
 	
 	var typeControllersSet: Set<TypeController> = [] {
@@ -78,7 +82,7 @@ extension MainController {
         switch _viewMode {
         case .selectionByFont:
             filtered = typeControllersSet.filter {
-                !$0.selectorControllers.filter ({ !Set($0.fonts).intersection(selectedFontControllers).isEmpty }).isEmpty }
+                !$0.selectorControllers.filter ({ !Set($0.foundInFontControllers).intersection(SELECTED_FONTS_CONTROLLERS).isEmpty }).isEmpty }
 		default:
             filtered = typeControllersSet
         }
@@ -150,7 +154,7 @@ extension MainController {
 
 			for selector in type.selectors {
 				let selectorController = typeController.selectorControllerFor(selector)
-				selectorController.fonts.append(fontController)
+				selectorController.foundInFontControllers.append(fontController)
 				fontController.selectorControllers.append(selectorController)
 
 			}
@@ -160,7 +164,7 @@ extension MainController {
             typeController = TypeController(type: type)
             typeControllersSet.insert(typeController)
 			for selectorController in typeController.selectorControllers {
-				selectorController.fonts.append(fontController)
+				selectorController.foundInFontControllers.append(fontController)
 				fontController.selectorControllers.append(selectorController)
 			}
         }
